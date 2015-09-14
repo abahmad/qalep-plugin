@@ -58,7 +58,7 @@ class Qalep {
     /**
      * Initializing our plugin
      */
-    public function __construct(Qalep\Classes\Core\Config $config, \Qalep\Classes\Core\Router $router) {
+    public function __construct(Qalep\Classes\Core\Config $config, Qalep\Classes\Core\Router $router) {
 
         $this->config = $config;
         $this->router = $router;

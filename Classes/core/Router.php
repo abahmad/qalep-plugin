@@ -51,9 +51,9 @@ class Router {
     }
 
     public function run() {
+    global $ioc;
         if (is_array($this->routes) && count($this->routes) > 0) {
             foreach ($this->routes as /* $slug => */ $route) {
-                global $ioc;
                 add_action($route['hook_name'], array($ioc->get($route['hook_class']), $route['callback']));
             }
         }
