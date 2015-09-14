@@ -54,6 +54,7 @@ class Qalep {
      */
     private $config;
     private $router;
+    public $ioc;
 
     /**
      * Initializing our plugin
@@ -62,6 +63,7 @@ class Qalep {
 
         $this->config = $config;
         $this->router = $router;
+        $this->ioc = DI\ContainerBuilder::buildDevContainer();
 
         $this->init();
     }
