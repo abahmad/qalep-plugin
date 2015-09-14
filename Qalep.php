@@ -9,6 +9,8 @@
  * Description: Qalep Template & Page Builder
  */
 
+use Aura\Di\Container;
+use Aura\Di\Factory;
 
 // Make sure we can't call this file directly
 if (!defined('WPINC')) {
@@ -35,7 +37,7 @@ require 'vendor/autoload.php';
 load_plugin_textdomain(QALEP_TEXT_DOMAIN, false, dirname(plugin_basename(__FILE__)) . '/languages/');
 
 // including our ioc container
-$ioc = new Qalep\Classes\Core\Dice;
+$ioc = DI\ContainerBuilder::buildDevContainer();
 
 // Bind Dependancies to the container
 //$ioc->addRule('Qalep\\Classes\\Core\\Config', array('shared' => true));
@@ -107,10 +109,6 @@ if (class_exists('Qalep')) {
     register_activation_hook(__FILE__, array('Qalep', 'activate'));
     register_deactivation_hook(__FILE__, array('Qalep', 'deactivate'));
 
-    // Registering container dependancies and rules;
-    $ioc->addRule('Qalep\\Classes\Core\Config', array('shared' => true));
-    $ioc->addRule('Qalep\\Classes\Core\Router', array('shared' => true));
-
     // Creating our main Qalep class container instance
-    $ioc->create('Qalep');
+    $ioc->get('Qalep');
 }

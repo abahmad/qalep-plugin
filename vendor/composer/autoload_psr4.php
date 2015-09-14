@@ -7,4 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Qalep\\' => array($baseDir . '/'),
+    'PhpDocReader\\' => array($vendorDir . '/php-di/phpdoc-reader/src/PhpDocReader'),
+    'Invoker\\' => array($vendorDir . '/php-di/invoker/src'),
+    'Interop\\Container\\' => array($vendorDir . '/container-interop/container-interop/src/Interop/Container'),
+    'DI\\' => array($vendorDir . '/php-di/php-di/src/DI'),
 );
