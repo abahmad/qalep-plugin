@@ -15,10 +15,8 @@ class Controller {
 
     protected function loader() {
 
-        global $ioc;
-
-        $config = $ioc->get('Qalep\\Classes\\Core\\Config');
-        $scripts = $ioc->get('Qalep\\Classes\\Core\\Scripts');
+        $config = DI()->get('Qalep\\Classes\\Core\\Config');
+        $scripts = DI()->get('Qalep\\Classes\\Core\\Scripts');
 
         $this->config = $config;
         $this->views_dir_path = $this->config->get('app', 'config')['views_dir_path'];
