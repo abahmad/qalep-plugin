@@ -1,0 +1,96 @@
+<?php
+
+namespace Qalep\App\Controllers;
+
+use Qalep\Classes\Core\Controller;
+
+/*
+ * register custom post qalep to wordpress
+ */
+
+class CustomPost extends Controller {
+
+    public function __construct() {
+        parent::__construct();
+
+        $this->scripts->addAdminStyle(array('qalep-bootstrap', asset('assets.css', 'qalep-bootstrap.css')));
+        $this->scripts->addAdminStyle(array('qalep-drag-drop', asset('assets.css', 'qalep-drag-drop.css')));
+        $this->scripts->addAdminStyle(array('style_en', asset('assets.css', 'style-en.css')));
+
+       
+        //
+        add_action('add_meta_boxes', array(&$this, '_add_qalep_metaboxes'));
+        add_action('admin_menu', array(&$this, 'register_options_menu_page'));
+        add_action('admin_enqueue_scripts', array(&$this, 'qalep_remove_auto_save'));
+    }
+
+    // pass data to bulider view page 
+    public function index() {
+        $user_shortcode = DI()->get('Qalep\App\Controllers\ShortCode')->get_user_shortcode();
+        $template_content = DI()->get('Qalep\App\Controllers\Templater')->search_in_template();
+        $elements = DI()->get('Qalep\App\Controllers\ListAllElement')->get_elements();
+        $this->view('builder', array('user_shortcode' => $user_shortcode,
+            'template_content' => $template_content,
+            'elements' => $elements));
+    }
+
+    //register qalep custom post in init action
+    public function _create_post_type_template() {
+
+        register_post_type('qalep', array(
+            'labels' => array(
+                'name' => __('Qalep'),
+                'singular_name' => __('qalep'),
+                'add_new' => __('Add New Template'),
+                'edit_item' => __('Edit Template'),
+                'new_item' => __('Add New Template'),
+                'view_item' => __('View Template'),
+                'search_items' => __('Search Template'),
+                'not_found' => __('No Templates found'),
+                'not_found_in_trash' => __('No Templates found in trash'),
+            ),
+            'show_ui' => true,
+            'public' => true,
+            'rewrite' => array('slug' => 'qalep'),
+            'supports' => array('title'),
+                )
+        );
+
+        // 
+    }
+
+    //add option page
+    public function register_options_menu_page() {
+        $shortcode = DI()->get('Qalep\App\Controllers\ShortCode');
+        add_submenu_page('edit.php?post_type=qalep', ' qalep options', __('qalep options', 'qalep'), 'manage_options', 'qalep_options', array($shortcode, 'shortcode_options')
+        );
+    }
+
+    //add meta box to qalep custom post
+    public function _add_qalep_metaboxes() {
+        add_meta_box('wpt_qalep', __('Bulid Your template', 'qalep'), array(&$this, 'index'), 'qalep', 'normal', 'default'
+        );
+    }
+
+    //to remove autosave when submit with custom save button
+    public function qalep_remove_auto_save() {
+        global $post;
+        if (isset($post) && $post->post_type == "qalep") {
+            wp_dequeue_script('autosave');
+        }
+    }
+
+    // to view link dublicate for every template post and remove other unneeded links
+    public function qalep_action_row($actions, $post) {
+        if ($post->post_type == "qalep") {
+            //remove what you don't need
+            unset($actions['inline hide-if-no-js']);
+            unset($actions['view']);
+            //check capabilites
+
+            $actions['clone'] = '<a href="admin.php?action=rd_duplicate_post&amp;post=' . $post->ID . '" title="Duplicate this item" rel="permalink">' . __("Duplicate", "qalep") . '</a>';
+        }
+        return $actions;
+    }
+
+}

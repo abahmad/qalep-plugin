@@ -99,8 +99,19 @@ class Qalep {
             }
         }
 
-        // Assign our menu routes
-        $this->router->mass($this->config->get('routes.menu_routes', 'admin_menu'));
+
+        // add qalep custom post
+        $this->router->add('custom_post', 'init', 'Qalep\App\Controllers\CustomPost', '_create_post_type_template');
+
+        //
+        DI()->get('Qalep\App\Controllers\ScriptLoader');
+        DI()->get("Qalep\App\Controllers\Templater");
+        DI()->get("Qalep\App\Controllers\ShortCode");
+        //
+
+        add_filter('post_row_actions', array('Qalep\App\Controllers\CustomPost', 'qalep_action_row'), 10, 2);
+        add_shortcode('qalep template', array("Qalep\App\Controllers\ShortCode", 'draw_qalep_template'));
+
         $this->router->run();
     }
 

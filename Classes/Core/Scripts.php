@@ -9,9 +9,9 @@ class Scripts {
 
     public function __construct() {
         $this->scripts['frontend'] = array();
-        $this->scripts['backend'] = array();
-        $this->styles['frontend'] = array();
-        $this->styles['backend'] = array();
+        $this->scripts['backend' ] = array();
+        $this->styles ['frontend'] = array();
+        $this->styles ['backend' ] = array();
     }
 
     public function addScript($script) {
@@ -32,9 +32,9 @@ class Scripts {
 
     public function admin_enqueue_scripts() {
         foreach ($this->styles['backend'] as $style) {
-            call_user_func_array('wp_enqueue_script', $style);
+            call_user_func_array('wp_enqueue_style', $style);
         }
-        foreach ($this->scripts['backend'] as $script) {
+        foreach ($this->scripts['backend'] as $script) { 
             call_user_func_array('wp_enqueue_script', $script);
         }
     }
@@ -57,9 +57,12 @@ class Scripts {
         return true;
     }
 
+   
     public function run() {
-        add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
-        add_action('wp_enqueue_scripts', array($this, 'wp_enqueue_scripts'));
+       // die(iii);
+      // wp_enqueue_script('par',plugins_url('', __FILE__) .'/js/para.js');
+         add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
+        add_action('admin_enqueue_scripts', array(&$this, 'wp_enqueue_scripts'));
     }
 
     public function __destruct() {
