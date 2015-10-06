@@ -44,10 +44,10 @@
        
 
         <!-------------------selected item----------------------->
-        <div  ng-if="models.selected.properties" class="col-md-12">
+        <div  ng-if="models.selected.properties" >
             <div ng-if="models.selected" class="box box-grey box-padding">
                 <h3>Selected</h3>
-                <table>
+                <table class="table table-bordered">
                     <tr ng-repeat="(key, val) in models.selected.properties">
                         <td> {{key}}</td>
                         <td ng-if="val.choices != undefined && key != 'text'" ng-repeat="(smkey,smval) in val.choices">
@@ -59,7 +59,7 @@
                                 <img src="{{models.selected.properties[key]}}" class="custom_preview_image" alt="" id="image_img" />
                                 <input  ng-click="uploadImg($event, $index)" class="custom_upload_image_button button" type="button" value="Choose Image" />
                                 <br><a href="#"  ng-click="removeImg($event)" class="custom_clear_image_button">Remove Image</a>
-                                <input name="image" type="text" class="custom_upload_image" value="1" id="image_ID" ng-model="models.selected.properties[key]" />
+                                <input name="image" type="hidden" class="custom_upload_image" value="1" id="image_ID" ng-model="models.selected.properties[key]" />
                             </div>
                             <textarea ng-model="models.selected.properties[key]" ng-if="key == 'text'"> {{val}}</textarea>
                         </td>
@@ -89,9 +89,9 @@
                 <h3 class="title-blocks"><?php echo _e('Drag Element Here', 'qalep'); ?> 
                     <a href="javascript:void(0)" ng-click="models.clear()" class="clear-div"><?php echo _e('Clear Template', 'qalep'); ?> </a>
                 </h3>
-                <pre>
+<!--                <pre>
                     {{modelAsJson}}
-                </pre>
+                </pre>-->
                 <input type="hidden" value="{{modelAsJson}}" name="item"/>
                 <div ng-repeat="(zone, list) in models.dropzones" >
                     <div class="dropzone box box-yellow">
