@@ -9,4 +9,4 @@
         * @subpackage Twenty Thirteen
 
         */?>
-        <?php ob_start();?><!-- <mnbaa_SEPERATOR> "[\r\n  {\r\n    \"label\": \"Text\",\r\n    \"type\": \"paragraph\"\r\n  },\r\n  {\r\n    \"label\": \"hoda\",\r\n    \"type\": \"item\",\r\n    \"value\": \"hoda\"\r\n  },\r\n  {\r\n    \"label\": \"paragraph\",\r\n    \"type\": \"paragraph\",\r\n    \"properties\": {\r\n      \"title\": \"hoda\"\r\n    }\r\n  }\r\n]"</mnbaa_SEPERATOR>--><?php ob_clean();?><?php do_shortcode("[qalep template id=1]"); ?>
+        <?php ob_start();?><!-- <mnbaa_SEPERATOR> "[\r\n  {\r\n    \"label\": \"Image\",\r\n    \"type\": \"image\"\r\n  }\r\n]"</mnbaa_SEPERATOR>--><?php ob_clean();?><?php do_shortcode("[qalep template id=1]"); ?>

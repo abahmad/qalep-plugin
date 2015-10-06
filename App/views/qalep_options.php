@@ -4,13 +4,13 @@
     <a href="javascript:void(0)" class="add-shortcode"> add more one</a>
     <table id="shortcodes">
         <?php
-        if ($chortcodes) {
-            foreach ($chortcodes as $key => $item) {
+        if ($shortcodes) {
+            foreach ($shortcodes as $key => $item) {
                 ?>
                 <tr>
                     <td><label><?php _e('Shortcode', 'qalep'); ?></label></td>
                     <td><input type="text" name="shortcode[]" value="<?php echo $item; ?>"></td>
-                   <?php if($key!= 0){?><td ><a href="javascript:void(0)" class="del-row" >X</a></td><?php }?>
+                    <?php if ($key != 0) { ?><td ><a href="javascript:void(0)" class="del-row" >X</a></td><?php } ?>
 
                 </tr>
                 <?php
@@ -20,10 +20,11 @@
             <tr>
                 <td><label><?php _e('Shortcode', 'qalep'); ?></label></td>
                 <td><input type="text" name="shortcode[]"></td>
-                
+
 
             </tr>
         <?php } ?>
     </table>
     <input type="submit" value="submit" class="button" />
+
 </form>

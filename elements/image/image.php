@@ -1,26 +1,23 @@
 <?php
 
 /*
-  Element Name: Paragraph
+  Element Name: Image
  * Author : mnbaa
  * Description:Type block of text
  */
 
-namespace Qalep\elements\paragraph;
+namespace Qalep\elements\image;
 
 use Qalep\Classes\Core\Element;
 
 if (!class_exists('Paragraph')) {
 
-    class Paragraph extends Element {
+    class Image extends Element {
 
         public function __construct() {
             $block_options = array(
                 'label' => __('pargraph', 'qlp'),
-                'type' => 'paragraph',
-                'properties' => array(
-                    "border" => "thin",
-                )
+                'type' => 'image'
             );
 
             //create the block
@@ -47,12 +44,11 @@ if (!class_exists('Paragraph')) {
 
         public function draw_template() {
 
-            return '<div class="item" >
-            {{item.label}}
-            <div class="item-actions">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
-            <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" aria-hidden="true"></span>
-            </div>
+            return '<div class="item" id="{{item.id}}" >
+            <img src="{{item.imgSrc}}" class="custom_preview_image" alt="" id="image_img" />
+            <input  ng-click="uploadImg($event,$index)" class="custom_upload_image_button button" type="button" value="Choose Image" />
+            <br><a href="#"  ng-click="removeImg($event)" class="custom_clear_image_button">Remove Image</a>
+            <input name="image" type="hidden" class="custom_upload_image" value="1" id="image_ID" ng-model="item.imgId" />
             </div>';
         }
 

@@ -17,7 +17,7 @@ class CustomPost extends Controller {
         $this->scripts->addAdminStyle(array('qalep-drag-drop', asset('assets.css', 'qalep-drag-drop.css')));
         $this->scripts->addAdminStyle(array('style_en', asset('assets.css', 'style-en.css')));
 
-       
+
         //
         add_action('add_meta_boxes', array(&$this, '_add_qalep_metaboxes'));
         add_action('admin_menu', array(&$this, 'register_options_menu_page'));
@@ -26,12 +26,16 @@ class CustomPost extends Controller {
 
     // pass data to bulider view page 
     public function index() {
-        $user_shortcode = DI()->get('Qalep\App\Controllers\ShortCode')->get_user_shortcode();
-        $template_content = DI()->get('Qalep\App\Controllers\Templater')->search_in_template();
-        $elements = DI()->get('Qalep\App\Controllers\ListAllElement')->get_elements();
+
+        $template_items = DI()->get('Qalep\App\Controllers\Templater')->check_sync();
+
+        $elements = DI()->get('Qalep\App\Controllers\ListAllElement');
+        $elements->register_bultin_element();
+        $elements->get_elements();
+        $elements->get_registed_shortcodes();
+
         $this->view('builder', array('user_shortcode' => $user_shortcode,
-            'template_content' => $template_content,
-            'elements' => $elements));
+            'template_content' => $template_content,'template_items'=>$template_items));
     }
 
     //register qalep custom post in init action
@@ -93,4 +97,5 @@ class CustomPost extends Controller {
         return $actions;
     }
 
+    //get shortcode from third party plugin
 }

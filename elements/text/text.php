@@ -5,8 +5,9 @@
  * Author : M.Anwar <m.anwar@mnbaa.com> 
  */
 namespace Qalep\elements\text;
+use Qalep\Classes\Core\Element;
 
-class Text {
+class Text extends Element{
 
     private $options;
     protected $scripts;

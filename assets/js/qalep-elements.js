@@ -3,7 +3,7 @@ window.qalep_elements = [
     {"type": "item", "label": "item", "id": "1", },
 //    {type: "container", label: "container", columns: [[], []], id: "2"},
 
-    {"label": "Section", "type": 'container', "columns": [[]], "properties": {fixed: 'true'}},
+    {"label": "Section", "type": 'container', "columns": [[]], properties: {fixed: 'true'}},
     {label: "Cloumn", type: 'column', columns: [[]], properties: {width: '12', offset: '0'}},
     {label: "title", type: "title", properties: {
             Title: "title",
@@ -120,6 +120,7 @@ window.qalep_elements = [
             image: '',
         }
     },
+    
     {label: "Text", type: "text", properties: {
             text: 'Your text',
             title: '',

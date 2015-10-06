@@ -4,7 +4,7 @@ var myApp = angular.module('myApp', ['dndLists']);
  * The controller doesn't do much more than setting the initial data model
  * 
  */
-window.qalep_elements=[];
+window.qalep_elements = [];
 window.elements_template = [];
 
 //add template for each element 
@@ -19,6 +19,10 @@ myApp.controller("NestedListsDemoController", ['$scope', function ($scope) {
         $scope.models = {
             selected: null,
             templates: window.qalep_elements,
+//            templates: [
+//                {"label": "item","type": "text"},
+//                {"label":"pargraph","type":"paragraph","properties":{"border":["this","thick"]}},
+//                {label: "containerem", type: "container", columns: [[]]}],
             dropzones: {
                 "A": (window.qalep_items || [])
 
@@ -62,7 +66,6 @@ myApp.controller("NestedListsDemoController", ['$scope', function ($scope) {
 //            angular.element(elem).remove();
 //        }
         $scope.uploadImg = function ($event, $index) {
-
             var image_id;
             formfield = angular.element($event.currentTarget).siblings('.custom_upload_image');
             preview = angular.element($event.currentTarget).siblings('.custom_preview_image');
@@ -72,10 +75,15 @@ myApp.controller("NestedListsDemoController", ['$scope', function ($scope) {
                 classes = jQuery('img', html).attr('class');
                 image_id = classes.replace(/(.*?)wp-image-/, '');
                 formfield.val(image_id);
+                //alert(formfield.val(image_id));
                 preview.attr('src', imgurl);
                 tb_remove();
-
-                $scope.models.dropzones.A[$index].imgSrc = imgurl;
+                if ($scope.models.dropzones.A[$index] === undefined) {
+                    alert("people");
+                    $scope.models.dropzones.A[0].properties.image = imgurl;
+                } else {
+                    $scope.models.dropzones.A[0].imgSrc = imgurl;
+                }
 
                 $scope.$apply();
 

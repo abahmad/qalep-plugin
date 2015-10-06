@@ -24,7 +24,6 @@ class Controller {
     }
 
     protected function view($file_name, $data = array(), $print = true) {
-        
         $file_path = '';
         $content = '';
         if (strpos($file_name, '.')) {

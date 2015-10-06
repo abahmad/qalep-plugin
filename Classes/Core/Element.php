@@ -1,21 +1,27 @@
 <?php
 
-/*
- * set properties and option for element
+/**
+ * The class to register, update and display blocks
+ *
+ * It provides an easy API for people to add their own blocks
+ * to the qalep plugin
+ *
+ * @package qalep
  */
 
 namespace Qalep\Classes\Core;
 
 class Element {
 
-    public function __construct() {
-        
+    private $options = array();
+
+    public function __construct($options) {
+
+        $this->options = $options;
     }
 
-    public function get_properties() {
+   
 
-        return $this->options;
-    }
 
     /*
      * add properties for element
@@ -26,15 +32,26 @@ class Element {
      * @return property data in json format
      */
 
-    public function set_properties($key, $value) {
+    public function set_properties($key = '', $value = '') {
 
-        //get properties if exist
-        $element_option = json_decode($this->options, TRUE);
-        $props = $element_option['properties'];
-        $props[$key] = $value;
-        $element_option['properties'] = $props;
-        $ele_json = json_encode($element_option);
-        return $ele_json;
+        $options = $this->options;
+        $props = $options['properties'];
+        if (!empty($key) && !empty($value)) {
+            $props[$key] = $value;
+            $options['properties'] = $props;
+        }
+        $ele_json = json_encode($options);
+        $this->options['properties']=$props;
+    }
+
+    public function set_option($key, $value) {
+        $this->options[$key]=$value;
+      //  array_push($this->options, $key, $value);
+        
+        
+    }
+    public function get_option(){
+        return json_encode($this->options);
     }
 
     public function view($file_name, $data = array(), $print = true) {
@@ -52,7 +69,7 @@ class Element {
 
             !empty($data) ? extract($data) : true;
             ob_start();
-            require $file;
+            require_once $file;
             $content .= ob_get_clean();
         }
 

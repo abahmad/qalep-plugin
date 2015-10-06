@@ -87,8 +87,9 @@ class Qalep {
      */
     public function init() {
         // Loading Helpers
-
+        
         $helpers = $this->config->get('app', 'helpers');
+        
 
         if (is_array($helpers) && !empty($helpers)) {
             foreach ($helpers as $helper) {
@@ -98,13 +99,14 @@ class Qalep {
                 }
             }
         }
-
+        
+        DI()->get('Qalep\App\Controllers\ScriptLoader');
 
         // add qalep custom post
         $this->router->add('custom_post', 'init', 'Qalep\App\Controllers\CustomPost', '_create_post_type_template');
 
         //
-        DI()->get('Qalep\App\Controllers\ScriptLoader');
+        
         DI()->get("Qalep\App\Controllers\Templater");
         DI()->get("Qalep\App\Controllers\ShortCode");
         //

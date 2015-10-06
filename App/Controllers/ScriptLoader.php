@@ -17,6 +17,9 @@ class ScriptLoader extends Controller {
         //$this->scripts->addAdminScript(array('qalep-elements', asset('assets.js', 'qalep-elements.js')));
         $this->scripts->addAdminScript(array('qalep-jquery', asset('assets.js', 'qalep-jquery.js')));
         $this->scripts->addAdminScript(array('jquery-ui-dialog'));
+        wp_enqueue_script('media-upload');
+        wp_enqueue_script('thickbox');
+        wp_enqueue_style('thickbox');
         $this->scripts->run();
     }
 

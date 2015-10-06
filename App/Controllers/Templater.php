@@ -193,7 +193,6 @@ class Templater extends Controller {
         }
     }
 
-
     public function save_template_data() {
         // If it is our form has not been submitted, so we dont want to do anything
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
@@ -356,6 +355,32 @@ class Templater extends Controller {
         die();
     }
 
-}
+    /*c
+     * heck syncroniaztion between data on page templates
+     * and data stored on post qalep meta
+     */
+     
+    function check_sync() {
 
+        global $post;
+        $template_content = $this->search_in_template();
+       
+        if (isset($post)) {
+            $template_items = (get_post_meta($post->ID, 'template_element', true));
+        }
+//          var_dump(json_decode($template_content));
+//         echo "----------------";
+//        var_dump($template_items);
+        if (isset($template_items) && !empty($template_items)) {
+
+            if (json_decode($template_content) == $template_items) {
+            }
+            else {
+                echo "not synco";
+            }
+            return $template_items;
+        }
+    }
+
+}
 ?>

@@ -82,12 +82,12 @@ class ShortCode extends Controller {
             update_option('qalep_shortcode', $shortcode);
         }
         $shortcodes = $this->get_user_shortcode();
-        $this->view('qalep_options', $shortcodes);
+        $this->view('qalep_options',array("shortcodes"=>$shortcodes));
         //ViewLoader::load_view();
     }
 
     //get user short code
-    static function get_user_shortcode() {
+    public function get_user_shortcode() {
         $user_shorcodes = get_option('qalep_shortcode');
         return $user_shorcodes;
     }
