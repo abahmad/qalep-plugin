@@ -37,7 +37,7 @@ class Router {
     public function reset() {
         $this->routes = array();
     }
-
+    
     public function mass(array $routes) {
         if (count($routes) > 0) {
             foreach ($routes as $route) {

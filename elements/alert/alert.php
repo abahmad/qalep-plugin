@@ -1,22 +1,21 @@
 <?php
 
 /*
-  Element Name: Paragraph
+  Element Name: Alert
  * Author : mnbaa
  * Description:Type block of text
  */
 
-namespace Qalep\elements\paragraph;
+namespace Qalep\elements\alert;
 
 use Qalep\Classes\Core\Element;
 
-if (!class_exists('Paragraph')) {
+if (!class_exists('alert')) {
 
-    class Paragraph extends Element {
+    class Alert extends Element {
 
         public function __construct() {
             $block_options = array(
-                'label' => __('pargraph', 'qlp'),
                 'type' => 'paragraph',
                 'properties' => array(
                     "border" => "thin",
@@ -25,20 +24,6 @@ if (!class_exists('Paragraph')) {
 
             //create the block
             parent::__construct($block_options);
-        }
-
-        public function __get($property) {
-            if (property_exists($this, $property)) {
-                return $this->$property;
-            }
-        }
-
-        public function __set($property, $value) {
-            if (property_exists($this, $property)) {
-                $this->$property = $value;
-            }
-
-            return $this;
         }
 
         /*
