@@ -127,5 +127,6 @@ if (class_exists('Qalep')) {
     // Creating our main Qalep class container instance
     add_action('init', function() {
         \DI()->get('Qalep');
+        DI()->set($name, $value);
     });
 }
