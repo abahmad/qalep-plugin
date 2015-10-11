@@ -116,20 +116,22 @@ class Templater extends Controller {
     public function view_project_template($template) {
 
         global $post;
-        $template_name = get_post_meta($post->ID, '_wp_page_template', true);
-        //  echo 'hhh' . $template_name;
-        if ($template_name != '') {
-            $file = plugin_dir_path(__DIR__) . '../page_templates/' . $template_name;
-            // echo $file;
-            // Just to be safe, we check if the file exist first
-            if (file_exists($file)) {
-                return $file;
-            }
+        if ($post) {
+            $template_name = get_post_meta($post->ID, '_wp_page_template', true);
+            //  echo 'hhh' . $template_name;
+            if ($template_name != '') {
+                $file = plugin_dir_path(__DIR__) . '../page_templates/' . $template_name;
+                // echo $file;
+                // Just to be safe, we check if the file exist first
+                if (file_exists($file)) {
+                    return $file;
+                }
 //             else {
 //               // echo $file;
 //            }
+            }
+            return $template;
         }
-        return $template;
     }
 
     /*
@@ -355,16 +357,16 @@ class Templater extends Controller {
         die();
     }
 
-    /*c
+    /* c
      * heck syncroniaztion between data on page templates
      * and data stored on post qalep meta
      */
-     
+
     function check_sync() {
 
         global $post;
         $template_content = $this->search_in_template();
-       
+
         if (isset($post)) {
             $template_items = (get_post_meta($post->ID, 'template_element', true));
         }
@@ -374,8 +376,8 @@ class Templater extends Controller {
         if (isset($template_items) && !empty($template_items)) {
 
             if (json_decode($template_content) == $template_items) {
-            }
-            else {
+                
+            } else {
                 echo "not synco";
             }
             return $template_items;
@@ -383,4 +385,5 @@ class Templater extends Controller {
     }
 
 }
+
 ?>

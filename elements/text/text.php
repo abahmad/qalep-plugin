@@ -21,16 +21,6 @@ class Text extends Element{
         return $this->options;
     }
 
-    public function set_properties($key, $value) {
-
-        //get properties if exist
-        $element_option = json_decode($this->options, TRUE);
-        $props = $element_option['properties'];
-        $props[$key] = $value;
-        $element_option['properties'] = $props;
-        $ele_json = json_encode($element_option);
-        return $ele_json;
-    }
 
     public function draw_template() {
 

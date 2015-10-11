@@ -15,7 +15,7 @@ class ShortCode extends Controller {
 //        $this->scripts->addAdminScript(array('shortcode-button', asset('assets.js', 'shortcode-button.js')));
     }
 
-    public static function add_shortcode_button($context) {
+    public function add_shortcode_button($context) {
         $img = plugins_url() . '/qalep/assets/images/penguin.png';
 
         //our popup's title
@@ -30,7 +30,7 @@ class ShortCode extends Controller {
     }
 
     //
-    public static function add_inline_popup_content() {
+    public function add_inline_popup_content() {
 
         $type = "qalep";
         $args = array(

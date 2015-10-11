@@ -16,7 +16,7 @@ function asset0($file_name, $ext = '') {
 function asset($base_file_path,$file_name) {
     
     $ext =pathinfo($file_name);
-    $ext=$extArr['extension'];
+    $ext=$ext['extension'];
     $file_path = '';
     if (strpos($base_file_path, '.')) {
         $parts = explode('.', $base_file_path);

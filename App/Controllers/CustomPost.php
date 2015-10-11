@@ -30,12 +30,13 @@ class CustomPost extends Controller {
         $template_items = DI()->get('Qalep\App\Controllers\Templater')->check_sync();
 
         $elements = DI()->get('Qalep\App\Controllers\ListAllElement');
+
         $elements->register_bultin_element();
-        $elements->get_elements();
-        $elements->get_registed_shortcodes();
+        $template_content = $elements->get_elements();
+        $user_shortcode = $elements->get_registed_shortcodes();
 
         $this->view('builder', array('user_shortcode' => $user_shortcode,
-            'template_content' => $template_content,'template_items'=>$template_items));
+            'template_content' => $template_content, 'template_items' => $template_items));
     }
 
     //register qalep custom post in init action
@@ -85,7 +86,7 @@ class CustomPost extends Controller {
     }
 
     // to view link dublicate for every template post and remove other unneeded links
-    public function qalep_action_row($actions, $post) {
+    static function qalep_action_row($actions, $post) {
         if ($post->post_type == "qalep") {
             //remove what you don't need
             unset($actions['inline hide-if-no-js']);
