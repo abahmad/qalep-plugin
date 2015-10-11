@@ -29,6 +29,10 @@ class People extends Element {
                 "position" => 'position here',
                 "text" => "write description on",
                 "image" => '',
+                "color" => array(
+                    "input_type" => 'color_picker',
+                    "value " => "red"
+                )
             )
         );
 

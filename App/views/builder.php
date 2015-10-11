@@ -41,20 +41,31 @@
             <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" ></span>
             </div>
         </script>
-       
+
 
         <!-------------------selected item----------------------->
+        <?php
+         $input=DI()->get('Qalep\Classes\Core\Input');
+         ?>
         <div  ng-if="models.selected.properties" >
             <div ng-if="models.selected" class="box box-grey box-padding">
-                <h3>Selected</h3>
+                <h3><?php echo _e('Selected',"qlp");?></h3>
                 <table class="table table-bordered">
                     <tr ng-repeat="(key, val) in models.selected.properties">
                         <td> {{key}}</td>
-                        <td ng-if="val.choices != undefined && key != 'text'" ng-repeat="(smkey,smval) in val.choices">
-                            <span>{{ smval}}</span><input ng-model="models.selected.properties[key].value" type="{{val.input_type}}" value="{{smval}}"/>
+
+                        <td ng-if="val.input_type"  ng-click="draw("custom input",optio)">
+                            <span  ng-if="val.choices" ng-repeat="(smkey,smval) in val.choices">
+                                <div ng-include="inputs/{{input_type}}.html">
+                                <?php
+                               
+                            //    $input_type={{smval}};
+                              // $input->draw({{smval}});?>
+                                <!--<span>{{ smval}}</span><input ng-model="models.selected.properties[key].value" type="{{val.input_type}}" value="{{smval}}"/>-->
+                            </span>
                         </td>
-                        <td ng-if="val.choices == undefined">
-                            <input ng-if="val.input_type == undefined && key != 'text' && key != 'image'" ng-model="models.selected.properties[key]" type="text" value="{{models.selected.properties[key]}}"/>
+                        <td ng-if="val.input_type == undefined">
+                            <input ng-if ="key != 'text' && key != 'image'" ng-model="models.selected.properties[key]" type="text" value="{{models.selected.properties[key]}}"/>
                             <div class="item" id="{{item.id}}" ng-if="key == 'image'" >
                                 <img src="{{models.selected.properties[key]}}" class="custom_preview_image" alt="" id="image_img" />
                                 <input  ng-click="uploadImg($event, $index)" class="custom_upload_image_button button" type="button" value="Choose Image" />

@@ -3,16 +3,20 @@
 /*
  * To add inputs
  */
+namespace Qalep\Classes\Core;
 
-class Inputs {
+class Input {
 
     function label($text = '', $for = '') {
         echo '<label for="' . $for . '_ID">' . $text . '</label>';
     }
-
-    function input($field, $value = '') {
-        echo '<input type="text" name="' . $field . '" id="' . $field . '_ID" value="' . $value . '" size="40" />';
+    
+    function input($label,$field, $value = ''){
+        echo '<span>'.$label.'</span><input ng-model="'.$value.'" type="'.$field.'" value="'.$value.'"/>';
     }
+//    function input($field,$type, $value = '') {
+//        echo '<input type="'.$type.'" name="' . $field . '" id="' . $field . '_ID" value="' . $value . '" size="40" />';
+//    }
 
     function textarea($field, $value = '') {
         echo '<textarea name="' . $field . '" id="' . $field . '_ID" cols="60" rows="4">' . $value . '</textarea>';

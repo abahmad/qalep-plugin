@@ -17,6 +17,7 @@ class Button extends Element {
             'type' => 'paragraph',
             'properties' => array(
                 "value" => 'button',
+                
                 "border" => array(
                     "input_type" => "radio",
                     "choices" => array('flat', 'round'),
