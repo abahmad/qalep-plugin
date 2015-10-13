@@ -5,7 +5,6 @@ namespace Qalep\Classes\Core;
 class Controller {
 
     protected $config;
-    //protected $media = array();
     protected $scripts;
     private $views_dir_path;
 

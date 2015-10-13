@@ -15,7 +15,7 @@ myApp.run(function ($templateCache) {
     });
 });
 
-myApp.controller("NestedListsDemoController", ['$scope', '$http', '$sce', function ($scope, $http) {
+myApp.controller("NestedListsDemoController", ['$scope', '$http', '$sce', function ($scope, $http,$sce) {
 
         $scope.models = {
             selected: null,
@@ -73,6 +73,8 @@ myApp.controller("NestedListsDemoController", ['$scope', '$http', '$sce', functi
                 console.log(response);
                 $scope.files = $sce.trustAsHtml(response);
             });
+            
+            
         }
         $scope.uploadImg = function ($event, $index) {
             var image_id;

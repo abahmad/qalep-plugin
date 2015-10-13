@@ -10,16 +10,31 @@ class Input {
 
     static function get_input() {
         // load class liastAllElement
-        $folder_path=QALEP_DIR_PATH . 'inputs';
-        
-        //DI()->get('Qalep\App\Controllers\ListAllElement')->list_folders($folder_path);
+        $folder_path = QALEP_DIR_PATH . 'inputs';
         $data = json_decode(file_get_contents("php://input"));
-        
-        $cont=file_get_contents( $folder_path . '/'. $data->input_type . '.php');
+        $input_type = $data->input_type;
+
+        /*check if there is a custom input
+         * if not found call defalut function from input class
+         */
+        $folders = DI()->get('Qalep\App\Controllers\ListAllElement')->list_folders($folder_path);
+        if (!empty($folders)) {
+            foreach ($folders as $folder) {
+                if ($folder == $input_type) {
+                    $cont = file_get_contents($folder_path . '/' . $input_type . '/' . $input_type . '.php');
+                } else {
+                    $cont = file_get_contents($folder_path . '/' . $input_type . '.php');
+                }
+            }
+        } else {
+            $cont = file_get_contents($folder_path . '/' . $input_type . '.php');
+        }
+
         echo $cont;
         die();
     }
 
+    
     function label($text = '', $for = '') {
         echo '<label for="' . $for . '_ID">' . $text . '</label>';
     }
