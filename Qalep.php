@@ -113,6 +113,10 @@ class Qalep {
 
         add_filter('post_row_actions', array('Qalep\App\Controllers\CustomPost', 'qalep_action_row'), 10, 2);
         add_shortcode('qalep template', array("Qalep\App\Controllers\ShortCode", 'draw_qalep_template'));
+        
+        //
+        add_action( 'wp_ajax_add_foobar', 'prefix_ajax_add_foobar' );
+        add_action('wp_ajax_get_input', array('Qalep\Classes\Core\Input', 'get_input'));
 
         $this->router->run();
     }

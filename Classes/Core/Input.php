@@ -3,17 +3,31 @@
 /*
  * To add inputs
  */
+
 namespace Qalep\Classes\Core;
 
 class Input {
 
+    static function get_input() {
+        // load class liastAllElement
+        $folder_path=QALEP_DIR_PATH . 'inputs';
+        
+        //DI()->get('Qalep\App\Controllers\ListAllElement')->list_folders($folder_path);
+        $data = json_decode(file_get_contents("php://input"));
+        
+        $cont=file_get_contents( $folder_path . '/'. $data->input_type . '.php');
+        echo $cont;
+        die();
+    }
+
     function label($text = '', $for = '') {
         echo '<label for="' . $for . '_ID">' . $text . '</label>';
     }
-    
-    function input($label,$field, $value = ''){
-        echo '<span>'.$label.'</span><input ng-model="'.$value.'" type="'.$field.'" value="'.$value.'"/>';
+
+    function input($label, $field, $value = '') {
+        echo '<span>' . $label . '</span><input ng-model="' . $value . '" type="' . $field . '" value="' . $value . '"/>';
     }
+
 //    function input($field,$type, $value = '') {
 //        echo '<input type="'.$type.'" name="' . $field . '" id="' . $field . '_ID" value="' . $value . '" size="40" />';
 //    }
@@ -51,7 +65,5 @@ class Input {
         }
         echo '</select><br /><span class="description">' . $field['desc'] . '</span><br />';
     }
-
-    
 
 }

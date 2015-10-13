@@ -1,5 +1,5 @@
 
-var myApp = angular.module('myApp', ['dndLists']);
+var myApp = angular.module('myApp', ['dndLists', 'ngSanitize']);
 /*
  * The controller doesn't do much more than setting the initial data model
  * 
@@ -14,25 +14,12 @@ myApp.run(function ($templateCache) {
         $templateCache.put(value["key"], value["content"]);
     });
 });
-//check if value is array or string or object
-myApp.filter('checkType', function () {
 
-    return function (val) {
-        consol.log(val);
-        return 588;
-        //return angular.isObject(val) ? 'IsObject' : val;
-    };
-});
+myApp.controller("NestedListsDemoController", ['$scope', '$http', '$sce', function ($scope, $http) {
 
-myApp.controller("NestedListsDemoController", ['$scope', function ($scope) {
-      
         $scope.models = {
             selected: null,
             templates: window.qalep_elements,
-//            templates: [
-//                {"label": "item","type": "text"},
-//                {"label":"pargraph","type":"paragraph","properties":{"border":["this","thick"]}},
-//                {label: "containerem", type: "container", columns: [[]]}],
             dropzones: {
                 "A": (window.qalep_items || [])
 
@@ -68,17 +55,25 @@ myApp.controller("NestedListsDemoController", ['$scope', function ($scope) {
         $scope.convertItemToObj = function (_item) {
             return JSON.parse(angular.toJson(_item));
         }
-          $scope.isString = function (val) {
-          console.log(val);
+        $scope.isString = function (val) {
+            console.log(val);
             return angular.isObject(val);
         }
+        $scope.draw = function (val) {
+            $http({
+                method: "POST",
+                url: ajaxurl + '?action=get_input',
+                data: {
+                    input_type: val
+                },
+//                headers: {'Content-Type': 'text/html'},
+//                responseType: "",
+            }).success(function (response) {
 
-        //remove element
-//        $scope.removeElem = function (id) {
-//            //  alert(id);
-//            var elem = document.getElementById(id);
-//            angular.element(elem).remove();
-//        }
+                console.log(response);
+                $scope.files = $sce.trustAsHtml(response);
+            });
+        }
         $scope.uploadImg = function ($event, $index) {
             var image_id;
             formfield = angular.element($event.currentTarget).siblings('.custom_upload_image');

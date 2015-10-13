@@ -53,10 +53,11 @@
                 <table class="table table-bordered">
                     <tr ng-repeat="(key, val) in models.selected.properties">
                         <td> {{key}}</td>
-
-                        <td ng-if="val.input_type"  ng-click="draw("custom input",optio)">
-                            <span  ng-if="val.choices" ng-repeat="(smkey,smval) in val.choices">
-                                <div ng-include="inputs/{{input_type}}.html">
+                         
+                        <td ng-if="val.input_type">
+                            <span  ng-if="val.choices" class="rad" ng-repeat="(smkey,smval) in val.choices" ng-init="draw(val.input_type)">
+                                <span ng-bind-html="files"></span>
+                                <!--<div ng-include="inputs/{{input_type}}.html">-->
                                 <?php
                                
                             //    $input_type={{smval}};

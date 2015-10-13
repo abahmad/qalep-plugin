@@ -11,6 +11,7 @@ class ScriptLoader extends Controller {
         $this->scripts->addAdminStyle(array("query-ui", "http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"));
         //
         $this->scripts->addAdminScript(array('angularjs', asset('assets.js', 'angular-min.js')));
+        $this->scripts->addAdminScript(array('angular-sanitize', asset('assets.js', 'angular-sanitize.min.js')));
         $this->scripts->addAdminScript(array('bootstrap-js', asset('bower_components.bootstrap-css.js', 'bootstrap.min.js')));
         $this->scripts->addAdminScript(array('angular-drag-and-drop-lists', asset('assets.js', 'angular-drag-and-drop-lists-min.js')));
         $this->scripts->addAdminScript(array('angular-drag', asset('assets.js', 'angular-drag.js')));

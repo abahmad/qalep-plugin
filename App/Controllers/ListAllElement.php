@@ -56,8 +56,6 @@ class ListAllElement {
                 foreach ($elements_name as $name) {
                     $element_folder = strtolower($name);
                     $element_class = '\qalep\\elements\\' . $element_folder . '\\' . $name;
-
-
                     if (class_exists($element_class)) {
                         //creat object from class if exist
                         $obj = DI()->get($element_class);
