@@ -6,11 +6,11 @@
  * Description:Type block of text
  */
 
-namespace Qalep\elements\paragraph;
+namespace Qalep\elements\title;
 
 use Qalep\Classes\Core\Element;
 
-class Paragraph extends Element {
+class Title extends Element {
 
     public function __construct() {
         $block_options = array(

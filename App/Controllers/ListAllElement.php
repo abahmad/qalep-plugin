@@ -12,7 +12,18 @@ class ListAllElement {
     protected $elements_folder;
 
     public function __construct() {
+        $custom_elements_path=get_template_directory() . "/qalep/elements";
+        $defalut_elemnts_path=QALEP_DIR_PATH . 'elements';
+        
         $this->elements_folder = QALEP_DIR_PATH . 'elements';
+        $custom_arr = $this->get_element_name($custom_elements_path);
+        $defalut_arr = $this->get_element_name($defalut_elemnts_path);
+        $arrs=array_intersect_key($custom_arr, $defalut_arr);
+      // var_dump($defalut_arr);
+//        echo "<br>"; var_dump($custom_arr);
+        
+        //echo $this->elements_folder;
+        //$this->elements_folder = QALEP_DIR_PATH . 'elements';
     }
 
     //list all elements folders on basic elements folder
@@ -60,12 +71,37 @@ class ListAllElement {
                         //creat object from class if exist
                         $obj = DI()->get($element_class);
 
-                        $this->register_element($obj,$name);
+                        $this->register_element($obj, $name);
                         $this->register_template($obj);
                     }
                 }
             }
         }
+    }
+
+    /*
+     * search in speific path folder and list all elements name
+     */
+
+    public function get_element_name($path) {
+        $element_names = array();
+        $elements_folder = $this->list_folders($path);
+       // var_dump($elements_folder);
+
+        //get all files on this folder
+        foreach ($elements_folder as $element_folder) {
+            $file_path = $this->elements_folder . '/' . $element_folder . '/' . $element_folder . '.php';
+            //echo $file_path;
+            //if (file_exists($file_path)) {
+
+                //get element name
+                $name = get_file_data($file_path, array('elementName' => 'Element Name'));
+                $name = $name['elementName'];
+//                echo $name ;
+                $element_names[$name] = $path;
+           // }
+        }
+        return $element_names;
     }
 
     public function register_bultin_element() {
@@ -109,10 +145,10 @@ class ListAllElement {
 
     /* Register element */
 
-    public function register_element($obj,$name) {
-        
-        $obj->set_option('label',$name);
-        $item_options=  $obj-> get_option();
+    public function register_element($obj, $name) {
+
+        $obj->set_option('label', $name);
+        $item_options = $obj->get_option();
         echo "<script>window.qalep_elements.push($item_options);</script>";
     }
 
