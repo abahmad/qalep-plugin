@@ -15,7 +15,7 @@ myApp.run(function ($templateCache) {
     });
 });
 
-myApp.controller("NestedListsDemoController", ['$scope', '$http', '$sce', function ($scope, $http,$sce) {
+myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', '$sce', function ($scope, $rootScope, $http, $sce) {
 
         $scope.models = {
             selected: null,
@@ -55,27 +55,31 @@ myApp.controller("NestedListsDemoController", ['$scope', '$http', '$sce', functi
         $scope.convertItemToObj = function (_item) {
             return JSON.parse(angular.toJson(_item));
         }
-        $scope.isString = function (val) {
-            console.log(val);
-            return angular.isObject(val);
-        }
         $scope.draw = function (val) {
-            $http({
-                method: "POST",
-                url: ajaxurl + '?action=get_input',
-                data: {
-                    input_type: val
-                },
-//                headers: {'Content-Type': 'text/html'},
-//                responseType: "",
-            }).success(function (response) {
-
-                console.log(response);
-                $scope.files = $sce.trustAsHtml(response);
+          $scope.items = {};
+            angular.forEach(val, function (value, key) {
+//                if (value.input_type) {
+                    $http({
+                        method: "POST",
+                        url: ajaxurl + '?action=get_input',
+                        data: {
+                            input_type: value.input_type,
+                            input_values:value.value
+                        },
+                    }).success(function (response) {
+                        htmlResponse = $sce.trustAsHtml(response);
+                        $scope.items[key]=htmlResponse;
+                    });
+//                }
             });
-            
-            
+
+
+
         }
+        $scope.$watch('data', function (data) {
+            $scope.newdata = data;
+        }, true);
+
         $scope.uploadImg = function ($event, $index) {
             var image_id;
             formfield = angular.element($event.currentTarget).siblings('.custom_upload_image');

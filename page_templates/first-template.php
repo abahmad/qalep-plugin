@@ -9,4 +9,4 @@
         * @subpackage Twenty Thirteen
 
         */?>
-        <?php ob_start();?><!-- <mnbaa_SEPERATOR> "[\r\n  {\r\n    \"label\": \"Image\",\r\n    \"type\": \"image\"\r\n  }\r\n]"</mnbaa_SEPERATOR>--><?php ob_clean();?><?php do_shortcode("[qalep template id=1]"); ?>
+        <?php ob_start();?><!-- <mnbaa_SEPERATOR> "[]"</mnbaa_SEPERATOR>--><?php ob_clean();?><?php do_shortcode("[qalep template id=1]"); ?>

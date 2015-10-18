@@ -32,6 +32,10 @@ class People extends Element {
                 "color" => array(
                     "input_type" => 'color_picker',
                     "value " => "red"
+                ),
+                "count" => array(
+                    "input_type" => 'text',
+                    "value " => "red"
                 )
             )
         );

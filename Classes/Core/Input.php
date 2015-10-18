@@ -12,29 +12,46 @@ class Input {
         // load class liastAllElement
         $folder_path = QALEP_DIR_PATH . 'inputs';
         $data = json_decode(file_get_contents("php://input"));
-        $input_type = $data->input_type;
-
-        /*check if there is a custom input
-         * if not found call defalut function from input class
-         */
-        $folders = DI()->get('Qalep\App\Controllers\ListAllElement')->list_folders($folder_path);
-        if (!empty($folders)) {
-            foreach ($folders as $folder) {
-                if ($folder == $input_type) {
-                    $cont = file_get_contents($folder_path . '/' . $input_type . '/' . $input_type . '.php');
-                } else {
-                    $cont = file_get_contents($folder_path . '/' . $input_type . '.php');
+        $value='';
+        $input_type='';
+        if(isset($data->input_values)){
+            $vlaue=$data->input_values;
+        }
+        if (isset($data->input_type)) {
+            $input_type = $data->input_type;
+            
+            /* check if there is a custom input
+             * if not found call defalut function from input class
+             */
+            $folders = DI()->get('Qalep\App\Controllers\ListAllElement')->list_folders($folder_path);
+            $cont = '';
+            if (!empty($folders)) {
+                foreach ($folders as $folder) {
+                    if ($folder == $input_type) {
+                        $cont = file_get_contents($folder_path . '/' . $input_type . '/' . $input_type . '.php');
+                    } else {
+                        // for ($i = 0; $i <= $count; $i++) {
+                        $file_path = $folder_path . '/' . $input_type . '.php';
+                        if (file_exists($file_path)) {
+                            ob_start();
+                            include($folder_path . '/' . $input_type . '.php');
+                            $cont = ob_get_clean();
+                        } else {
+                            $cont = 'input not found';
+                        }
+                        // }
+                    }
                 }
+            } else {
+                $cont = include($folder_path . '/' . $input_type . '.php');
             }
         } else {
-            $cont = file_get_contents($folder_path . '/' . $input_type . '.php');
+            $cont = "<input type='text' vlaue='$value' />";
         }
-
         echo $cont;
         die();
     }
 
-    
     function label($text = '', $for = '') {
         echo '<label for="' . $for . '_ID">' . $text . '</label>';
     }

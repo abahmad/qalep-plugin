@@ -50,20 +50,22 @@
         <div  ng-if="models.selected.properties" >
             <div ng-if="models.selected" class="box box-grey box-padding">
                 <h3><?php echo _e('Selected',"qlp");?></h3>
-                <table class="table table-bordered">
+                <table class="table table-bordered" ng-init="draw(models.selected.properties)">
+                    <tr ng-repeat="(key, val) in items">
+                        <td>{{key}}</td>
+                        <td> <span ng-bind-html="val"></span></td>
+                    </tr>
                     <tr ng-repeat="(key, val) in models.selected.properties">
                         <td> {{key}}</td>
-                         
                         <td ng-if="val.input_type">
-                            <span  ng-if="val.choices" class="rad" ng-repeat="(smkey,smval) in val.choices" ng-init="draw(val.input_type)">
-                                <span ng-bind-html="files"></span>
-                                <!--<div ng-include="inputs/{{input_type}}.html">-->
-                                <?php
+                           <span ng-bind-html="items"></span>
+                           
+<!--                            <span  ng-if="val.choices" ng-repeat="(smkey,smval) in val.choices">
                                
-                            //    $input_type={{smval}};
-                              // $input->draw({{smval}});?>
-                                <!--<span>{{ smval}}</span><input ng-model="models.selected.properties[key].value" type="{{val.input_type}}" value="{{smval}}"/>-->
                             </span>
+                            <span  ng-if="val.choices==undefined">
+                                <span ng-bind-html="files"></span>
+                            </span>-->
                         </td>
                         <td ng-if="val.input_type == undefined">
                             <input ng-if ="key != 'text' && key != 'image'" ng-model="models.selected.properties[key]" type="text" value="{{models.selected.properties[key]}}"/>
