@@ -53,19 +53,19 @@
                 <table class="table table-bordered" ng-init="draw(models.selected.properties)">
                     <tr ng-repeat="(key, val) in items">
                         <td>{{key}}</td>
-                        <td> <span ng-bind-html="val"></span></td>
+                        <td> <span ng-bind-html="val" compilehtml></span></td>
                     </tr>
-                    <tr ng-repeat="(key, val) in models.selected.properties">
+<!--                    <tr ng-repeat="(key, val) in models.selected.properties">
                         <td> {{key}}</td>
                         <td ng-if="val.input_type">
                            <span ng-bind-html="items"></span>
                            
-<!--                            <span  ng-if="val.choices" ng-repeat="(smkey,smval) in val.choices">
+                            <span  ng-if="val.choices" ng-repeat="(smkey,smval) in val.choices">
                                
                             </span>
                             <span  ng-if="val.choices==undefined">
                                 <span ng-bind-html="files"></span>
-                            </span>-->
+                            </span>
                         </td>
                         <td ng-if="val.input_type == undefined">
                             <input ng-if ="key != 'text' && key != 'image'" ng-model="models.selected.properties[key]" type="text" value="{{models.selected.properties[key]}}"/>
@@ -77,7 +77,7 @@
                             </div>
                             <textarea ng-model="models.selected.properties[key]" ng-if="key == 'text'"> {{val}}</textarea>
                         </td>
-                    </tr>
+                    </tr>-->
                 </table>
             </div>
         </div>
@@ -103,9 +103,9 @@
                 <h3 class="title-blocks"><?php echo _e('Drag Element Here', 'qalep'); ?> 
                     <a href="javascript:void(0)" ng-click="models.clear()" class="clear-div"><?php echo _e('Clear Template', 'qalep'); ?> </a>
                 </h3>
-<!--                <pre>
+                <pre>
                     {{modelAsJson}}
-                </pre>-->
+                </pre>
                 <input type="hidden" value="{{modelAsJson}}" name="item"/>
                 <div ng-repeat="(zone, list) in models.dropzones" >
                     <div class="dropzone box box-yellow">
