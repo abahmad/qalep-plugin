@@ -10,6 +10,7 @@ class Controller {
     private $views_dir_path;
 
     public function __construct() {
+        $this->ioc = \DI\ContainerBuilder::buildDevContainer();
         $this->loader();
     }
 

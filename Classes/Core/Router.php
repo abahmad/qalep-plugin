@@ -5,6 +5,11 @@ namespace Qalep\Classes\Core;
 class Router {
 
     private $routes = array();
+    public $ioc;
+    
+    public function __construct() {
+        $this->ioc = \DI\ContainerBuilder::buildDevContainer();
+    }
 
     public function add($route_slug, $hook_name, $hook_class, $callback, $params = null) {
 
@@ -51,10 +56,13 @@ class Router {
     }
 
     public function run() {
-    global $ioc;
         if (is_array($this->routes) && count($this->routes) > 0) {
             foreach ($this->routes as /* $slug => */ $route) {
-                add_action($route['hook_name'], array($ioc->get($route['hook_class']), $route['callback']));
+
+                add_action($route['hook_name'], array($this->ioc->get($route['hook_class']), $route['callback']));
+
+                add_action($route['hook_name'], array($this->ioc->get($route['hook_class']), $route['callback']));
+
             }
         }
         return false;

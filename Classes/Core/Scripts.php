@@ -62,7 +62,7 @@ class Scripts {
         add_action('wp_enqueue_scripts', array($this, 'wp_enqueue_scripts'));
     }
 
-    protected function __destruct() {
+    public function __destruct() {
         $this->reset();
     }
 
