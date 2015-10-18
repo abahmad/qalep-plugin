@@ -10,7 +10,7 @@ namespace Qalep\elements\content_box;
 
 use Qalep\Classes\Core\Element;
 
-class ContentBox extends Element {
+class Content_box extends Element {
 
     public function __construct() {
         $block_options = array(

@@ -12,18 +12,29 @@ class ListAllElement {
     protected $elements_folder;
 
     public function __construct() {
-        $custom_elements_path=get_template_directory() . "/qalep/elements";
-        $defalut_elemnts_path=QALEP_DIR_PATH . 'elements';
-        
+
+
+//        echo "<br>"; var_dump($custom_arr);
+        //echo $this->elements_folder;
+        //$this->elements_folder = QALEP_DIR_PATH . 'elements';
+    }
+
+    function search_elements() {
+        $custom_elements_path = get_template_directory() . "/qalep/elements";
+        $defalut_elemnts_path = QALEP_DIR_PATH . 'elements';
+
         $this->elements_folder = QALEP_DIR_PATH . 'elements';
         $custom_arr = $this->get_element_name($custom_elements_path);
         $defalut_arr = $this->get_element_name($defalut_elemnts_path);
-        $arrs=array_intersect_key($custom_arr, $defalut_arr);
-      // var_dump($defalut_arr);
-//        echo "<br>"; var_dump($custom_arr);
-        
-        //echo $this->elements_folder;
-        //$this->elements_folder = QALEP_DIR_PATH . 'elements';
+        $arrs = array_intersect_key($custom_arr, $defalut_arr);
+        foreach ($arrs as $key => $val) {
+            unset($defalut_arr[$key]);
+        }
+        //var_dump($defalut_arr);
+        //merge two array
+        $all_elements = array_merge($defalut_arr, $custom_arr);
+//        var_dump($all);
+        $this->get_elements($all_elements);
     }
 
     //list all elements folders on basic elements folder
@@ -46,37 +57,50 @@ class ListAllElement {
      * Retrieve elements name from a file.
      * Searches in elements folder for elements
      */
-    public function get_elements() {
+    public function get_elements($elements) {
+        foreach ($elements as $name => $val) {
+            $folder = strtolower($name);
+            $file_path = $val . '/' . $folder . '/' . $folder . '.php';
+            require_once $file_path;
+            //
 
-        $elements_folder = $this->list_folders($this->elements_folder);
+            $element_class = '\qalep\\elements\\' . $folder . '\\' . $name;
+            $obj = DI()->get($element_class);
+           // var_dump($obj);
 
-        //get all files on this folder
-        foreach ($elements_folder as $element_folder) {
-            $file_path = $this->elements_folder . '/' . $element_folder . '/' . $element_folder . '.php';
-
-            if (file_exists($file_path)) {
-
-                //get element name
-                $elements_name = get_file_data($file_path, array('elementName' => 'Element Name'));
-
-                //check if element name is typed
-                if (!empty($elements_name['elementName'])) {
-                    require_once $file_path;
-                }
-
-                foreach ($elements_name as $name) {
-                    $element_folder = strtolower($name);
-                    $element_class = '\qalep\\elements\\' . $element_folder . '\\' . $name;
-                    if (class_exists($element_class)) {
-                        //creat object from class if exist
-                        $obj = DI()->get($element_class);
-
-                        $this->register_element($obj, $name);
-                        $this->register_template($obj);
-                    }
-                }
-            }
+            $this->register_element($obj, $name);
+            $this->register_template($obj);
         }
+
+//        $elements_folder = $this->list_folders($this->elements_folder);
+//
+//        //get all files on this folder
+//        foreach ($elements_folder as $element_folder) {
+//            $file_path = $this->elements_folder . '/' . $element_folder . '/' . $element_folder . '.php';
+//
+//            if (file_exists($file_path)) {
+//
+//                //get element name
+//                $elements_name = get_file_data($file_path, array('elementName' => 'Element Name'));
+//
+//                //check if element name is typed
+//                if (!empty($elements_name['elementName'])) {
+//                    require_once $file_path;
+//                }
+//
+//                foreach ($elements_name as $name) {
+//                    $element_folder = strtolower($name);
+//                    $element_class = '\qalep\\elements\\' . $element_folder . '\\' . $name;
+//                    if (class_exists($element_class)) {
+//                        //creat object from class if exist
+//                        $obj = DI()->get($element_class);
+//
+//                        $this->register_element($obj, $name);
+//                        $this->register_template($obj);
+//                    }
+//                }
+//            }
+//        }
     }
 
     /*
@@ -86,20 +110,18 @@ class ListAllElement {
     public function get_element_name($path) {
         $element_names = array();
         $elements_folder = $this->list_folders($path);
-       // var_dump($elements_folder);
-
+        // var_dump($elements_folder);
         //get all files on this folder
         foreach ($elements_folder as $element_folder) {
             $file_path = $this->elements_folder . '/' . $element_folder . '/' . $element_folder . '.php';
             //echo $file_path;
             //if (file_exists($file_path)) {
-
-                //get element name
-                $name = get_file_data($file_path, array('elementName' => 'Element Name'));
-                $name = $name['elementName'];
+            //get element name
+            $name = get_file_data($file_path, array('elementName' => 'Element Name'));
+            $name = $name['elementName'];
 //                echo $name ;
-                $element_names[$name] = $path;
-           // }
+            $element_names[$name] = $path;
+            // }
         }
         return $element_names;
     }
@@ -155,6 +177,7 @@ class ListAllElement {
     /* register all  template element */
 
     public function register_template($obj) {
+        
         //get class name of this object
         $classNameSpace = get_class($obj);
         $path = explode('\\', $classNameSpace);

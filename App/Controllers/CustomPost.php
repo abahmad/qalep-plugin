@@ -32,7 +32,7 @@ class CustomPost extends Controller {
         $elements = DI()->get('Qalep\App\Controllers\ListAllElement');
 
         $elements->register_bultin_element();
-        $template_content = $elements->get_elements();
+        $template_content = $elements->search_elements();
         $user_shortcode = $elements->get_registed_shortcodes();
 
         $this->view('builder', array('user_shortcode' => $user_shortcode,
