@@ -7,6 +7,22 @@ var myApp = angular.module('myApp', ['dndLists', 'ngSanitize']);
 window.qalep_elements = [];
 window.elements_template = [];
 
+myApp.directive('compilehtml', ["$compile", "$parse", function ($compile, $parse) {
+        return {
+            restrict: 'A',
+            link: function ($scope, element, attr) {
+                var parse = $parse(attr.ngBindHtml);
+                function value() {
+                    return (parse($scope) || '').toString();
+                }
+
+                $scope.$watch(value, function () {
+                    $compile(element, null, -9999)($scope);
+                });
+            }
+        }
+    }]);
+
 //add template for each element 
 myApp.run(function ($templateCache) {
     elements = window.elements_template;
@@ -56,20 +72,20 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             return JSON.parse(angular.toJson(_item));
         }
         $scope.draw = function (val) {
-          $scope.items = {};
+            $scope.items = {};
             angular.forEach(val, function (value, key) {
 //                if (value.input_type) {
-                    $http({
-                        method: "POST",
-                        url: ajaxurl + '?action=get_input',
-                        data: {
-                            input_type: value.input_type,
-                            input_values:value.value
-                        },
-                    }).success(function (response) {
-                        htmlResponse = $sce.trustAsHtml(response);
-                        $scope.items[key]=htmlResponse;
-                    });
+                $http({
+                    method: "POST",
+                    url: ajaxurl + '?action=get_input',
+                    data: {
+                        input_type: value.input_type,
+                        input_values: value.value
+                    },
+                }).success(function (response) {
+                    htmlResponse = $sce.trustAsHtml(response);
+                    $scope.items[key] = htmlResponse;
+                });
 //                }
             });
 

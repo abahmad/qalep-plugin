@@ -12,14 +12,12 @@ class Input {
         // load class liastAllElement
         $folder_path = QALEP_DIR_PATH . 'inputs';
         $data = json_decode(file_get_contents("php://input"));
-        $value='';
-        $input_type='';
-        if(isset($data->input_values)){
-            $vlaue=$data->input_values;
-        }
+        //$value = '';
+        $input_type = '';
+        
         if (isset($data->input_type)) {
             $input_type = $data->input_type;
-            
+
             /* check if there is a custom input
              * if not found call defalut function from input class
              */
@@ -37,16 +35,16 @@ class Input {
                             include($folder_path . '/' . $input_type . '.php');
                             $cont = ob_get_clean();
                         } else {
-                            $cont = 'input not found';
+                            $cont = '<input type="text" ng-model="models.selected.properties[key].value" />';
                         }
                         // }
                     }
                 }
             } else {
-                $cont = include($folder_path . '/' . $input_type . '.php');
+                $cont = "<input type='text' value='fsafsaf $value' ng-model='models.selected.properties[key]' />";
             }
         } else {
-            $cont = "<input type='text' vlaue='$value' />";
+            $cont = "<input type='text' value='$value' ng-model='models.selected.properties[key]' />";
         }
         echo $cont;
         die();
@@ -56,8 +54,8 @@ class Input {
         echo '<label for="' . $for . '_ID">' . $text . '</label>';
     }
 
-    function input($label, $field, $value = '') {
-        echo '<span>' . $label . '</span><input ng-model="' . $value . '" type="' . $field . '" value="' . $value . '"/>';
+    function input($input_type, $value = '') {
+        echo '<input ng-model="' . $value . '" type="' . $input_type . '" value="' . $value . '"/>';
     }
 
 //    function input($field,$type, $value = '') {
