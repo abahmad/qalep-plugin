@@ -20,22 +20,22 @@ class People extends Element {
                     "input_type" => "text",
                     "value" => 'Default Text Hoda'
                 ),
-//                " Social" => array(
-//                    "input_type" => "radio",
-//                    "choices" => array('f', 't', 'g+', 'p'),
-//                    "value" => 'f'),
-//                "name" => 'FULL NAME IN HERE',
-//                "position" => 'position here',
-//                "text" => "write description on",
-//                "image" => '',
-//                "color" => array(
-//                    "input_type" => 'color_picker',
-//                    "value " => "red"
-//                ),
-//                "count" => array(
-//                    "input_type" => 'text',
-//                    "value " => "red"
-//                )
+                " Social" => array(
+                    "input_type" => "radio",
+                    "choices" => array('f', 't', 'g+', 'p'),
+                    "value" => 'f'),
+                "name" => 'FULL NAME IN HERE',
+                "position" => 'position here',
+                "text" => "write description on",
+                "image" => '',
+                "color" => array(
+                    "input_type" => 'color_picker',
+                    "value " => "red"
+                ),
+                "count" => array(
+                    "input_type" => 'text',
+                    "value " => "red"
+                )
             )
         );
 

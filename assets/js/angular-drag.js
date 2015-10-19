@@ -7,6 +7,8 @@ var myApp = angular.module('myApp', ['dndLists', 'ngSanitize']);
 window.qalep_elements = [];
 window.elements_template = [];
 
+
+
 myApp.directive('compilehtml', ["$compile", "$parse", function ($compile, $parse) {
         return {
             restrict: 'A',
@@ -80,7 +82,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                     url: ajaxurl + '?action=get_input',
                     data: {
                         input_type: value.input_type,
-                        input_values: value.value
+                        choices: value.choices
                     },
                 }).success(function (response) {
                     htmlResponse = $sce.trustAsHtml(response);
@@ -138,7 +140,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             $scope.modelAsJson = angular.toJson(model.A, true);
         }, true);
 
-
+console.log(qalep_elements);
 
 
     }]);

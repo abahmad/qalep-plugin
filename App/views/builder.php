@@ -13,13 +13,13 @@
             </ul>
         </script>
 
-        <script type="text/ng-template" id="container.html" >
+<!--        <script type="text/ng-template" id="container.html" >
             <div ng-class="{'container' : item.properties.fixed == 'true', 'container-fluid' : item.properties.fixed == 'false'}" class="container-element box box-blue" >
             <h3>Container</h3>
             <div class="row" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
             <div class="clearfix"></div>
             </div>
-        </script>
+        </script>-->
 
 
         <script type="text/ng-template" id="column.html" >
@@ -103,9 +103,9 @@
                 <h3 class="title-blocks"><?php echo _e('Drag Element Here', 'qalep'); ?> 
                     <a href="javascript:void(0)" ng-click="models.clear()" class="clear-div"><?php echo _e('Clear Template', 'qalep'); ?> </a>
                 </h3>
-                <pre>
+<!--                <pre>
                     {{modelAsJson}}
-                </pre>
+                </pre>-->
                 <input type="hidden" value="{{modelAsJson}}" name="item"/>
                 <div ng-repeat="(zone, list) in models.dropzones" >
                     <div class="dropzone box box-yellow">

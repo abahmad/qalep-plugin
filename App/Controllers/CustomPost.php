@@ -31,7 +31,7 @@ class CustomPost extends Controller {
 
         $elements = DI()->get('Qalep\App\Controllers\ListAllElement');
 
-        $elements->register_bultin_element();
+        //$elements->register_bultin_element();
         $template_content = $elements->search_elements();
         $user_shortcode = $elements->get_registed_shortcodes();
 

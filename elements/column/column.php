@@ -1,24 +1,27 @@
 <?php
 
 /*
-  Element Name: text
+  Element Name: Column
  * Author : mnbaa
- * Description:Type block of text
+ * Description:bootstarp column
  */
 
-namespace Qalep\elements\text;
+namespace Qalep\elements\column;
 
 use Qalep\Classes\Core\Element;
 
-if (!class_exists('Text')) {
+if (!class_exists('Column')) {
 
-    class Text extends Element {
+    class Column extends Element {
 
         public function __construct() {
             $block_options = array(
-                "Text" => array(
-                    "input_type" => 'text_area',
-                    "value" => "type your text here"
+                "label" => 'Column',
+                "type" => 'column',
+                "columns" => array(array()),
+                "properties" => array(
+                    "width" => '12',
+                    "offset" => '0'
                 )
             );
 
@@ -45,14 +48,13 @@ if (!class_exists('Text')) {
          */
 
         public function draw_template() {
-
-            return '<div class="item" >
-            {{item.label}}
-            <div class="item-actions">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
-            <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" aria-hidden="true"></span>
+            return '<div class="container-element box box-blue col-md-{{item.properties.width}}">
+            <h3>Column</h3>
+            <div class="qalep-col-inner" ng-repeat="list in item.columns" ng-include="\'list.html\'">
+            <div class="clearfix"></div>
             </div>
             </div>';
+//           
         }
 
     }

@@ -12,12 +12,12 @@ class Input {
         // load class liastAllElement
         $folder_path = QALEP_DIR_PATH . 'inputs';
         $data = json_decode(file_get_contents("php://input"));
-        //$value = '';
         $input_type = '';
-        
+
         if (isset($data->input_type)) {
             $input_type = $data->input_type;
-
+            (isset($data->choices)) ? $choises = $data->choices : $choises = array();
+            // var_dump($choises);
             /* check if there is a custom input
              * if not found call defalut function from input class
              */
@@ -26,28 +26,43 @@ class Input {
             if (!empty($folders)) {
                 foreach ($folders as $folder) {
                     if ($folder == $input_type) {
-                        $cont = file_get_contents($folder_path . '/' . $input_type . '/' . $input_type . '.php');
-                    } else {
-                        // for ($i = 0; $i <= $count; $i++) {
-                        $file_path = $folder_path . '/' . $input_type . '.php';
+                        $file_path = $folder_path . '/' . $input_type . '/' . $input_type . '.php';
                         if (file_exists($file_path)) {
                             ob_start();
-                            include($folder_path . '/' . $input_type . '.php');
-                            $cont = ob_get_clean();
+                            include($file_path);
+                            $content = ob_get_clean();
                         } else {
-                            $cont = '<input type="text" ng-model="models.selected.properties[key].value" />';
+                            $this->$input_type();
+                            //$cont = '<input type="text" ng-model="models.selected.properties[key].value" />';
                         }
                         // }
+                    } else {
+                        if (method_exists(__CLASS__, $input_type)) {
+                            $content = Input::$input_type($choises);
+                        } else {
+                            $content = "input undifend ";
+                        }
+                        //$cont = '<input type='text'  ng-model='models.selected.properties[key]' />';
                     }
                 }
             } else {
-                $cont = "<input type='text' value='fsafsaf $value' ng-model='models.selected.properties[key]' />";
+                $content = _("no inputs found", 'qlp');
             }
         } else {
-            $cont = "<input type='text' value='$value' ng-model='models.selected.properties[key]' />";
+            $content = "<input type='text'  ng-model='models.selected.properties[key]' />";
         }
-        echo $cont;
+        echo $content;
         die();
+    }
+
+    public static function text() {
+        return "<input type='text'  ng-model='models.selected.properties[key].value' />";
+    }
+
+    public static function radio($choises) {
+        foreach ($choises as $key => $choise) {
+            echo '<input type="radio" value ="' . $choise . '"  ng-model="models.selected.properties[key].value"><span>' . $key . ' </span>';
+        }
     }
 
     function label($text = '', $for = '') {

@@ -20,7 +20,7 @@ class Button extends Element {
                 
                 "border" => array(
                     "input_type" => "radio",
-                    "choices" => array('flat', 'round'),
+                    "choices" => array('flat'=>'flat','round'=>'round'),
                     "value" => 'flat'
                 ),
                 "color" =>array(
