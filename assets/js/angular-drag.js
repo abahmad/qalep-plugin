@@ -9,6 +9,7 @@ window.elements_template = [];
 
 
 
+
 myApp.directive('compilehtml', ["$compile", "$parse", function ($compile, $parse) {
         return {
             restrict: 'A',
@@ -51,6 +52,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
         };
 
+
         $scope.microtime = function (get_as_float) {
             //  discuss at: http://phpjs.org/functions/microtime/
             // original by: Paulo Freitas
@@ -73,24 +75,32 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
         $scope.convertItemToObj = function (_item) {
             return JSON.parse(angular.toJson(_item));
         }
-        $scope.draw = function (val) {
+        $scope.draw = function (properties) {
             $scope.items = {};
-            angular.forEach(val, function (value, key) {
-//                if (value.input_type) {
+            if (properties) {
                 $http({
                     method: "POST",
                     url: ajaxurl + '?action=get_input',
                     data: {
-                        input_type: value.input_type,
-                        choices: value.choices
+                        properties: properties
+//                        input_type: value.input_type,
+//                        choices: value.choices
                     },
                 }).success(function (response) {
-                    htmlResponse = $sce.trustAsHtml(response);
-                    $scope.items[key] = htmlResponse;
-                });
-//                }
-            });
+                    angular.forEach(response, function (value, key) {
+                        $scope.items[key] = $sce.trustAsHtml(value);
+                    });
+//                    alert(response);
 
+                    //  htmlResponse= angular.toJson(response, true);
+                    // console.log("res"+htmlResponse);
+                    // htmlResponse = $sce.trustAsHtml(response);
+                    //$scope.items= (response);
+                    //console.log(htmlResponse);
+
+                });
+
+            }
 
 
         }
@@ -111,9 +121,8 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 //alert(formfield.val(image_id));
                 preview.attr('src', imgurl);
                 tb_remove();
-                if ($scope.models.dropzones.A[$index] === undefined) {
-                    alert("people");
-                    $scope.models.dropzones.A[0].properties.image = imgurl;
+                if ($scope.models.dropzones.A[0].properties.image.value != undefined) {
+                    $scope.models.dropzones.A[0].properties.image.value = imgurl;
                 } else {
                     $scope.models.dropzones.A[0].imgSrc = imgurl;
                 }
@@ -140,7 +149,6 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             $scope.modelAsJson = angular.toJson(model.A, true);
         }, true);
 
-console.log(qalep_elements);
-
+//console.log($scope.items);
 
     }]);

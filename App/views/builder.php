@@ -6,8 +6,9 @@
             dnd-draggable="item"
             dnd-effect-allowed="move"
             dnd-moved="list.splice($index, 1)"
-            dnd-selected="models.selected = item"
+            dnd-selected="models.selected = item;"
             ng-class="{selected: models.selected === item}"
+            ng-click="draw(item.properties)"
             ng-include="item.type + '.html'">
             </li>
             </ul>
@@ -44,28 +45,20 @@
 
 
         <!-------------------selected item----------------------->
-        <?php
-         $input=DI()->get('Qalep\Classes\Core\Input');
-         ?>
         <div  ng-if="models.selected.properties" >
             <div ng-if="models.selected" class="box box-grey box-padding">
-                <h3><?php echo _e('Selected',"qlp");?></h3>
-                <table class="table table-bordered" ng-init="draw(models.selected.properties)">
+                <h3><?php echo _e('Selected', "qlp"); ?></h3>
+                <!--ng-init="draw(models.selected.properties)"-->
+                <table class="table table-bordered" >
+
                     <tr ng-repeat="(key, val) in items">
                         <td>{{key}}</td>
                         <td> <span ng-bind-html="val" compilehtml></span></td>
                     </tr>
-<!--                    <tr ng-repeat="(key, val) in models.selected.properties">
+<!--                    <tr ng-repeat="(key, val) in items">
                         <td> {{key}}</td>
                         <td ng-if="val.input_type">
                            <span ng-bind-html="items"></span>
-                           
-                            <span  ng-if="val.choices" ng-repeat="(smkey,smval) in val.choices">
-                               
-                            </span>
-                            <span  ng-if="val.choices==undefined">
-                                <span ng-bind-html="files"></span>
-                            </span>
                         </td>
                         <td ng-if="val.input_type == undefined">
                             <input ng-if ="key != 'text' && key != 'image'" ng-model="models.selected.properties[key]" type="text" value="{{models.selected.properties[key]}}"/>

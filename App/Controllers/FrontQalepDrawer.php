@@ -11,6 +11,8 @@ use Qalep\elements;
 class FrontQalepDrawer {
 
     public function __construct($items) {
+        
+        
         echo get_header();
         if (!empty($items)) {
             foreach ($items as $item) {
@@ -31,7 +33,7 @@ class FrontQalepDrawer {
             return '</div>';
     }
 
-    public function draw($item, $closure = null) {
+    public function draw($item) {
         if (isset($item->type)) {
             $type = $item->type;
         }

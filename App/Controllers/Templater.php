@@ -247,14 +247,7 @@ class Templater extends Controller {
             $items = $_POST['items'];
             $args = str_replace('\\', '', $items);
             $items = json_decode($args);
-            //
-            DI()->set('FrontQalepDrawer', function ($items) {
-                return new Qalep\App\Controllers\FrontQalepDrawer($items);
-            }, true);
-
-//
-            DI()->get('Qalep\App\Controllers\FrontQalepDrawer');
-            //$QalepE = new FrontQalepDrawer($items);
+            DI()->make('Qalep\App\Controllers\FrontQalepDrawer', array('items' => $items));
         }
         die();
     }
