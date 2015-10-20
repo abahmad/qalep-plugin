@@ -16,9 +16,22 @@ if (!class_exists('alert')) {
 
         public function __construct() {
             $block_options = array(
-                'type' => 'paragraph',
+                'type' => 'alert',
                 'properties' => array(
-                    "border" => "thin",
+                    "text" => array(
+                        "input_type" => 'textarea',
+                        'value' => 'type content here'
+                    ),
+                    "image" => array(
+                        "input_type"=>'image',
+                        "value"=>''
+                        
+                    ),
+                    "background" => array(
+                        "input_type" => 'radio',
+                        "choices" => array('gray', 'orange', 'light-gray'),
+                        "value" => 'gray',
+                    )
                 )
             );
 
@@ -40,6 +53,7 @@ if (!class_exists('alert')) {
             </div>
             </div>';
         }
+        
 
     }
 

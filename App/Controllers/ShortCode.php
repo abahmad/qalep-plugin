@@ -60,7 +60,7 @@ class ShortCode extends Controller {
     }
 
     //draw shortcode template
-    public function draw_qalep_template($atts) {
+    static public function draw_qalep_template($atts) {
         $qalep_templates = get_post_meta($atts['id']);
         $template = $qalep_templates['template_element'];
         $items = json_decode($template[0]);

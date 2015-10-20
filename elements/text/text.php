@@ -16,10 +16,13 @@ if (!class_exists('Text')) {
 
         public function __construct() {
             $block_options = array(
-                "Text" => array(
-                    "input_type" => 'text_area',
-                    "value" => "type your text here"
-                )
+                'type' => 'text',
+                "properties" => array(
+                    "Text" => array(
+                        "input_type" => 'textarea',
+                        "value" => "type your text here"
+                    )
+                ),
             );
 
             //create the block

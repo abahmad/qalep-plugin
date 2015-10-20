@@ -64,14 +64,14 @@ class Element {
                 $file_path.= $dir . DIRECTORY_SEPARATOR;
             }
         }
-        $file = QALEP_DIR_PATH . 'elements' . DIRECTORY_SEPARATOR . $file_name . DIRECTORY_SEPARATOR . 'front_' . $file_name . '.php';
+        $front_file=$file_name.'_frontend.php';
+        $file = QALEP_DIR_PATH . 'elements' . DIRECTORY_SEPARATOR . $file_name . DIRECTORY_SEPARATOR .$front_file;
         if (file_exists($file)) {
-
             !empty($data) ? extract($data) : true;
             ob_start();
             require_once $file;
             $content .= ob_get_clean();
-        }
+        }else echo _e($front_file. ' is not exist');
 
         if ($content != '') {
 

@@ -37,7 +37,7 @@ class Counting extends Element {
 
     public function draw_template() {
 
-        return '<div class="item" >
+        return '<div class="item">
             {{item.label}}
             <div class="item-actions">
             <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>

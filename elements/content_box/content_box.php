@@ -17,8 +17,14 @@ class Content_box extends Element {
             'label' => __('pargraph', 'qlp'),
             'type' => 'paragraph',
             'properties' => array(
-                "border" => "thin",
-            )
+                'template' => array(
+                    'input_type' => "radio",
+                    'choices' => array('box1', 'box2', 'box3'),
+                    "value" => 'box1',
+                ),
+                'title' => 'TITLE OF THE BLOCK IN HERE',
+                'text' => 'Donec id elit non mi porta gravida at eget metus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.',
+            ),
         );
 
         //create the block
@@ -31,8 +37,7 @@ class Content_box extends Element {
 
     public function draw_template() {
 
-        return '<div class="item" >
-            {{item.label}}
+        return '<div class="item" ng-click="draw(models.selected.properties)" >{{item.label}}
             <div class="item-actions">
             <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
             <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" aria-hidden="true"></span>

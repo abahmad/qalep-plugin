@@ -115,8 +115,8 @@ class Qalep {
         add_shortcode('qalep template', array("Qalep\App\Controllers\ShortCode", 'draw_qalep_template'));
         
         //
-        add_action( 'wp_ajax_add_foobar', 'prefix_ajax_add_foobar' );
-        add_action('wp_ajax_get_input', array('Qalep\Classes\Core\Input', 'get_input'));
+        add_action('wp_ajax_get_input', array('Qalep\App\Controllers\ListInputs', 'get_input'));
+        add_action('wp_enqueue_scripts',array('Qalep\App\Controllers\ScriptLoader','load_forntend_styles'));
 
         $this->router->run();
     }
