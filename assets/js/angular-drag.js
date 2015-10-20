@@ -140,7 +140,5 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             $scope.modelAsJson = angular.toJson(model.A, true);
         }, true);
 
-console.log(qalep_elements);
-
 
     }]);

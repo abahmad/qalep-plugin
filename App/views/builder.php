@@ -13,26 +13,6 @@
             </ul>
         </script>
 
-<!--        <script type="text/ng-template" id="container.html" >
-            <div ng-class="{'container' : item.properties.fixed == 'true', 'container-fluid' : item.properties.fixed == 'false'}" class="container-element box box-blue" >
-            <h3>Container</h3>
-            <div class="row" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
-            <div class="clearfix"></div>
-            </div>
-        </script>-->
-
-
-        <script type="text/ng-template" id="column.html" >
-            <div class="container-element box box-blue col-md-{{item.properties.width}}">
-            <h3>Column</h3>
-            <div class="qalep-col-inner" ng-repeat="list in item.columns" ng-include="'list.html'">
-            <div class="clearfix"></div>
-            </div>
-            </div>
-        </script>
-
-        <!-- Template for a normal list item -->
-
 
         <script type="text/ng-template" id="shortcode.html">
             <div class="item" id="{{item.id}}">
@@ -45,11 +25,11 @@
 
         <!-------------------selected item----------------------->
         <?php
-         $input=DI()->get('Qalep\Classes\Core\Input');
-         ?>
-        <div  ng-if="models.selected.properties" >
+        $input = DI()->get('Qalep\Classes\Core\Input');
+        ?>
+        <div ng-if="models.selected.properties" >
             <div ng-if="models.selected" class="box box-grey box-padding">
-                <h3><?php echo _e('Selected',"qlp");?></h3>
+                <h3><?php echo _e('Selected', "qlp"); ?></h3>
                 <table class="table table-bordered" ng-init="draw(models.selected.properties)">
                     <tr ng-repeat="(key, val) in items">
                         <td>{{key}}</td>
@@ -96,7 +76,7 @@
                         <button type="button" class="draggable-item" >{{item.label}}</button>
                     </li>
                 </ul>
-                <?php echo "<script>window.qalep_items=" . $template_items . ";</script>"; ?>
+                <?php echo isset($template_items) ? "<script>window.qalep_items=" . $template_items . ";</script>" : '' ?>
 
             </div>
             <div class="qalep-elements">
