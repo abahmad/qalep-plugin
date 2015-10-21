@@ -13,21 +13,23 @@ class Input {
     }
 
     public function radio($choises) {
+        $result='';
         foreach ($choises as $key => $choise) {
-            echo '<input type="radio" value ="' . $choise . '"  ng-model="models.selected.properties[key].value"><span>' . $key . ' </span>';
+            $result.= '<input type="radio" value ="' . $choise . '"  ng-model="models.selected.properties[key].value"> <span>' . $key . ' </span>';
         }
+        return $result;
     }
 
     function textarea() {
-        echo '<textarea cols="60" rows="4" ng-model="models.selected.properties[key].value"></textarea>';
+        return '<textarea cols="60" rows="4" ng-model="models.selected.properties[key].value"></textarea>';
     }
 
     function image() {
-        echo ' <div class="item" id="{{item.id}}" >
-                <img src="{{models.selected.properties[key].value}}" class="custom_preview_image" alt="" id="image_img" />
-                <input  ng-click="uploadImg($event, $index)" class="custom_upload_image_button button" type="button" value="Choose Image" />
+        return ' <div class="item" id="{{item.id}}" >
+                <input  ng-click="uploadImg($event, $index)"  class="custom_upload_image_button button" type="button" value="Choose Image" />
+                <img ng-src="{{models.selected.properties[key].value}}"  class="custom_preview_image" alt="" id="image_img" ng-model="models.selected.properties[key].value" />
                 <br><a href="#"  ng-click="removeImg($event)" class="custom_clear_image_button">Remove Image</a>
-                <input name="image" type="hidden" class="custom_upload_image" value="1" id="image_ID" ng-model="models.selected.properties[key]" />
+                <input name="image" type="text" class="custom_upload_image" value="1"  id="image_ID"  />
             </div>';
     }
 

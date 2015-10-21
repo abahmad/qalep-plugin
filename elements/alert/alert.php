@@ -29,7 +29,7 @@ if (!class_exists('alert')) {
                     ),
                     "background" => array(
                         "input_type" => 'radio',
-                        "choices" => array('gray', 'orange', 'light-gray'),
+                        "choices" => array('gray'=>'gray', 'orange'=>'orange', 'light-gray'=>'light-gray'),
                         "value" => 'gray',
                     )
                 )

@@ -14,12 +14,11 @@ class Divider extends Element {
 
     public function __construct() {
         $block_options = array(
-            'label'=>"divider",
             'type' => 'divider',
             'properties' => array(
                 'shape' => array(
                     'input_type' => 'radio',
-                    'choices' => array("thin"=>'thin', 'dashed', 'slash'),
+                    'choices' => array('thin'=>'thin','dashed'=> 'dashed', 'slash'=>'slash'),
                     'value' => 'thin'
                 )
             )

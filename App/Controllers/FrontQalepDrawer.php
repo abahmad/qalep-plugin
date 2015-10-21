@@ -33,7 +33,7 @@ class FrontQalepDrawer {
             return '</div>';
     }
 
-    public function draw($item) {
+    public function draw($item,$closure='') {
         if (isset($item->type)) {
             $type = $item->type;
         }
@@ -84,7 +84,8 @@ class FrontQalepDrawer {
                     $class_name = 'Qalep\\elements\\' . $type . '\\' . $type;
                     if (class_exists($class_name)) {
                         $obj = DI()->get('Qalep\\elements\\' . $type . '\\' . $type);
-                        $prop=$item->properties;
+                        //if(isse)
+                        isset($item->properties)?$prop=$item->properties :$prop=array();
                         $obj->view($type,array("props"=>$prop));
                     }
             }

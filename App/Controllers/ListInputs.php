@@ -16,7 +16,7 @@ class ListInputs {
          // echo "$key => $val\n";
             if (isset($val->input_type)) {
                 $input_type = $val->input_type;
-                (isset($data->choices)) ? $choises = $data->choices : $choises = array();
+                (isset($val->choices)) ? $choises = $val->choices : $choises = array();
                 // var_dump($choises);
                 /* check if there is a custom input
                  * if not found call defalut function from input class
@@ -32,8 +32,9 @@ class ListInputs {
                                $content[$key] = ob_get_clean();
                             }
                         } else {
-                            if (method_exists('Qalep\Core\Input', $input_type)) {
-                                $input = \DI()->get('Qalep\App\Controllers\ListInputs');
+                            //echo $input_type;
+                            if (method_exists('Qalep\Classes\Core\Input', $input_type)) {
+                                $input = \DI()->get('Qalep\Classes\Core\Input');
                                 $content[$key] = $input->$input_type($choises);
                             } else {
                                $content[$key] = "input undifend ";

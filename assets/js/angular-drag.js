@@ -46,6 +46,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             clear: function () {
                 window.qalep_items = []
                 this.dropzones.A = [];
+                $scope.items = {};
 
             }
 
@@ -104,9 +105,6 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
 
         }
-        $scope.$watch('data', function (data) {
-            $scope.newdata = data;
-        }, true);
 
         $scope.uploadImg = function ($event, $index) {
             var image_id;
@@ -121,8 +119,10 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 //alert(formfield.val(image_id));
                 preview.attr('src', imgurl);
                 tb_remove();
-                if ($scope.models.dropzones.A[0].properties.image.value != undefined) {
-                    $scope.models.dropzones.A[0].properties.image.value = imgurl;
+                console.log($index);
+                console.log($scope.models.dropzones.A[0].columns);
+                if ($scope.models.dropzones.A[$index].label != "Image") {
+                    $scope.models.dropzones.A[0].columns.properties.image.value = imgurl;
                 } else {
                     $scope.models.dropzones.A[0].imgSrc = imgurl;
                 }

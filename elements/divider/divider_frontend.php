@@ -1,5 +1,4 @@
 <?php
-$props=$value->properties;
 $shape = $props->shape;
 $this_shape = $shape->value;
 ?>

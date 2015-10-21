@@ -377,6 +377,16 @@ class Templater extends Controller {
         }
     }
 
+    /*
+     * get values of each property for front end view
+     */
+
+    function qalep_get_value($props, $key_name) {
+        $key = $props->$key_name;
+        $value=$key->value;
+        return $value;
+    }
+
 }
 
 ?>

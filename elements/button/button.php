@@ -14,7 +14,7 @@ class Button extends Element {
 
     public function __construct() {
         $block_options = array(
-            'type' => 'paragraph',
+            'type' => 'button',
             'properties' => array(
                 "value" => 'button',
                 
@@ -25,12 +25,12 @@ class Button extends Element {
                 ),
                 "color" =>array(
                     "input_type" => "radio",
-                    "choices"    => array('gray', 'white', 'orange'),
+                    "choices"    => array('gray'=>'gray', 'white'=>'white','orange'=>'orange'),
                     "value"      => "white"
                 ),
                 "size" => array(
                     "input_type" => "radio",
-                    "choices"    => array('sm', 'md', "lg"),
+                    "choices"    => array("small"=>'sm',"medium"=>'md', "larag"=>"lg"),
                     "value"      => 'md',
                 )
             )

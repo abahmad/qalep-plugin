@@ -14,13 +14,12 @@ class Counting extends Element {
 
     public function __construct() {
         $block_options = array(
-            'label' => __('pargraph', 'qlp'),
-            'type' => 'paragraph',
+            'type' => 'counting',
             'properties' => array(
                 "percent" => "34.2%",
                 "size" => "200",
                 "borderWidth" => "40",
-                " bgFill" => "#f7f7f7",
+                "bgFill" => "#f7f7f7",
                 "frFill" => "#fa9011",
                 "textSize" => "15",
                 "textColor" => "#585858"
