@@ -6,7 +6,7 @@
  */
 .nestedDemo ul[dnd-list],
 .nestedDemo ul[dnd-list] > li {
-	position: relative;
+    position: relative;
 }
 
 /***************************** Dropzone Styling *****************************/
@@ -18,7 +18,7 @@
 .nestedDemo .dropzone ul[dnd-list] {
     min-height: 42px;
     margin: 0px;
-    padding-left: 0px;
+    padding: 0 10px;
 }
 
 /**
@@ -29,9 +29,19 @@
  * browsers we can use event.offsetY for this.
  */
 .nestedDemo .dropzone li {
-    border: 1px solid #ddd;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
     display: block;
+    float: left;
     padding: 0px;
+}
+.nestedDemo .dropzone li.list-container {
+    width: 100%;
+}
+.nestedDemo .dropzone li.list-column {
+    display: block;
+    float: none !important;
 }
 
 /**
@@ -57,10 +67,14 @@
  * while the user is dragging over it.
  */
 .nestedDemo .dropzone .dndPlaceholder {
-    background-color: #ddd;
-    min-height: 42px;
+    background-color: #ddd !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
     display: block;
-    position: relative;
+    float: left;
+    min-height: 42px;
+    min-width: 130px;
 }
 
 /***************************** Element Selection *****************************/
@@ -85,16 +99,12 @@
 
 .nestedDemo .dropzone .item {
     padding: 10px 15px;
+    min-width: 130px;
+    border:cadetblue 2px dotted;
 }
 
 .nestedDemo .dropzone .container-element {
-    margin: 10px;
     min-height: 100px;
-}
-
-.nestedDemo .dropzone .container-element .column {
-    float: left;
-    width: 50%;
 }
 
 /***************************** Toolbox *****************************/
@@ -211,4 +221,10 @@
     border-color: #faebcc;
     background-image: -webkit-linear-gradient(top,#fcf8e3 0,#faf2cc 100%);
     background-image: linear-gradient(to bottom,#fcf8e3 0,#faf2cc 100%);
+}
+.builder-container {
+    margin: 20px;
+    border: yellow 2px dashed;
+    background: rgba(255,255,74,0.1);
+    min-height: 300px;
 }
