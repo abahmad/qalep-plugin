@@ -7,4 +7,4 @@ function mw_enqueue_color_picker( $hook_suffix ) {
     wp_enqueue_script( 'my-script-handle', plugins_url('my-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
 }
 ?>
-<input type="text" value="red" class="my-color-field" />
+<input type="text" value="#bada55" class="my-color-field" />

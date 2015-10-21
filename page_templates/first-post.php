@@ -9,4 +9,4 @@
         * @subpackage Twenty Thirteen
 
         */?>
-        <?php ob_start();?><!-- <mnbaa_SEPERATOR> []</mnbaa_SEPERATOR>--><?php ob_clean();?><?php do_shortcode("[qalep template id=134]"); ?>
+        <?php ob_start();?><!-- <mnbaa_SEPERATOR> []</mnbaa_SEPERATOR>--><?php ob_clean();?><?php do_shortcode("[qalep template id=83]"); ?>

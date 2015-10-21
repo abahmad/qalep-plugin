@@ -1,26 +1,18 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-$desc=$value->Description;
+$value=$props;
+$desc=$value->text;
 $template=$value->template;
 $template_value=$template->value;
 //print_r($template_value);
 $image=$value->image;
-$image_id=$image->value;
+$image_src=$image->value;
 //
- $og_image = wp_get_attachment_image_src($image_id, 'medium');
- $og_image = $og_image[0];
                     
 if($template_value == '4'){?>
 
   <div class="col-md-4"><div class="people-box">
         <div class="people-img pull-left">
-       <img src="<?php echo $og_image; ?>"/></div>
+       <img src="<?php echo $image_src; ?>"/></div>
            <div class="people-head pull-left">
                         <h3><?php echo $value->name ;?></h3>
                         <h5> <small><?php echo $value->position ?></small> </h5>
@@ -43,7 +35,7 @@ if($template_value == '4'){?>
 elseif ($template_value == '3') {?>
   <div class="col-md-3">
                 <div class="people-clean">
-                    <div class="pc-img pull-left"><img src="<?php echo $og_image; ?>" /> </div>
+                    <div class="pc-img pull-left"><img src="<?php echo $image_src; ?>" /> </div>
                     <div class="pc-head pull-left">
                         <h3> <?php echo $value->name ;?> </h3>
                         <h5> <small><?php echo $value->position ?></small> </h5>
@@ -65,10 +57,10 @@ elseif ($template_value == '3') {?>
 <?php 
 }
 elseif ($template_value=="2") {?>
-     $content .='<div class="col-md-2">
+    <div class="col-md-2">
             <div class="people-reqver">
             <div class="people-reqhead">
-               <img src="<?php echo $og_image; ?>" />
+               <img src="<?php echo $image_src; ?>" />
                 <h3><?php echo $value->name;?> </h3>
                 <h5><small> <?php echo $value->position ?></small></h5>
             </div>
@@ -91,7 +83,7 @@ elseif ($template_value=="2") {?>
     <div class="col-md-6">
                 <div class="people-full">
                     <div class="people-fullimg pull-left">
-                       <img src="<?php echo $og_image; ?>" />
+                       <img src="<?php echo $image_src; ?>" />
                     </div>
                     <h3><?php echo $value->name;?></h3>
                     <h5><small><?php echo $value->position ?></small></h5>

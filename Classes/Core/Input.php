@@ -19,6 +19,14 @@ class Input {
         }
         return $result;
     }
+    public function checkbox($choises) {
+         
+        $result='';
+        foreach ($choises as $key => $choise) {
+            $result.= '<input type="checkbox"  ng-true-value="models.selected.properties[key].value"  value="Cat" /><span>' . $key . ' </span>';
+        }
+        return $result;
+    }
 
     function textarea() {
         return '<textarea cols="60" rows="4" ng-model="models.selected.properties[key].value"></textarea>';

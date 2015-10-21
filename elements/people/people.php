@@ -14,27 +14,30 @@ class People extends Element {
 
     public function __construct() {
         $block_options = array(
-            'type' => 'paragraph',
+            'type' => 'people',
             'properties' => array(
-                "template" => array(
-                    "input_type" => "text",
-                    "value" => 'Default Text Hoda'
-                ),
-                " Social" => array(
-                    "input_type" => "radio",
-                    "choices" => array('f', 't', 'g+', 'p'),
-                    "value" => 'f'),
                 "name" => 'FULL NAME IN HERE',
                 "position" => 'position here',
-                "text" => "write description on",
-                "image" => '',
+                "template" => array(
+                    "input_type" => "radio",
+                    "choices" => array('template1' => '1', "template2" => '2', 'template3' => '3', 'template4' => '4'),
+                    "value" => '1'
+                ),
+                "social" => array(
+                    "input_type" => "checkbox",
+                    "choices" => array('Facebook' => 'f', "Twitter" => 't', 'Google+' => 'g+', 'Pinterest' => 'p'),
+                    "value" => 'f',
+                ),
                 "color" => array(
                     "input_type" => 'color_picker',
                     "value " => "red"
                 ),
-                "count" => array(
-                    "input_type" => 'text',
-                    "value " => "red"
+                "text" => array(
+                    'input_type' => "textarea",
+                    "value" => "type your text here"
+                ),
+                "image" => array("input_type" => 'image',
+                    "value" => ""
                 )
             )
         );

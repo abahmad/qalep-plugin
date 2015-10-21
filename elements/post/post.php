@@ -14,20 +14,20 @@ class Post extends Element {
 
     public function __construct() {
         $block_options = array(
-            'type' => 'paragraph',
+            'type' => 'post',
             'properties' => array(
                 "numberposts" => '1',
                 "post_type" => '',
-            ),
-            "pagination" => array(
-                "input_type" => "radio",
-                "choices" => array(
-                    "pagination-default",
-                    "pagination-soft",
-                    "pagination-color",
-                    "pagination-cir"
-                ),
-                "value" => 'pagination-default',
+                "pagination" => array(
+                    "input_type" => "radio",
+                    "choices" => array(
+                        "pagination-default",
+                        "pagination-soft",
+                        "pagination-color",
+                        "pagination-cir"
+                    ),
+                    "value" => 'pagination-default',
+                )
             )
         );
 

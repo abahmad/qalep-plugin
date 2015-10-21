@@ -7,7 +7,7 @@ if (!function_exists('mnbaa_paging_nav')) :
      * @since Twenty Fourteen 1.0
      */
     function mnbaa_paging_nav() {
-        $total=$GLOBALS['wp_query']->max_num_pages;
+        $total = $GLOBALS['wp_query']->max_num_pages;
         // Don't print empty markup if there's only one page.
         if ($total < 1) {
             return;
@@ -41,6 +41,7 @@ if (!function_exists('mnbaa_paging_nav')) :
         ));
         return $links;
     }
+
 endif;
 
 // get number of views
@@ -69,14 +70,12 @@ function wpb_set_post_views($postID) {
 }
 
 global $wp_query;
-
-$props=$value->properties;
 $numberposts = $props->numberposts;
 
 
 //echo $numberposts; 
 $args = array(
-    'post_type' => 'post',
+    'post_type' => $props->post_type,
     'posts_per_page' => $numberposts,
     'post_status' => 'publish',
 );
@@ -88,20 +87,20 @@ while ($loop->have_posts()) : $loop->the_post();
 
 
     $post_id = get_the_ID();
-  ($numberposts >4)?$num_col =3:$num_col = 12 / $numberposts;
- // echo $num_col ;
+    ($numberposts > 4) ? $num_col = 3 : $num_col = 12 / $numberposts;
+    // echo $num_col ;
     //get just url of image without style
     $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post_id), 'full');
     $comments_count = wp_count_comments();
     //content for post
-    $words = explode(" ", strip_tags(get_the_content()));
-    $content = implode(" ", array_splice($words, 0, 40));
+   $words = explode(" ", strip_tags(get_the_content()));
+  // $content = implode(" ", array_splice($words, 0, 40));
     //
     ?>
     <div class="col-md-<?php echo $num_col; ?>">
         <div class="full-post">
             <h4><?php echo the_title(); ?></h4>
-            <p><?php _e('POSTED BY:','qalep');?> <small class="post-orange-color"><?php the_author_posts_link(); ?> </small> </p>
+            <p><?php _e('POSTED BY:', 'qalep'); ?> <small class="post-orange-color"><?php the_author_posts_link(); ?> </small> </p>
     <?php if ($thumbnail[0]) { ?><div class="tumb-post"><img src ="<?php echo $thumbnail[0]; ?>" /></div> <?php } ?>
             <ul>
 
@@ -111,7 +110,7 @@ while ($loop->have_posts()) : $loop->the_post();
             </ul>
 
             <div class="post-content"> 
-                <p class="text-justify"><?php echo $content; ?> 
+                <p class="text-justify"><?php echo implode(" ", array_splice($words, 0, 40)); ?> 
                     <a href="<?php echo get_permalink($post_id); ?>" class="blue-link"> [Read more ...] </a>
                 </p>
             </div>
@@ -127,37 +126,35 @@ $wp_query = $loop;
 
 // Reset postdata
 wp_reset_postdata();
- $links= mnbaa_paging_nav();
+$links = mnbaa_paging_nav();
 // Custom query loop pagination
 //echo $wp_query->max_num_pages;
 if ($wp_query->max_num_pages > 1)
-   
-    $pagination_style= $value->pagination;
-        //var_dump($pagination_style);
-        if ($links) :
-            
-            ?>
+    $pagination_style = $value->pagination;
+//var_dump($pagination_style);
+if ($links) :
+    ?>
 
-            <nav>
-                <div class="text-center">
-                    <ul class="<?php echo $pagination_style->value; ?>">
-                        <li>
-                            <!--      <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                  </a>-->
-                        </li>
-                        <li><?php echo $links; ?></li>
-                        <li>
-                            <!--      <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                  </a>-->
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <nav>
+        <div class="text-center">
+            <ul class="<?php echo $pagination_style->value; ?>">
+                <li>
+                    <!--      <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>-->
+                </li>
+                <li><?php echo $links; ?></li>
+                <li>
+                    <!--      <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>-->
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-            <?php
-        endif;
+    <?php
+endif;
 
 // Reset main query object
 //$wp_query = NULL;

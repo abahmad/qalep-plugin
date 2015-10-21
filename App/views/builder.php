@@ -33,7 +33,7 @@
                 <table class="table table-bordered" >
 
                     <tr ng-repeat="(key, val) in items">
-                        <td>{{key}}</td>
+                        <td>{{key|capitalize}}</td>
                         <td> <span ng-bind-html="val" compilehtml></span></td>
                     </tr>
 <!--                    <tr ng-repeat="(key, val) in items">
