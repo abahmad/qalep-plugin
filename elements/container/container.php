@@ -51,12 +51,17 @@ if (!class_exists('Container')) {
          */
 
         public function draw_template() {
-            return '<div ng-class="{\'container\' : item.properties.fixed.value == \'true\', \'container-fluid\' : item.properties.fixed.value == \'false\'}" class="container-element box box-blue" >
-            <h3>Container</h3>
-            <div class="row" ng-repeat="list in item.columns" ng-include="\'list.html\'"></div>
-             <div class="item-actions"><span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
-            <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" aria-hidden="true"></span></div>
+            return '<div class="container-fluid">
+            <div class="container-element box box-blue">     
+            <h3>Container
+            <div class="item-actions">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
+            <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" aria-hidden="true"></span>
             <div class="clearfix"></div>
+            </div></h3>
+            <div class="row" ng-repeat="list in item.columns" ng-include="\'list.html\'"></div>
+            <div class="clearfix"></div>
+            </div>
             </div>';
 //           
         }

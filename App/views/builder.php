@@ -1,13 +1,14 @@
 <body ng-app="myApp" >
     <div ng-controller="NestedListsDemoController" class="nestedDemo qalep-bs">
         <script type="text/ng-template" id="list.html">
-            <ul dnd-list="list">
+            <ul dnd-list="list" class="clearfix">
             <li ng-repeat="item in list"
             dnd-draggable="item"
+            dnd-dragover="dragoverCallback(event, index, external, type)"
             dnd-effect-allowed="move"
             dnd-moved="list.splice($index, 1)"
             dnd-selected="models.selected = item;"
-            ng-class="{selected: models.selected === item}"
+            ng-class="{'selected': models.selected === item, 'list-container': item.type == 'container', 'list-column': item.type == 'column'}"
             ng-click="draw(item.properties)"
             ng-include="item.type + '.html'">
             </li>
@@ -19,7 +20,7 @@
         <script type="text/ng-template" id="shortcode.html">
             <div class="item" id="{{item.id}}">
             {{item.label}}
-           <div class="item-actions"><span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
+            <div class="item-actions"><span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
             <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" aria-hidden="true"></span></div>
             </div>
         </script>
@@ -82,7 +83,7 @@
                 </pre>-->
                 <input type="hidden" value="{{modelAsJson}}" name="item"/>
                 <div ng-repeat="(zone, list) in models.dropzones" >
-                    <div class="dropzone box box-yellow">
+                    <div class="dropzone builder-container">
                         <!-- The dropzone also uses the list template -->
                         <div ng-include="'list.html'">
                             {{ models.dropzones.A}}
@@ -104,6 +105,7 @@
                 submit_button($text = "Preview", $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = array('id' => 'qalep-preview'));
             ?>
         </div>
+        <div class="clearfix"></div>
     </div>
     <div id="qalep-dialog-view"></div>
 </body>
