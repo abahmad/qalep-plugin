@@ -29,7 +29,6 @@
  * browsers we can use event.offsetY for this.
  */
 .nestedDemo .dropzone li {
-    background-color: #fff;
     border: 1px solid #ddd;
     display: block;
     padding: 0px;

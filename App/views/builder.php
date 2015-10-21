@@ -70,7 +70,7 @@
                         <button type="button" class="draggable-item" >{{item.label}}</button>
                     </li>
                 </ul>
-                <?php echo "<script>window.qalep_items=" . $template_items . ";</script>"; ?>
+                <?php echo isset($template_items) ? "<script>window.qalep_items=" . $template_items . ";</script>" : '' ?>
 
             </div>
             <div class="qalep-elements">
