@@ -1,7 +1,7 @@
 <?php
 
 /*
-  Element Name: Paragraph
+  Element Name: Title
  * Author : mnbaa
  * Description:Type block of text
  */
@@ -14,11 +14,23 @@ class Title extends Element {
 
     public function __construct() {
         $block_options = array(
-            'label' => __('pargraph', 'qlp'),
-            'type' => 'paragraph',
+            'type' => 'title',
             'properties' => array(
-                "border" => "thin",
-            )
+                'Title' => 'title',
+                'Border' => array(
+                    'input_type' => "radio",
+                    'choices' => array(
+                        "bottom" => 'two-btm',
+                        "around" => 'two-side'
+                    ),
+                    "value" => 'two-btm',
+                ),
+                'Alignment' => array(
+                    'input_type' => "radio",
+                    'choices' => array('center'=>'text-center','left'=> 'text-left','right'=> 'text-right'),
+                    "value" => 'text-left',
+                ),
+            ),
         );
 
         //create the block

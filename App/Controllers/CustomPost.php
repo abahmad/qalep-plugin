@@ -98,5 +98,4 @@ class CustomPost extends Controller {
         return $actions;
     }
 
-    //get shortcode from third party plugin
 }

@@ -36,7 +36,7 @@ class Controller {
         if (file_exists($this->views_dir_path . $file_path . $file_name . '.php')) {
             !empty($data) ? extract($data) : true;
             ob_start();
-            include $this->views_dir_path . $file_path . $file_name . '.php';
+            require  $this->views_dir_path . $file_path . $file_name . '.php';
             $content .= ob_get_clean();
         }
 

@@ -37,7 +37,7 @@ if (!empty($text)) {
         <?php
     } else {
         ?>
-        <div class="col-md-<?php echo $size->value; ?>"><div class="testmonial-item">
+        <div><div class="testmonial-item">
 
                 <?php if (!empty($image->value)) { ?>
                     <div class="testmonial-img"> <img src="<?php echo $og_image[0]; ?>">  </div>

@@ -45,10 +45,16 @@ if (!class_exists('Paragraph')) {
         public function draw_template() {
 
             return '<div class="item" id="{{item.id}}" >
-            <img src="{{item.imgSrc}}" class="custom_preview_image" alt="" id="image_img" />
-            <input  ng-click="uploadImg($event,$index)" class="custom_upload_image_button button" type="button" value="Choose Image" />
-            <br><a href="#"  ng-click="removeImg($event)" class="custom_clear_image_button">Remove Image</a>
-            <input name="image" type="hidden" class="custom_upload_image" value="1" id="image_ID" ng-model="item.imgId" />
+                <div>
+                <img src="{{item.imgSrc}}" class="custom_preview_image" alt="" id="image_img" />
+                <input  ng-click="uploadImg($event,$index)" class="custom_upload_image_button button" type="button" value="Choose Image" />
+                <br><a href="#"  ng-click="removeImg($event)" class="custom_clear_image_button">Remove Image</a>
+                <input name="image"  type="text" class="custom_upload_image ng-hide" ng-model="item.imgSrc" id="image_ID" />
+                </div>
+                <div class="item-actions">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
+                <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" aria-hidden="true"></span>
+                </div>
             </div>';
         }
 

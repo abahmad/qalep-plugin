@@ -99,8 +99,9 @@
 
 .nestedDemo .dropzone .item {
     padding: 10px 15px;
-    min-width: 130px;
-    border:cadetblue 2px dotted;
+    min-width: 160px;
+    border:#bce8f1 2px dotted;
+    margin-left: 10px;
 }
 
 .nestedDemo .dropzone .container-element {

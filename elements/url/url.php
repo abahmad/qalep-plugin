@@ -14,7 +14,7 @@ class Url extends Element {
 
     public function __construct() {
         $block_options = array(
-            'type' => 'paragraph',
+            'type' => 'url',
             'properties' => array(
                 "slug" => '',
                 "link" => 'www.link.com'

@@ -1,14 +1,12 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
- $title =$props->title;
-$border = $props->Border;
-// $template =$value->template;
-// $template_value=$template->value;
-$alignment = $props->Alignment;
+$text = $props->text;
+$title = $props->title;
+$alignment = $props->textalign;
 $alignment_value = $alignment->value;
+$quotes = $props->quotes;
 ?>
-<h2 class="<?php echo $alignment_value . ' ' . $border->value; ?>-bordered-title"><span><?php echo $title; ?></span></h2>
+<h3 class="gray text-center"><?php echo $title ?></h3>
+<div >
+    <p class="gray <?php if (($quotes->value)) echo " quotes ";
+echo $alignment_value; ?>"><?php echo $text->value; ?></p>
+</div>

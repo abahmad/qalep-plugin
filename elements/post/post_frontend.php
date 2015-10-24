@@ -130,7 +130,7 @@ $links = mnbaa_paging_nav();
 // Custom query loop pagination
 //echo $wp_query->max_num_pages;
 if ($wp_query->max_num_pages > 1)
-    $pagination_style = $value->pagination;
+    $pagination_style = $props->pagination;
 //var_dump($pagination_style);
 if ($links) :
     ?>

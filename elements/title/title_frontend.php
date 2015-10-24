@@ -6,7 +6,6 @@
  * and open the template in the editor.
  */
 
-$props=$value->properties;
  $border =$props->Border;
 // $template =$value->template;
 // $template_value=$template->value;

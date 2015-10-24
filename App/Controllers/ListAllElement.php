@@ -38,6 +38,7 @@ class ListAllElement {
 
     //list all elements folders on basic elements folder
     public function list_folders($folder) {
+
         $blocks = scandir($folder);
         //remove root elements ., ../ from folder
         $blocks_folder_content = array_slice($blocks, 2);
@@ -80,15 +81,17 @@ class ListAllElement {
 
     public function get_element_name($path) {
         $element_names = array();
-        $elements_folder = $this->list_folders($path);
-        // var_dump($elements_folder);
-        //get all files on this folder
-        foreach ($elements_folder as $element_folder) {
-            $file_path = $this->elements_folder . '/' . $element_folder . '/' . $element_folder . '.php';
-            if (file_exists($file_path)) {
-                $name = get_file_data($file_path, array('elementName' => 'Element Name'));
-                $name = $name['elementName'];
-                $element_names[$name] = $path;
+        if (file_exists($path)) {
+            $elements_folder = $this->list_folders($path);
+            // var_dump($elements_folder);
+            //get all files on this folder
+            foreach ($elements_folder as $element_folder) {
+                $file_path = $this->elements_folder . '/' . $element_folder . '/' . $element_folder . '.php';
+                if (file_exists($file_path)) {
+                    $name = get_file_data($file_path, array('elementName' => 'Element Name'));
+                    $name = $name['elementName'];
+                    $element_names[$name] = $path;
+                }
             }
         }
         return $element_names;

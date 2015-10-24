@@ -19,7 +19,20 @@ if (!class_exists('Paragraph')) {
                 'label' => __('pargraph', 'qlp'),
                 'type' => 'paragraph',
                 'properties' => array(
-                    "border" => "thin",
+                    'title' => ' ',
+                    'text' => array(
+                        'input_type' => 'textarea',
+                        'value' => 'Your text here'),
+                    'textalign' => array(
+                        'input_type' => "radio",
+                        'choices' => array('center' => 'text-center', 'justify' => 'center'),
+                        "value" => 'text-center'
+                    ),
+                    'quotes' => array(
+                        "input_type" => 'radio',
+                        "choices" => array('true' => TRUE, "flase" => FALSE),
+                        "value" => TRUE
+                    )
                 )
             );
 

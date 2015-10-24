@@ -4,7 +4,7 @@
  * Plugin Name: Qalep (Beta)
  * Plugin URI: http://www.mnbaa.com/
  * Version: V 1.1
- * Author: Mohammed Anwar
+ * Author: mnbaa
  * Text Domain: qalep
  * Description: Qalep Template & Page Builder
  */

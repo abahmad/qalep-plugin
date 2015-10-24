@@ -11,8 +11,9 @@ use Qalep\elements;
 class FrontQalepDrawer {
 
     public function __construct($items) {
-        
-        
+//        echo"<pre>";
+//        print_r($items);
+//        echo "<pre>";
         echo get_header();
         if (!empty($items)) {
             foreach ($items as $item) {
@@ -33,7 +34,8 @@ class FrontQalepDrawer {
             return '</div>';
     }
 
-    public function draw($item,$closure='') {
+    public function draw($item) {
+
         if (isset($item->type)) {
             $type = $item->type;
         }
@@ -63,7 +65,7 @@ class FrontQalepDrawer {
                     foreach ($item->columns as $contained_item) {
                         foreach ($contained_item as $smItem) {
                             //var_dump($smItem);
-                            echo $this->draw($smItem, TRUE);
+                            echo $this->draw($smItem);
                         }
                     }
                     echo $this->containerAfter($item);
@@ -71,10 +73,15 @@ class FrontQalepDrawer {
 
                 case 'column' :
                     $props = $item->properties;
+
                     echo '<div class="col-md-' . $props->width . ' col-md-offset-' . $props->offset . '">';
                     foreach ($item->columns as $contained_item) {
+                        //  var_dump($contained_item);
                         foreach ($contained_item as $smItem) {
-                            echo $this->draw($smItem, TRUE);
+//                            echo "<pre>";
+//                            print_r($smItem);
+//                            echo "<pre>";
+                            echo $this->draw($smItem);
                         }
                     }
                     echo "</div>";
@@ -85,15 +92,9 @@ class FrontQalepDrawer {
                     if (class_exists($class_name)) {
                         $obj = DI()->get('Qalep\\elements\\' . $type . '\\' . $type);
                         //if(isse)
-                        isset($item->properties)?$prop=$item->properties :$prop=array();
-                        $obj->view($type,array("props"=>$prop));
+                        isset($item->properties) ? $prop = $item->properties : $prop = array();
+                        $obj->view($type, array("props" => $prop));
                     }
-            }
-
-            if (is_callable($closure)) {
-                echo $this->beforeConatiner($item);
-                $closure();
-                echo $this->containerAfter($item);
             }
         }
     }

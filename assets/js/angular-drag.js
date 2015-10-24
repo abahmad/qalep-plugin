@@ -7,8 +7,15 @@ var myApp = angular.module('myApp', ['dndLists', 'ngSanitize']);
 window.qalep_elements = [];
 window.elements_template = [];
 
+myApp.directive('ngUpdateHidden',function() {
+    return function(scope, el, attr) {
+        var model = attr['ngModel'];
+        scope.$watch(model, function(nv) {
+            el.val(nv);
+        });
 
-
+    };
+});
 
 myApp.directive('compilehtml', ["$compile", "$parse", function ($compile, $parse) {
         return {
@@ -121,19 +128,24 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             tb_show('', 'media-upload.php?type=image&TB_iframe=true');
             window.send_to_editor = function (html) {
                 imgurl = jQuery('img', html).attr('src');
+                console.log(imgurl);
                 classes = jQuery('img', html).attr('class');
-                image_id = classes.replace(/(.*?)wp-image-/, '');
-                formfield.val(image_id);
+               // image_id = classes.replace(/(.*?)wp-image-/, '');
+//                formfield.val(image_id);
                 //alert(formfield.val(image_id));
                 preview.attr('src', imgurl);
                 tb_remove();
-                console.log($index);
-                console.log($scope.models.dropzones.A[0].columns);
-                if ($scope.models.dropzones.A[$index].label != "Image") {
-                    $scope.models.dropzones.A[0].columns.properties.image.value = imgurl;
-                } else {
-                    $scope.models.dropzones.A[0].imgSrc = imgurl;
-                }
+                 $("#image_ID").val(imgurl).trigger('input');
+                // item.key=imgurl;
+//                console.log($scope.models.dropzones.A[0].label);
+//                if ($scope.models.dropzones.A[0].label != "Image") {
+//                    
+//                    //$scope.models.dropzones.A[0].columns.properties.image.value = imgurl;
+//                    
+//                } else {
+//                    $scope.models.dropzones.A[0].imgSrc = imgurl;
+//                }
+
 
                 $scope.$apply();
 

@@ -69,7 +69,7 @@ class Element {
         if (file_exists($file)) {
             !empty($data) ? extract($data) : true;
             ob_start();
-            require_once $file;
+            require $file;
             $content .= ob_get_clean();
         }else echo _e($front_file. ' is not exist');
 

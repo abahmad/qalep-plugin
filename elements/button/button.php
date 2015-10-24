@@ -25,7 +25,7 @@ class Button extends Element {
                 ),
                 "color" =>array(
                     "input_type" => "radio",
-                    "choices"    => array('gray'=>'gray', 'white'=>'white','orange'=>'orange'),
+                    "choices"    => array('gray'=>'gray', 'white'=>'orange-trans-btn','orange'=>'orange'),
                     "value"      => "white"
                 ),
                 "size" => array(

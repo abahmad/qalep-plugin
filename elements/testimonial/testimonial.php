@@ -16,23 +16,15 @@ class Testimonial extends Element {
         $block_options = array(
             'type' => 'testimonial',
             'properties' => array(
-                'text' => array(
-                    'input_type'=>"textarea",
-                    "value"=>''
-                ),
-                'image' => array(
-                    "input_type"=>'image',
-                    "value"=>'',
-                ),
                 'personName' => '',
                 'personPosition' => '',
-                'size' => array(
-                    'input_type' => "radio",
-                    'choices' => array(
-                        'meduim' => '6',
-                        'large' => '12'
-                    ),
-                    "value" => '6'
+                'text' => array(
+                    'input_type' => "textarea",
+                    "value" => 'text here'
+                ),
+                'image' => array(
+                    "input_type" => 'image',
+                    "value" => '',
                 ),
                 'template' => array(
                     'input_type' => "radio",

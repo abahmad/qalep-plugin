@@ -13,15 +13,16 @@ class Input {
     }
 
     public function radio($choises) {
-        $result='';
+        $result = '';
         foreach ($choises as $key => $choise) {
             $result.= '<input type="radio" value ="' . $choise . '"  ng-model="models.selected.properties[key].value"> <span>' . $key . ' </span>';
         }
         return $result;
     }
+
     public function checkbox($choises) {
-         
-        $result='';
+
+        $result = '';
         foreach ($choises as $key => $choise) {
             $result.= '<input type="checkbox"  ng-true-value="models.selected.properties[key].value"  value="Cat" /><span>' . $key . ' </span>';
         }
@@ -34,10 +35,10 @@ class Input {
 
     function image() {
         return ' <div class="item" id="{{item.id}}" >
-                <input  ng-click="uploadImg($event, $index)"  class="custom_upload_image_button button" type="button" value="Choose Image" />
-                <img ng-src="{{models.selected.properties[key].value}}"  class="custom_preview_image" alt="" id="image_img" ng-model="models.selected.properties[key].value" />
-                <br><a href="#"  ng-click="removeImg($event)" class="custom_clear_image_button">Remove Image</a>
-                <input name="image" type="text" class="custom_upload_image" value="1"  id="image_ID"  />
+                <input  ng-click="uploadImg($event, $index)" class="custom_upload_image_button button" type="button" value="Choose Image" />
+                <img ng-src="{{models.selected.properties[key].value}}"  class="custom_preview_image" alt="" id="image_img"  .value" />
+                <br><a href="#" my-change="list"  ng-click="removeImg($event)" class="custom_clear_image_button">Remove Image</a>
+                <input name="image" type="text" class="custom_upload_image ng-hide" value=""  id="image_ID" ng-model="models.selected.properties[key].value" />
             </div>';
     }
 
