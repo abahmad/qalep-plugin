@@ -16,6 +16,8 @@ class CustomPost extends Controller {
         $this->scripts->addAdminStyle(array('qalep-bootstrap', asset('assets.css', 'qalep-bootstrap.css')));
         $this->scripts->addAdminStyle(array('qalep-drag-drop', asset('assets.css', 'qalep-drag-drop.css')));
         $this->scripts->addAdminStyle(array('style_en', asset('assets.css', 'style-en.css')));
+        if (is_rtl())
+            $this->scripts->addAdminStyle(array('qalep-rtl', asset('assets.css', 'qalep-rtl.css')));
 
 
         //
