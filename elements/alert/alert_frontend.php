@@ -1,4 +1,5 @@
 <?php
+__('alert','qalep');
 $bg = $props->background;
 $bg_color = $bg->value;
 $text=$props->text;

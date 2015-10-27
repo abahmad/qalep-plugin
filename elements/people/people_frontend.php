@@ -80,7 +80,7 @@ elseif ($template_value=="2") {?>
 <?php 
 }
  else { ?>
-    <div class="col-md-6">
+    <div>
                 <div class="people-full">
                     <div class="people-fullimg pull-left">
                        <img src="<?php echo $image_src; ?>" />

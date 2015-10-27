@@ -11,8 +11,6 @@ class ShortCode extends Controller {
         add_action('media_buttons_context', array(&$this, 'add_shortcode_button'));
         add_action('admin_footer', array(&$this, 'add_inline_popup_content'));
         
-        //load script file for popup window
-//        $this->scripts->addAdminScript(array('shortcode-button', asset('assets.js', 'shortcode-button.js')));
     }
 
     public function add_shortcode_button($context) {

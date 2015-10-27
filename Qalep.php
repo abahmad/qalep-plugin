@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Plugin Name: Qalep (Beta)
+ * Plugin Name: Qalep
  * Plugin URI: http://www.mnbaa.com/
  * Version: V 1.1
  * Author: mnbaa
@@ -22,7 +22,7 @@ if (!defined('QALEP_URL_PATH'))
 if (!defined('QALEP_PLUGIN_NAME'))
     define('QALEP_PLUGIN_NAME', basename(dirname(__FILE__)));
 if (!defined('QALEP_TEXT_DOMAIN'))
-    define('QALEP_TEXT_DOMAIN', 'qlp');
+    define('QALEP_TEXT_DOMAIN', 'qalep');
 
 // Including our autoloader
 //require_once 'Qalep_Autoloader.php';

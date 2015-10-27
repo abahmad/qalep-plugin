@@ -36,8 +36,8 @@ if (!function_exists('mnbaa_paging_nav')) :
             'current' => $paged,
             'mid_size' => 1,
             'add_args' => array_map('urlencode', $query_args),
-            'prev_text' => __('«', 'qalep'),
-            'next_text' => __('»', 'qalep'),
+            'prev_text' => __("<<", 'qalep'),
+            'next_text' => __('>>', 'qalep'),
         ));
         return $links;
     }
