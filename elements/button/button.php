@@ -14,24 +14,24 @@ class Button extends Element {
 
     public function __construct() {
         $block_options = array(
+            'label' => __('button', 'qalep'),
             'type' => 'button',
             'properties' => array(
                 "value" => 'button',
-                
-                "border" => array(
+                __("border", 'qalep') => array(
                     "input_type" => "radio",
-                    "choices" => array('flat'=>'flat','round'=>'round'),
+                    "choices" => array(__('flat','qalep') => 'flat', __('round','qalep') => 'round'),
                     "value" => 'flat'
                 ),
-                "color" =>array(
+                __("color", "qalep") => array(
                     "input_type" => "radio",
-                    "choices"    => array('gray'=>'gray', 'white'=>'orange-trans-btn','orange'=>'orange'),
-                    "value"      => "white"
+                    "choices" => array(__('gray','qalep') => 'gray',__('white','qalep') => 'orange-trans-btn',__('orange','qalep') => 'orange'),
+                    "value" => "white"
                 ),
-                "size" => array(
+                __("size", 'qalep') => array(
                     "input_type" => "radio",
-                    "choices"    => array("small"=>'sm',"medium"=>'md', "larag"=>"lg"),
-                    "value"      => 'md',
+                    "choices" => array(__("small",'qalep') => 'sm', __("medium",'qalep') => 'md',__("larag",'qalep') => "lg"),
+                    "value" => 'md',
                 )
             )
         );

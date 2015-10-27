@@ -14,10 +14,11 @@ class Url extends Element {
 
     public function __construct() {
         $block_options = array(
+            'label' => __('Title', 'qalep'),
             'type' => 'url',
             'properties' => array(
-                "slug" => '',
-                "link" => 'www.link.com'
+                __("slug",'qalep') => '',
+               __("link",'qalep') => 'www.link.com'
             )
         );
 

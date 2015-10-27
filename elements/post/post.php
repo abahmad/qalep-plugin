@@ -14,11 +14,12 @@ class Post extends Element {
 
     public function __construct() {
         $block_options = array(
+            'label' => __('post', 'qalep'),
             'type' => 'post',
             'properties' => array(
-                "numberposts" => '1',
-                "post_type" => '',
-                "pagination" => array(
+                __("numberposts", 'qalep') => '1',
+                __("post_type", 'qalep') => '',
+                __("pagination", 'qalep') => array(
                     "input_type" => "radio",
                     "choices" => array(
                         "pagination-default",

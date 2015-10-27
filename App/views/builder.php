@@ -75,7 +75,7 @@
 
             </div>
             <div class="qalep-elements">
-                <h3 class="title-blocks"><?php echo _e('Drag Element Here', 'qalep'); ?> 
+                <h3 class="title-blocks"><?php echo __('Drag Element Here', 'qalep'); ?> 
                     <a href="javascript:void(0)" ng-click="models.clear()" class="clear-div"><?php echo _e('Clear Template', 'qalep'); ?> </a>
                 </h3>
 <!--                <pre>
@@ -102,7 +102,7 @@
 
             submit_button($text = __('Save', 'qalep'), $type = 'primary', $name = 'publish', $wrap = true, $other_attributes = NULL);
             if (isset($_GET['post']))
-                submit_button($text = "Preview", $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = array('id' => 'qalep-preview'));
+                submit_button($text =__('Preview','qalep'), $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = array('id' => 'qalep-preview'));
             ?>
         </div>
         <div class="clearfix"></div>

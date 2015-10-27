@@ -14,29 +14,25 @@ class People extends Element {
 
     public function __construct() {
         $block_options = array(
+            'label' => __('people', 'qalep'),
             'type' => 'people',
             'properties' => array(
-                "name" => 'FULL NAME IN HERE',
-                "position" => 'position here',
-                "template" => array(
+                __("name", 'qalep') => 'FULL NAME IN HERE',
+                __("position", 'qalep') => 'position here',
+                __("template", 'qalep') => array(
                     "input_type" => "radio",
-                    "choices" => array('template1' => '1', "template2" => '2', 'template3' => '3', 'template4' => '4'),
+                    "choices" => array(__('template1','qalep') => '1', __("template2",'qalep') => '2',__('template3','qalep') => '3', __('template4','qalep') => '4'),
                     "value" => '1'
                 ),
-                "social" => array(
-                    "input_type" => "checkbox",
-                    "choices" => array('Facebook' => 'f', "Twitter" => 't', 'Google+' => 'g+', 'Pinterest' => 'p'),
-                    "value" => 'f',
-                ),
-                "color" => array(
+                __("color", 'qalep') => array(
                     "input_type" => 'color_picker',
                     "value " => "red"
                 ),
-                "text" => array(
+                __("text", 'qalep') => array(
                     'input_type' => "textarea",
                     "value" => "type your text here"
                 ),
-                "image" => array("input_type" => 'image',
+                __("image", 'qalep') => array("input_type" => 'image',
                     "value" => ""
                 )
             )

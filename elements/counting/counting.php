@@ -14,15 +14,16 @@ class Counting extends Element {
 
     public function __construct() {
         $block_options = array(
+            'label' => __('Counting', 'qalep'),
             'type' => 'counting',
             'properties' => array(
-                "percent" => "34.2%",
-                "size" => "200",
-                "borderWidth" => "40",
-                "bgFill" => "#f7f7f7",
-                "frFill" => "#fa9011",
-                "textSize" => "15",
-                "textColor" => "#585858"
+                __("percent", 'qalep') => "34.2%",
+                __("size", 'qalep') => "200",
+                __("borderWidth", 'qalep') => "40",
+                __("bgFill", 'qalep') => "#f7f7f7",
+                __("frFill", 'qalep') => "#fa9011",
+                __("textSize", 'qalep') => "15",
+                __("textColor", 'qalep') => "#585858"
             )
         );
 

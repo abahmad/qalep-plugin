@@ -14,6 +14,7 @@ class Clear extends Element {
 
     public function __construct() {
         $block_options = array(
+            'label' => __('clear', 'qalep'),
             'type' => 'clear',
         );
 

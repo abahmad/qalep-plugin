@@ -140,7 +140,7 @@ class ListAllElement {
 
     public function register_element($obj, $name) {
 
-        $obj->set_option('label', $name);
+       // $obj->set_option('label', $name);
         $item_options = $obj->get_option();
         echo "<script>window.qalep_elements.push($item_options);</script>";
     }

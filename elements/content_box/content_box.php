@@ -14,17 +14,18 @@ class Content_box extends Element {
 
     public function __construct() {
         $block_options = array(
+            'label' => __('content box', 'qalep'),
             'type' => 'content_box',
             'properties' => array(
-                'template' => array(
+                __('template', 'qalep') => array(
                     'input_type' => "radio",
-                    'choices' => array('template1'=>'box1', 'template2'=>'box2', 'template3'=>'box3'),
+                    'choices' => array(__('template1','qalep') => 'box1', __('template2','qalep') => 'box2',__('template3','qalep') => 'box3'),
                     "value" => 'box1',
                 ),
-                'title' => 'TITLE OF THE BLOCK IN HERE',
-                'text' => array(
-                    'input_type'=>'textarea',
-                    "value"=>''
+                __('title', 'qalep') => 'TITLE OF THE BLOCK IN HERE',
+                __('text', 'qalep') => array(
+                    'input_type' => 'textarea',
+                    "value" => ''
                 ),
             ),
         );

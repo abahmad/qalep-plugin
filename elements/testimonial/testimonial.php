@@ -14,19 +14,20 @@ class Testimonial extends Element {
 
     public function __construct() {
         $block_options = array(
+            'label' => __('Testimonial', 'qalep'),
             'type' => 'testimonial',
             'properties' => array(
-                'personName' => '',
-                'personPosition' => '',
-                'text' => array(
+                __('personName', 'qalep') => '',
+                __('personPosition', 'qalep') => '',
+                __('text', 'qalep') => array(
                     'input_type' => "textarea",
                     "value" => 'text here'
                 ),
-                'image' => array(
+                __('image', 'qalep') => array(
                     "input_type" => 'image',
                     "value" => '',
                 ),
-                'template' => array(
+                __('template', 'qalep') => array(
                     'input_type' => "radio",
                     'choices' => array('in box', 'with popup'),
                     "value" => 'in box',

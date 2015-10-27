@@ -69,7 +69,7 @@ class CustomPost extends Controller {
     //add option page
     public function register_options_menu_page() {
         $shortcode = DI()->get('Qalep\App\Controllers\ShortCode');
-        add_submenu_page('edit.php?post_type=qalep', ' qalep options', __('qalep options', 'qalep'), 'manage_options', 'qalep_options', array($shortcode, 'shortcode_options')
+        add_submenu_page('edit.php?post_type=qalep', 'qalep options', __('Qalep options', 'qalep'), 'manage_options', 'qalep_options', array($shortcode, 'shortcode_options')
         );
     }
 

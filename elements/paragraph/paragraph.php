@@ -16,19 +16,19 @@ if (!class_exists('Paragraph')) {
 
         public function __construct() {
             $block_options = array(
-                'label' => __('pargraph', 'qlp'),
+                'label' => __('Pargraph', 'qalep'),
                 'type' => 'paragraph',
                 'properties' => array(
-                    'title' => ' ',
-                    'text' => array(
+                    __('title', 'qalep') => ' ',
+                    __('text', 'qalep') => array(
                         'input_type' => 'textarea',
                         'value' => 'Your text here'),
-                    'textalign' => array(
+                    __('textalign', 'qalep') => array(
                         'input_type' => "radio",
-                        'choices' => array('center' => 'text-center', 'justify' => 'center'),
+                        'choices' => array(__('center','qalep') => 'text-center', __('justify','qalep') => 'center'),
                         "value" => 'text-center'
                     ),
-                    'quotes' => array(
+                    __('quotes', 'qalep') => array(
                         "input_type" => 'radio',
                         "choices" => array('true' => TRUE, "flase" => FALSE),
                         "value" => TRUE
@@ -61,7 +61,7 @@ if (!class_exists('Paragraph')) {
         public function draw_template() {
 
             return '<div class="item" >
-            {{item.label}}
+            {{item.label |translate}}
             <div class="item-actions">
             <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
             <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" aria-hidden="true"></span>

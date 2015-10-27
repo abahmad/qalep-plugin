@@ -7,15 +7,6 @@ var myApp = angular.module('myApp', ['dndLists', 'ngSanitize']);
 window.qalep_elements = [];
 window.elements_template = [];
 
-myApp.directive('ngUpdateHidden',function() {
-    return function(scope, el, attr) {
-        var model = attr['ngModel'];
-        scope.$watch(model, function(nv) {
-            el.val(nv);
-        });
-
-    };
-});
 
 myApp.directive('compilehtml', ["$compile", "$parse", function ($compile, $parse) {
         return {
@@ -130,12 +121,12 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 imgurl = jQuery('img', html).attr('src');
                 console.log(imgurl);
                 classes = jQuery('img', html).attr('class');
-               // image_id = classes.replace(/(.*?)wp-image-/, '');
+                // image_id = classes.replace(/(.*?)wp-image-/, '');
 //                formfield.val(image_id);
                 //alert(formfield.val(image_id));
                 preview.attr('src', imgurl);
                 tb_remove();
-                 $("#image_ID").val(imgurl).trigger('input');
+                $("#image_ID").val(imgurl).trigger('input');
                 // item.key=imgurl;
 //                console.log($scope.models.dropzones.A[0].label);
 //                if ($scope.models.dropzones.A[0].label != "Image") {

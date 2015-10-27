@@ -14,10 +14,11 @@ class Title extends Element {
 
     public function __construct() {
         $block_options = array(
+            'label' => __('Title', 'qalep'),
             'type' => 'title',
             'properties' => array(
                 'Title' => 'title',
-                'Border' => array(
+                __('Border', 'qalep') => array(
                     'input_type' => "radio",
                     'choices' => array(
                         "bottom" => 'two-btm',
@@ -25,9 +26,9 @@ class Title extends Element {
                     ),
                     "value" => 'two-btm',
                 ),
-                'Alignment' => array(
+                __('Alignment', 'qalep') => array(
                     'input_type' => "radio",
-                    'choices' => array('center'=>'text-center','left'=> 'text-left','right'=> 'text-right'),
+                    'choices' => array(__('center', 'qalep') => 'text-center', __('left', 'qalep') => 'text-left', __('right', 'qalep') => 'text-right'),
                     "value" => 'text-left',
                 ),
             ),

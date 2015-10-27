@@ -16,12 +16,12 @@ if (!class_exists('Column')) {
 
         public function __construct() {
             $block_options = array(
-                "label" => 'Column',
+                "label" => __('Column', 'qalep'),
                 "type" => 'column',
                 "columns" => array(array()),
                 "properties" => array(
-                    "width" => '12',
-                    "offset" => '0'
+                    __("width", 'qalep') => '12',
+                    __("offset", 'qalep') => '0'
                 )
             );
 
@@ -50,7 +50,7 @@ if (!class_exists('Column')) {
         public function draw_template() {
             return '<div class="col-md-{{item.properties.width}}">
             <div class="container-element box box-blue">
-                        <h3>Column
+                      <h3>{{item.label}}</h3>
             <div class="item-actions">
             <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
             <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" aria-hidden="true"></span>
