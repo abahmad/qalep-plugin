@@ -29,6 +29,7 @@ jQuery(document).ready(function () {
     var qalep_form = $('input[value="qalep"]').parent();
     qalep_form.find($("#postbox-container-1")).remove();
     qalep_form.find($("#poststuff #post-body.columns-2")).css('marginRight', '0');
+    qalep_form.find($("#poststuff #post-body.columns-2")).css('marginLeft', '0');
 
 
    

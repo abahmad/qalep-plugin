@@ -13,12 +13,8 @@ class CustomPost extends Controller {
     public function __construct() {
         parent::__construct();
 
-        $this->scripts->addAdminStyle(array('qalep-bootstrap', asset('assets.css', 'qalep-bootstrap.css')));
-        $this->scripts->addAdminStyle(array('qalep-drag-drop', asset('assets.css', 'qalep-drag-drop.css')));
-        $this->scripts->addAdminStyle(array('style_en', asset('assets.css', 'style-en.css')));
-        if (is_rtl())
-            $this->scripts->addAdminStyle(array('qalep-rtl', asset('assets.css', 'qalep-rtl.css')));
 
+        DI()->get('Qalep\App\Controllers\ScriptLoader')->load_styles();
 
         //
         add_action('add_meta_boxes', array(&$this, '_add_qalep_metaboxes'));
@@ -46,15 +42,15 @@ class CustomPost extends Controller {
 
         register_post_type('qalep', array(
             'labels' => array(
-                'name' => __('Qalep','qalep'),
-                'singular_name' => __('qalep','qalep'),
-                'add_new' => __('Add New Template','qalep'),
-                'edit_item' => __('Edit Template','qalep'),
-                'new_item' => __('Add New Template','qalep'),
-                'view_item' => __('View Template','qalep'),
-                'search_items' => __('Search Template','qalep'),
-                'not_found' => __('No Templates found','qalep'),
-                'not_found_in_trash' => __('No Templates found in trash','qalep'),
+                'name' => __('Qalep', 'qalep'),
+                'singular_name' => __('qalep', 'qalep'),
+                'add_new' => __('Add New Template', 'qalep'),
+                'edit_item' => __('Edit Template', 'qalep'),
+                'new_item' => __('Add New Template', 'qalep'),
+                'view_item' => __('View Template', 'qalep'),
+                'search_items' => __('Search Template', 'qalep'),
+                'not_found' => __('No Templates found', 'qalep'),
+                'not_found_in_trash' => __('No Templates found in trash', 'qalep'),
             ),
             'show_ui' => true,
             'public' => true,

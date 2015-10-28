@@ -8,8 +8,8 @@ class ShortCode extends Controller {
 
     public function __construct() {
         parent::__construct();
-        add_action('media_buttons_context', array(&$this, 'add_shortcode_button'));
-        add_action('admin_footer', array(&$this, 'add_inline_popup_content'));
+//        add_action('media_buttons_context', array(&$this, 'add_shortcode_button'));
+//        add_action('admin_footer', array(&$this, 'add_inline_popup_content'));
         
     }
 

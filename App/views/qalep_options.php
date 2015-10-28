@@ -1,7 +1,7 @@
 <form action="" method="post">
 
     <br>
-    <a href="javascript:void(0)" class="add-shortcode"> add more one</a>
+    <a href="javascript:void(0)" class="add-shortcode"><?php _e('add more one','qalep');?></a>
     <table id="shortcodes">
         <?php
         if ($shortcodes) {
@@ -25,6 +25,6 @@
             </tr>
         <?php } ?>
     </table>
-    <input type="submit" value="submit" class="button" />
+    <input type="submit" value="<?php _e('submit','qalep')?>" class="button" />
 
 </form>
