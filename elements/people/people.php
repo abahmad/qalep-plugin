@@ -5,7 +5,9 @@
  * Author : mnbaa
  * Description:Type block of text
  */
-
+/**
+ * @package Qalep\elements\people
+ */
 namespace Qalep\elements\people;
 
 use Qalep\Classes\Core\Element;

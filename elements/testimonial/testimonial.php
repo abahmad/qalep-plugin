@@ -6,6 +6,10 @@
  * Description:Type block of text
  */
 
+/**
+ *@package Qalep\elements\testimonial
+ */
+
 namespace Qalep\elements\testimonial;
 
 use Qalep\Classes\Core\Element;

@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * load all scripts needed  for qalep plugin
  * @package Qalep\App\Controllers
  */
@@ -17,7 +17,8 @@ class ScriptLoader extends Controller {
 
         $this->scripts->run();
     }
-
+    
+    
     public function load_scripts() {
 
         $this->scripts->addAdminScript(array('angularjs', asset('assets.js', 'angular-min.js')));

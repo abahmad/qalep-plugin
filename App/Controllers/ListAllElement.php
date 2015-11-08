@@ -22,7 +22,6 @@ class ListAllElement {
      * compare elements and overide custom elements on defalut
      * return array key is element name and the vlaue is path where is element
      */
-
     function search_elements() {
         $custom_elements_path = get_template_directory() . "/qalep/elements";
         $defalut_elemnts_path = QALEP_DIR_PATH . 'elements';
@@ -83,11 +82,11 @@ class ListAllElement {
         }
     }
 
-    /*
+    /**
      * search in speific path folder and list all elements name
      * @param string path  abslout path of this element
+     * @return array names of elements
      */
-
     public function get_element_name($path) {
         $element_names = array();
         if (file_exists($path)) {
@@ -106,10 +105,9 @@ class ListAllElement {
         return $element_names;
     }
 
-    /*
+    /**
      * draw template cash for shoretcod element
      */
-
     public function get_registed_shortcodes() {
 
         $user_shortcode = DI()->get('Qalep\App\Controllers\ShortCode')->get_user_shortcode();
@@ -144,17 +142,17 @@ class ListAllElement {
         }
     }
 
-    /*
+    /**
      *  Register element
      * @param object obj object of element to be registred
      */
-
     public function register_element($obj) {
         $item_options = $obj->get_option();
         echo "<script>window.qalep_elements.push($item_options);</script>";
     }
 
-    /* register all  template element 
+    /**
+     * register all  template element 
      * @param object obj object of element to be registred
      */
 

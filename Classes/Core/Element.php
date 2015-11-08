@@ -1,12 +1,12 @@
 <?php
 
 /**
- * The class to register, update and display blocks
+ * The class to register, update and display element
  *
  * It provides an easy API for people to add their own blocks
  * to the qalep plugin
  *
- * @package qalep
+ * @package Qalep\Classes\Core
  */
 
 namespace Qalep\Classes\Core;
@@ -23,11 +23,11 @@ class Element {
    
 
 
-    /*
+    /**
      * add properties for element
      * 
-     * @param string $key     name of the property ex: border
-     * @param string $value   value of the property ex:thin 
+     * @param string key     name of the property ex: border
+     * @param string value   value of the property ex:thin 
      * 
      * @return property data in json format
      */
@@ -53,7 +53,13 @@ class Element {
     public function get_option(){
         return json_encode($this->options);
     }
-
+    
+/**
+ * call html view file
+ * @param string file_name 
+ * @param array data data will be filled in view file
+ * @param bolean  $print 
+ */
     public function view($file_name, $data = array(), $print = true) {
         $file_path = '';
         $content = '';

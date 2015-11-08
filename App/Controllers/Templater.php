@@ -68,7 +68,7 @@ class Templater extends Controller {
     /**
      * Adds our template to the pages cache in order to trick WordPress
      * into thinking the template file exists where it doens't really exist.
-     *
+     *@param array atts
      */
     public function _register_project_templates($atts) {
         $template_folder = plugin_dir_path(__DIR__) . '../page_templates';

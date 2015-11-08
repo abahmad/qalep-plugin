@@ -6,6 +6,9 @@
  * Description:Type block of text
  */
 
+/**
+ * @package Qalep\elements\button
+ */
 namespace Qalep\elements\button;
 
 use Qalep\Classes\Core\Element;

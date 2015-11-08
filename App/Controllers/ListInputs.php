@@ -1,15 +1,18 @@
 <?php
 
-/*
+/**
  * call all inputs type  defalut and custom inputs
  * @package Qalep\App\Controllers
  */
+
 namespace Qalep\App\Controllers;
 
 class ListInputs {
-    
-    /*
+
+    /**
+     * function called by ajax
      * draw  all inputs from folder inputs
+     * return all inputs in json format to 
      */
     static function get_input() {
         $folder_path = QALEP_DIR_PATH . 'inputs';
@@ -29,9 +32,8 @@ class ListInputs {
                 } elseif (method_exists('Qalep\Classes\Core\Input', $input_type)) {
                     $input = \DI()->get('Qalep\Classes\Core\Input');
                     $content[$key] = $input->$input_type($choises);
-                }
-                else{
-                     $content[$key] = "input undfiend";
+                } else {
+                    $content[$key] = "input undfiend";
                 }
             } else {
                 $content[$key] = "<input type='text'  ng-model='models.selected.properties[key]' />";

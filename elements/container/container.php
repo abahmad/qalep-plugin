@@ -6,6 +6,10 @@
  * Description:bootstarp container
  */
 
+/**
+ *@package Qalep\elements\container
+ */
+
 namespace Qalep\elements\container;
 
 use Qalep\Classes\Core\Element;

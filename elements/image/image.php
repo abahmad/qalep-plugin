@@ -1,9 +1,13 @@
 <?php
 
 /*
-  Element Name: Image
+ * Element Name: Image
  * Author : mnbaa
  * Description:Type block of text
+ */
+
+/**
+ *@package Qalep\elements\image
  */
 
 namespace Qalep\elements\image;

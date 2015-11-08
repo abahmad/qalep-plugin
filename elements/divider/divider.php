@@ -6,6 +6,10 @@
  * Description:Type block of text
  */
 
+/**
+ * @package Qalep\elements\divider
+ */
+
 namespace Qalep\elements\divider;
 
 use Qalep\Classes\Core\Element;

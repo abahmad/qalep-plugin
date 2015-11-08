@@ -6,6 +6,9 @@
  * Description:Type block of text
  */
 
+/**
+ *@package Qalep\elements\paragraph
+ */
 namespace Qalep\elements\paragraph;
 
 use Qalep\Classes\Core\Element;

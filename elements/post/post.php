@@ -6,6 +6,10 @@
  * Description:Type block of text
  */
 
+/**
+ *@package Qalep\elements\post
+ */
+
 namespace Qalep\elements\post;
 
 use Qalep\Classes\Core\Element;

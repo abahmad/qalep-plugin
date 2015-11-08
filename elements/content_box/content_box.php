@@ -6,6 +6,9 @@
  * Description:Type block of text
  */
 
+/**
+ *@package Qalep\elements\content_box
+ */
 namespace Qalep\elements\content_box;
 
 use Qalep\Classes\Core\Element;

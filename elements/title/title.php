@@ -6,6 +6,10 @@
  * Description:Type block of text
  */
 
+/**
+ *@package Qalep\elements\title
+ */
+
 namespace Qalep\elements\title;
 
 use Qalep\Classes\Core\Element;

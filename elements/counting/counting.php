@@ -6,6 +6,9 @@
  * Description:Type block of text
  */
 
+/**
+ *@package Qalep\elements\counting
+ */
 namespace Qalep\elements\counting;
 
 use Qalep\Classes\Core\Element;

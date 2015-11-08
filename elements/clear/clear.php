@@ -6,6 +6,9 @@
  * Description:Type block of text
  */
 
+/**
+ * @package Qalep\elements\clear
+ */
 namespace Qalep\elements\clear;
 
 use Qalep\Classes\Core\Element;

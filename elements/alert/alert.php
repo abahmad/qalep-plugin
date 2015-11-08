@@ -6,6 +6,10 @@
  * Description:Type block of text
  */
 
+/**
+ * @package Qalep\elements\alert
+ * 
+ */
 namespace Qalep\elements\alert;
 
 use Qalep\Classes\Core\Element;
@@ -39,8 +43,9 @@ if (!class_exists('alert')) {
             parent::__construct($block_options);
         }
 
-        /*
+        /**
          * draw template for element on draged on area
+         * @return html of template element
          */
 
         public function draw_template() {

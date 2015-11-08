@@ -1,7 +1,8 @@
 <?php
 
-/*
- * To add inputs
+/**
+ * To draw inputs
+ * @package Qalep\Classes\Core
  */
 
 namespace Qalep\Classes\Core;
