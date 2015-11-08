@@ -1,9 +1,16 @@
 <?php
 
+/*
+ * call all inputs type  defalut and custom inputs
+ * @package Qalep\App\Controllers
+ */
 namespace Qalep\App\Controllers;
 
 class ListInputs {
-
+    
+    /*
+     * draw  all inputs from folder inputs
+     */
     static function get_input() {
         $folder_path = QALEP_DIR_PATH . 'inputs';
         $props = json_decode(file_get_contents("php://input"));

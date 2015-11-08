@@ -1,8 +1,8 @@
 <?php
 
-/*
+/**
  * list all registered elements in elements folder
- * 
+ * @package Qalep\App\Controllers
  */
 
 namespace Qalep\App\Controllers;
@@ -19,6 +19,7 @@ class ListAllElement {
      * search for all elements in custom folder elements in activated theme
      * and  then serach in defalut elements folder 
      * compare elements and overide custom elements on defalut
+     * return array key is element name and the vlaue is path where is element
      */
     function search_elements() {
         $custom_elements_path = get_template_directory() . "/qalep/elements";
@@ -52,7 +53,12 @@ class ListAllElement {
         }
     }
 
-    //list all elements folders on basic elements folder
+    /*
+     * list all elements folders on basic elements folder
+     * @param string folder  folder name
+     * @return array elements_folders 
+     */
+
     public function list_folders($folder) {
 
         $blocks = scandir($folder);
@@ -66,12 +72,13 @@ class ListAllElement {
                 $elements_folder[] = $item;
             }
         }
-        return($elements_folder);
+        return $elements_folder;
     }
 
     /**
      * Retrieve elements name from a file.
      * Searches in elements folder for elements
+     * @param array elements
      */
     public function get_elements($elements) {
         foreach ($elements as $name => $val) {
@@ -85,7 +92,7 @@ class ListAllElement {
                 $obj = DI()->get($element_class);
                 // var_dump($obj);
 
-                $this->register_element($obj, $name);
+                $this->register_element($obj);
                 $this->register_template($obj);
             }
         }
@@ -93,6 +100,7 @@ class ListAllElement {
 
     /*
      * search in speific path folder and list all elements name
+     * @param string path  abslout path of this element
      */
 
     public function get_element_name($path) {
@@ -113,10 +121,9 @@ class ListAllElement {
         return $element_names;
     }
 
-    public function register_bultin_element() {
-        echo "<script>window.qalep_elements.push({label:'Conatiner',type:'container', columns:[[]],properties: {fixed: 'true'}});</script>";
-        echo "<script>window.qalep_elements.push({label:'Section',type:'column',properties: {width: '12', offset: '0'}});</script>";
-    }
+    /*
+     * draw template cash for shoretcod element
+     */
 
     public function get_registed_shortcodes() {
 
@@ -152,16 +159,23 @@ class ListAllElement {
         }
     }
 
-    /* Register element */
+    /*
+     *  Register element
+     * @param object obj object of element to be registred
+     */
 
-    public function register_element($obj, $name) {
-
+<<<<<<< HEAD
         // $obj->set_option('label', $name);
+=======
+    public function register_element($obj) {
+>>>>>>> eb43e0fa21521b608bddbf0381ee639067e89686
         $item_options = $obj->get_option();
         echo "<script>window.qalep_elements.push($item_options);</script>";
     }
 
-    /* register all  template element */
+    /* register all  template element 
+     * @param object obj object of element to be registred
+     */
 
     public function register_template($obj) {
 

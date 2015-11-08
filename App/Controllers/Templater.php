@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * create template and assign  it to page templates of wordpress
+ * @package Qalep\App\Controllers
+ */
 namespace Qalep\App\Controllers;
 
 use Qalep\Classes\Core\Controller;
@@ -22,7 +25,7 @@ class Templater extends Controller {
     protected $templates;
 
     /**
-     * Returns an instance of this class.
+     * @Return an instance of this class.
      */
     public static function get_instance() {
 

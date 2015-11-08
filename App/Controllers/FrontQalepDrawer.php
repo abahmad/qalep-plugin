@@ -1,7 +1,8 @@
 <?php
 
-/*
+/**
   class to draw  elements on page template front end
+ * @package Qalep\App\Controllers
  */
 
 namespace Qalep\App\Controllers;
@@ -11,9 +12,6 @@ use Qalep\elements;
 class FrontQalepDrawer {
 
     public function __construct($items) {
-//        echo"<pre>";
-//        print_r($items);
-//        echo "<pre>";
         echo get_header();
         if (!empty($items)) {
             foreach ($items as $item) {
