@@ -15,25 +15,41 @@ class ListAllElement {
         
     }
 
-    /*
+    /**
      * search for all elements in custom folder elements in activated theme
      * and  then serach in defalut elements folder 
      * compare elements and overide custom elements on defalut
      */
-
     function search_elements() {
         $custom_elements_path = get_template_directory() . "/qalep/elements";
         $defalut_elemnts_path = QALEP_DIR_PATH . 'elements';
 
-        $this->elements_folder = QALEP_DIR_PATH . 'elements';
-        $custom_arr = $this->get_element_name($custom_elements_path);
-        $defalut_arr = $this->get_element_name($defalut_elemnts_path);
-        $arrs = array_intersect_key($custom_arr, $defalut_arr);
-        foreach ($arrs as $key => $val) {
-            unset($defalut_arr[$key]);
+        $last_sign = get_option('qalep_elements_sign');
+
+        $sign = '';
+        if (file_exists($defalut_elemnts_path) || file_exists($custom_elements_path)) {
+
+            if ($defalut_elemnts_path)
+                $sign .= filemtime($defalut_elemnts_path);
+            if ($custom_elements_path_elemnts_path)
+                $sign .= filemtime($custom_elements_path);
         }
-        $all_elements = array_merge($defalut_arr, $custom_arr);
-        $this->get_elements($all_elements);
+
+        if ($last_sign == $sign) {
+            $this->get_elements(get_option('qalep_elements_index'));
+        } else {
+            $this->elements_folder = QALEP_DIR_PATH . 'elements';
+            $custom_arr = $this->get_element_name($custom_elements_path);
+            $defalut_arr = $this->get_element_name($defalut_elemnts_path);
+            $arrs = array_intersect_key($custom_arr, $defalut_arr);
+            foreach ($arrs as $key => $val) {
+                unset($defalut_arr[$key]);
+            }
+            $all_elements = array_merge($defalut_arr, $custom_arr);
+            update_option('qalep_elements_index', $all_elements);
+            update_option('qalep_elements_sign', $sign);
+            $this->get_elements($all_elements);
+        }
     }
 
     //list all elements folders on basic elements folder
@@ -140,7 +156,7 @@ class ListAllElement {
 
     public function register_element($obj, $name) {
 
-       // $obj->set_option('label', $name);
+        // $obj->set_option('label', $name);
         $item_options = $obj->get_option();
         echo "<script>window.qalep_elements.push($item_options);</script>";
     }
