@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * load all scripts needed  for qalep plugin
+ * @package Qalep\App\Controllers
+ */
 namespace Qalep\App\Controllers;
 
 use Qalep\Classes\Core\Controller;
@@ -42,12 +46,10 @@ class ScriptLoader extends Controller {
 
     static function load_forntend_styles() {
 
-//        $this->scripts->addStyle(array('qalep-bootstrap', asset('assets.css', 'qalep-bootstrap.css')));
-//        $this->scripts->addStyle(array('stylesheet', asset('assets.css', 'stylesheet.css')));
         wp_enqueue_style('bootstrap', asset('assets.css', 'bootstrap.min.css'));
         wp_enqueue_style('stylesheet', asset('assets.css', 'stylesheet.css'));
         wp_enqueue_style('font-awesome.min', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
-        //for counting elemnt on front end
+        //for counting element on front end
         wp_enqueue_script("jquery.circle-diagram", plugins_url('/../assets/js/jquery.circle-diagram.js', __FILE__));
         wp_enqueue_script("main", plugins_url('/../assets/js/main.js', __FILE__));
     }

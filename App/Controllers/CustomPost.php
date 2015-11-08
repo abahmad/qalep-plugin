@@ -1,12 +1,13 @@
 <?php
 
+/**
+ * * register custom post qalep to wordpress
+ * @package Qalep\App\Controllers
+ */
+
 namespace Qalep\App\Controllers;
 
 use Qalep\Classes\Core\Controller;
-
-/*
- * register custom post qalep to wordpress
- */
 
 class CustomPost extends Controller {
 
@@ -83,7 +84,13 @@ class CustomPost extends Controller {
         }
     }
 
-    // to view link dublicate for every template post and remove other unneeded links
+    /**
+     * to view link dublicate for every template post and remove other unneeded links
+     * @param array actions
+     * @param array post get the current post
+     * @return  array actions should be desplied under every template
+     */
+
     static function qalep_action_row($actions, $post) {
         if ($post->post_type == "qalep") {
             //remove what you don't need

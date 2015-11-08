@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * deal with  qalep as shortcode 
+ * @package Qalep\App\Controllers
+ */
 namespace Qalep\App\Controllers;
 
 use Qalep\Classes\Core\Controller;
