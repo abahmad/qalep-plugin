@@ -146,4 +146,6 @@ li{list-style: none;}
 .glyphicon{
     cursor: pointer;
 }
-
+.container-element.box .row ul[dnd-list] {
+    margin-top: 20px;
+}

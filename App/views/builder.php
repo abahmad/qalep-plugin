@@ -4,7 +4,6 @@
             <ul dnd-list="list" class="clearfix">
             <li ng-repeat="item in list"
             dnd-draggable="item"
-            dnd-dragover="dragoverCallback(event, index, external, type)"
             dnd-effect-allowed="move"
             dnd-moved="list.splice($index, 1)"
             dnd-selected="models.selected = item;"
@@ -66,6 +65,7 @@
                          element was created, dnd-copied is invoked and we generate the next id -->
                     <li ng-repeat="item in models.templates"
                         dnd-draggable="item"
+                        dnd-dragstart="logEvent('Started to drag an item', event)"
                         dnd-effect-allowed="copy">
                         <!--dnd-copied="item.id = item.id + 1"-->
                         <button type="button" class="draggable-item" >{{item.label}}</button>
@@ -102,7 +102,7 @@
 
             submit_button($text = __('Save', 'qalep'), $type = 'primary', $name = 'publish', $wrap = true, $other_attributes = NULL);
             if (isset($_GET['post']))
-                submit_button($text =__('Preview','qalep'), $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = array('id' => 'qalep-preview'));
+                submit_button($text = __('Preview', 'qalep'), $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = array('id' => 'qalep-preview'));
             ?>
         </div>
         <div class="clearfix"></div>
