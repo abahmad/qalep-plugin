@@ -1,5 +1,5 @@
 <?php /*
-        * Template Name: 
+        * Template Name: Product 1
         *
         * Description: A page template that provides a key component of WordPress as a CMS
         * by meeting the need for a carefully crafted introductory page. The front page template
@@ -9,4 +9,4 @@
         * @subpackage Twenty Fifteen
 
         */?>
-        <?php ob_start();?><!-- <mnbaa_SEPERATOR> []</mnbaa_SEPERATOR>--><?php ob_clean();?><?php do_shortcode("[qalep template id=]"); ?>
+        <?php ob_start();?><!-- <mnbaa_SEPERATOR> []</mnbaa_SEPERATOR>--><?php ob_clean();?><?php do_shortcode("[qalep template id=32]"); ?>
