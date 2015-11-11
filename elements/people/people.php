@@ -26,9 +26,9 @@ class People extends Element {
                     "choices" => array(__('template1','qalep') => '1', __("template2",'qalep') => '2',__('template3','qalep') => '3', __('template4','qalep') => '4'),
                     "value" => '1'
                 ),
-                __("color", 'qalep') => array(
+                __("background_color", 'qalep') => array(
                     "input_type" => 'color_picker',
-                    "value " => "red"
+                    "value" => "#eeee22"
                 ),
                 __("text", 'qalep') => array(
                     'input_type' => "textarea",

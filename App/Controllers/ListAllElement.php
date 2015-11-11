@@ -32,7 +32,7 @@ class ListAllElement {
 
             if ($defalut_elemnts_path)
                 $sign .= filemtime($defalut_elemnts_path);
-            if ($custom_elements_path_elemnts_path)
+            if (isset($custom_elements_path_elemnts_path))
                 $sign .= filemtime($custom_elements_path);
         }
 
@@ -164,6 +164,7 @@ class ListAllElement {
      */
 
     public function register_element($obj) {
+        
         $item_options = $obj->get_option();
         echo "<script>window.qalep_elements.push($item_options);</script>";
     }

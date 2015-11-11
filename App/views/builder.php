@@ -28,7 +28,7 @@
         <!-------------------selected item----------------------->
         <div  ng-if="models.selected.properties" >
             <div ng-if="models.selected" class="box box-grey box-padding">
-                <h3><?php echo _e('Selected', "qlp"); ?></h3>
+                <h3>{{models.selected.label}}</h3>
                 <!--ng-init="draw(models.selected.properties)"-->
                 <table class="table table-bordered" >
 
@@ -36,22 +36,6 @@
                         <td>{{key|capitalize}}</td>
                         <td> <span ng-bind-html="val" compilehtml></span></td>
                     </tr>
-<!--                    <tr ng-repeat="(key, val) in items">
-                        <td> {{key}}</td>
-                        <td ng-if="val.input_type">
-                           <span ng-bind-html="items"></span>
-                        </td>
-                        <td ng-if="val.input_type == undefined">
-                            <input ng-if ="key != 'text' && key != 'image'" ng-model="models.selected.properties[key]" type="text" value="{{models.selected.properties[key]}}"/>
-                            <div class="item" id="{{item.id}}" ng-if="key == 'image'" >
-                                <img src="{{models.selected.properties[key]}}" class="custom_preview_image" alt="" id="image_img" />
-                                <input  ng-click="uploadImg($event, $index)" class="custom_upload_image_button button" type="button" value="Choose Image" />
-                                <br><a href="#"  ng-click="removeImg($event)" class="custom_clear_image_button">Remove Image</a>
-                                <input name="image" type="hidden" class="custom_upload_image" value="1" id="image_ID" ng-model="models.selected.properties[key]" />
-                            </div>
-                            <textarea ng-model="models.selected.properties[key]" ng-if="key == 'text'"> {{val}}</textarea>
-                        </td>
-                    </tr>-->
                 </table>
             </div>
         </div>

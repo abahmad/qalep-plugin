@@ -4,6 +4,7 @@
  * load all scripts needed  for qalep plugin
  * @package Qalep\App\Controllers
  */
+
 namespace Qalep\App\Controllers;
 
 use Qalep\Classes\Core\Controller;
@@ -17,8 +18,7 @@ class ScriptLoader extends Controller {
 
         $this->scripts->run();
     }
-    
-    
+
     public function load_scripts() {
 
         $this->scripts->addAdminScript(array('angularjs', asset('assets.js', 'angular-min.js')));
@@ -29,6 +29,11 @@ class ScriptLoader extends Controller {
         $this->scripts->addAdminScript(array('qalep-jquery', asset('assets.js', 'qalep-jquery.js')));
         $this->scripts->addAdminScript(array('jquery-ui-dialog'));
 
+        // wp_enqueue_script('color-picker', plugins_url().'/qalep/inputs/color_picker/js/picker.js');
+        wp_enqueue_style('wp-color-picker');
+        wp_enqueue_script('wp-color-picker');
+
+        //for uplaod image button
         wp_enqueue_script('media-upload');
         wp_enqueue_script('thickbox');
         wp_enqueue_style('thickbox');
@@ -40,7 +45,7 @@ class ScriptLoader extends Controller {
         $this->scripts->addAdminStyle(array("query-ui", "http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"));
         $this->scripts->addAdminStyle(array('qalep-bootstrap', asset('assets.css', 'qalep-bootstrap.css')));
         $this->scripts->addAdminStyle(array('qalep-drag-drop', asset('assets.css', 'qalep-drag-drop.css')));
-        $this->scripts->addAdminStyle(array('style_'.$lang, asset('assets.css', 'style-'.$lang.'.css')));
+        $this->scripts->addAdminStyle(array('style_' . $lang, asset('assets.css', 'style-' . $lang . '.css')));
 //        if (is_rtl())
 //            $this->scripts->addAdminStyle(array('qalep-rtl', asset('assets.css', 'qalep-rtl.css')));
     }

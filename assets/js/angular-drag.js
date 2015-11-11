@@ -7,7 +7,6 @@ var myApp = angular.module('myApp', ['dndLists', 'ngSanitize']);
 window.qalep_elements = [];
 window.elements_template = [];
 
-
 myApp.directive('compilehtml', ["$compile", "$parse", function ($compile, $parse) {
         return {
             restrict: 'A',
@@ -111,6 +110,43 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
 
         }
+        $scope.myOnChangeFunction = function () {
+            alert("changed");
+        }
+        $scope.load_color = function () {
+            var myOptions = {
+                // you can declare a default color here,
+                // or in the data-default-color attribute on the input
+                defaultColor: false,
+                // a callback to fire whenever the color changes to a valid color
+                change: function (event, ui) {
+                    var hexcolor = $( this ).wpColorPicker( 'color' );
+                   
+                    //alert(hexcolor);
+                    
+                    
+                 //  console.log($(".color-field").val());
+                    $(".color-field").val(hexcolor).trigger('input');
+                    
+                },
+                // a callback to fire when the input is emptied or an invalid color
+                clear: function () {
+                },
+                // hide the color picker controls on load
+                hide: true,
+                // show a group of common colors beneath the square
+                // or, supply an array of colors to customize further
+                palettes: true
+            };
+            $('.color-field').wpColorPicker(myOptions);
+
+//                    scope.$apply(function() {
+//                        scope.color = color.toHexString();
+//                    });
+//                });
+//            $("#color-field").val(imgurl).trigger('input');
+//            $scope.$apply();
+        }
 
         $scope.logEvent = function (message, event) {
             console.log(message, '(triggered by the following', event.type, 'event)');
@@ -130,23 +166,9 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 imgurl = jQuery('img', html).attr('src');
                 console.log(imgurl);
                 classes = jQuery('img', html).attr('class');
-                // image_id = classes.replace(/(.*?)wp-image-/, '');
-//                formfield.val(image_id);
-                //alert(formfield.val(image_id));
                 preview.attr('src', imgurl);
                 tb_remove();
                 $("#image_ID").val(imgurl).trigger('input');
-                // item.key=imgurl;
-//                console.log($scope.models.dropzones.A[0].label);
-//                if ($scope.models.dropzones.A[0].label != "Image") {
-//                    
-//                    //$scope.models.dropzones.A[0].columns.properties.image.value = imgurl;
-//                    
-//                } else {
-//                    $scope.models.dropzones.A[0].imgSrc = imgurl;
-//                }
-
-
                 $scope.$apply();
 
 

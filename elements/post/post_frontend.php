@@ -93,15 +93,15 @@ while ($loop->have_posts()) : $loop->the_post();
     $thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post_id), 'full');
     $comments_count = wp_count_comments();
     //content for post
-   $words = explode(" ", strip_tags(get_the_content()));
-  // $content = implode(" ", array_splice($words, 0, 40));
+    $words = explode(" ", strip_tags(get_the_content()));
+    // $content = implode(" ", array_splice($words, 0, 40));
     //
     ?>
     <div class="col-md-<?php echo $num_col; ?>">
         <div class="full-post">
             <h4><?php echo the_title(); ?></h4>
             <p><?php _e('POSTED BY:', 'qalep'); ?> <small class="post-orange-color"><?php the_author_posts_link(); ?> </small> </p>
-    <?php if ($thumbnail[0]) { ?><div class="tumb-post"><img src ="<?php echo $thumbnail[0]; ?>" /></div> <?php } ?>
+            <?php if ($thumbnail[0]) { ?><div class="tumb-post"><img src ="<?php echo $thumbnail[0]; ?>" /></div> <?php } ?>
             <ul>
 
                 <li><?php echo the_date('F j, Y'); ?></li>

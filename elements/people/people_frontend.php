@@ -3,6 +3,7 @@ $value=$props;
 $desc=$value->text;
 $template=$value->template;
 $template_value=$template->value;
+$color=$props->background_color;
 //print_r($template_value);
 $image=$value->image;
 $image_src=$image->value;
@@ -80,7 +81,7 @@ elseif ($template_value=="2") {?>
 <?php 
 }
  else { ?>
-    <div>
+    <div style="background-color:<?php echo $color->value ; ?>">
                 <div class="people-full">
                     <div class="people-fullimg pull-left">
                        <img src="<?php echo $image_src; ?>" />
