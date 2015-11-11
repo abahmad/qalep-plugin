@@ -26,9 +26,11 @@ class ListInputs {
 
                 $file_path = $folder_path . '/' . $input_type . '/' . $input_type . '.php';
                 if (file_exists($file_path)) {
-                    ob_start();
-                    include($file_path);
-                    $content[$key] = ob_get_clean();
+//                    ob_start();
+                    $input = \DI()->get('Qalep\inputs\\'.$input_type.'\\'.$input_type);
+                    $content[$key]=$input->draw();
+                    //include($file_path);
+                   // $content[$key] = ob_get_clean();
                 } elseif (method_exists('Qalep\Classes\Core\Input', $input_type)) {
                     $input = \DI()->get('Qalep\Classes\Core\Input');
                     $content[$key] = $input->$input_type($choises);
