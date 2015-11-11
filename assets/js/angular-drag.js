@@ -148,6 +148,15 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 //            $scope.$apply();
         }
 
+        $scope.logEvent = function (message, event) {
+            console.log(message, '(triggered by the following', event.type, 'event)');
+            console.log(event);
+        };
+
+        $scope.dragoverCallback = function (event, index, external, type) {
+            $scope.logListEvent('dragged over', event, index, external, type);
+        };
+
         $scope.uploadImg = function ($event, $index) {
             var image_id;
             formfield = angular.element($event.currentTarget).siblings('.custom_upload_image');

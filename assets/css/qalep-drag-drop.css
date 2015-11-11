@@ -71,10 +71,12 @@
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    display: block;
+    display: inline-block;
     float: left;
-    min-height: 42px;
-    min-width: 130px;
+    min-height: 40px;
+    width: 100%;
+    padding-right: -15px;
+    padding-left: -15px;
 }
 
 /***************************** Element Selection *****************************/
