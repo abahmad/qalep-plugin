@@ -1,3 +1,4 @@
+
 <body ng-app="myApp" >
     <div ng-controller="NestedListsDemoController" class="nestedDemo qalep-bs">
         <script type="text/ng-template" id="list.html">
@@ -55,16 +56,17 @@
                         <button type="button" class="draggable-item" >{{item.label}}</button>
                     </li>
                 </ul>
-                <?php echo isset($template_items) ? "<script>window.qalep_items=" . $template_items . ";</script>" : '' ?>
+<?php echo isset($template_items) ? "<script>window.qalep_items=" . $template_items . ";</script>" : '' ?>
 
             </div>
             <div class="qalep-elements">
                 <h3 class="title-blocks"><?php echo __('Drag Element Here', 'qalep'); ?> 
                     <a href="javascript:void(0)" ng-click="models.clear()" class="clear-div"><?php echo _e('Clear Template', 'qalep'); ?> </a>
                 </h3>
-<!--                <pre>
+<!--                <pre>{{modelAsuser}}</pre>-->
+                <pre>
                     {{modelAsJson}}
-                </pre>-->
+                </pre>
                 <input type="hidden" value="{{modelAsJson}}" name="item"/>
                 <div ng-repeat="(zone, list) in models.dropzones" >
                     <div class="dropzone builder-container">
@@ -82,8 +84,6 @@
         </div>
         <div class="qalep-btns">
             <?php
-            // submit_button();
-
             submit_button($text = __('Save', 'qalep'), $type = 'primary', $name = 'publish', $wrap = true, $other_attributes = NULL);
             if (isset($_GET['post']))
                 submit_button($text = __('Preview', 'qalep'), $type = 'primary', $name = 'submit', $wrap = true, $other_attributes = array('id' => 'qalep-preview'));
