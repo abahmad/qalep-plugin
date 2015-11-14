@@ -10,7 +10,7 @@
             dnd-selected="models.selected = item;"
             ng-class="{'selected': models.selected === item, 'list-container': item.type == 'container', 'list-column': item.type == 'column'}"
             ng-click="draw(item.properties)"
-            ng-include="item.type + '.html'">
+            ng-include="getInclude(item)">
             </li>
             </ul>
         </script>
@@ -18,10 +18,24 @@
 
         <!-- Template for a shortcode item -->
         <script type="text/ng-template" id="shortcode.html">
-            <div class="item" id="{{item.id}}">
+            <div class="item" id="{{item.id}}" ng-init="item.value = item.value == undefined ? '[' + item.shortcode_base + ']' : item.value">
             {{item.label}}
             <div class="item-actions"><span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
             <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" aria-hidden="true"></span></div>
+            </div>
+        </script>
+        <script type="text/ng-template" id="shortcode_container.html">
+            <div class="container-fluid">
+            <div class="container-element box box-blue">     
+            <h3>{{item.label}}</h3>
+            <div class="item-actions">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="list.splice($index, 0, convertItemToObj(item))"></span>
+            <span class="glyphicon glyphicon-remove" ng-click="list.splice($index, 1)" aria-hidden="true"></span>
+            <div class="clearfix"></div>
+            </div></h3>
+            <div class="row" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
+            <div class="clearfix"></div>
+            </div>
             </div>
         </script>
 
@@ -50,7 +64,6 @@
                          element was created, dnd-copied is invoked and we generate the next id -->
                     <li ng-repeat="item in models.templates"
                         dnd-draggable="item"
-                        dnd-dragstart="logEvent('Started to drag an item', event)"
                         dnd-effect-allowed="copy">
                         <!--dnd-copied="item.id = item.id + 1"-->
                         <button type="button" class="draggable-item" >{{item.label}}</button>

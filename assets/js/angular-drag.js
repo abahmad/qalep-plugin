@@ -80,6 +80,10 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
 
         };
+        
+        $scope.getInclude = function(_item) {
+                return _item.type + '.html';
+        }
 
         var updateSelected = function (action, id) {
             if (action === 'add' && $scope.selected.indexOf(id) === -1) {
@@ -245,6 +249,18 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             return false;
 
         }
+
+        $scope.$watch('models.selected', function (model) {
+            if (null !== model && model.hasOwnProperty('type') && model.type == 'shortcode' && model.hasOwnProperty('shortcode_base')) {
+                var sc_params = '';
+                angular.forEach(model.properties, function (v, k) {
+                    if (null !== v.value || '' !== v.value) {
+                        sc_params += ' ' + k + "='" + v.value + "'";
+                    }
+                });
+                model.value = '[' + model.shortcode_base + ' ' + sc_params + ']';
+            }
+        }, true);
 
         $scope.$watch('models.dropzones', function (model) {
             $scope.modelAsJson = angular.toJson(model.A, true);
