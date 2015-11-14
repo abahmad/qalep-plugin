@@ -69,7 +69,7 @@
                         <button type="button" class="draggable-item" >{{item.label}}</button>
                     </li>
                 </ul>
-<?php echo isset($template_items) ? "<script>window.qalep_items=" . $template_items . ";</script>" : '' ?>
+                <?php echo isset($template_items) ? "<script>window.qalep_items=" . $template_items . ";</script>" : '' ?>
 
             </div>
             <div class="qalep-elements">
@@ -77,9 +77,9 @@
                     <a href="javascript:void(0)" ng-click="models.clear()" class="clear-div"><?php echo _e('Clear Template', 'qalep'); ?> </a>
                 </h3>
 <!--                <pre>{{modelAsuser}}</pre>-->
-                <pre>
+<!--                <pre>
                     {{modelAsJson}}
-                </pre>
+                </pre>-->
                 <input type="hidden" value="{{modelAsJson}}" name="item"/>
                 <div ng-repeat="(zone, list) in models.dropzones" >
                     <div class="dropzone builder-container">

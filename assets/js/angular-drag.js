@@ -1,10 +1,5 @@
 
-var myApp = angular.module('myApp', ['dndLists', 'ngSanitize', "checklist-model"]);
-/*
- * The controller doesn't do much more than setting the initial data model
- * 
- */
-
+var myApp = angular.module('myApp', ['dndLists', 'ngSanitize']);
 
 window.qalep_elements = [];
 window.elements_template = [];
@@ -43,10 +38,9 @@ myApp.filter('capitalize', function () {
 });
 
 myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', '$sce', function ($scope, $rootScope, $http, $sce) {
-        $scope.fruits = ['apple', 'orange', 'pear', 'naartjie'];
 
         // selected fruits
-        $scope.selection = ['apple', 'pear'];
+        $scope.selection = [];
 
         // toggle selection for a given fruit by name
         $scope.toggleSelection = function toggleSelection(fruitName) {
@@ -60,10 +54,10 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             // is newly selected
             else {
                 $scope.selection.push(fruitName);
-                $scope.models.selected.properties['post_meta_fileds'].value= $scope.selection;
+                $scope.models.selected.properties['post_meta_fileds'].value = $scope.selection;
             }
         };
-       
+
         $scope.models = {
             selected: null,
             templates: window.qalep_elements,
@@ -80,47 +74,11 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
 
         };
-        
-        $scope.getInclude = function(_item) {
-                return _item.type + '.html';
+
+        $scope.getInclude = function (_item) {
+            return _item.type + '.html';
         }
 
-        var updateSelected = function (action, id) {
-            if (action === 'add' && $scope.selected.indexOf(id) === -1) {
-                $scope.selected.push(id);
-            }
-            if (action === 'remove' && $scope.selected.indexOf(id) !== -1) {
-                $scope.selected.splice($scope.selected.indexOf(id), 1);
-            }
-        };
-
-        $scope.updateSelection = function ($event, id) {
-            var checkbox = $event.target;
-            var action = (checkbox.checked ? 'add' : 'remove');
-            updateSelected(action, id);
-        };
-
-        $scope.selectAll = function ($event) {
-            var checkbox = $event.target;
-            var action = (checkbox.checked ? 'add' : 'remove');
-            for (var i = 0; i < $scope.entities.length; i++) {
-                var entity = $scope.entities[i];
-                updateSelected(action, entity.id);
-            }
-        };
-
-        $scope.getSelectedClass = function (entity) {
-            return $scope.isSelected(entity.id) ? 'selected' : '';
-        };
-
-        $scope.isSelected = function (id) {
-            return $scope.selected.indexOf(id) >= 0;
-        };
-
-//something extra I couldn't resist adding :)
-        $scope.isSelectedAll = function () {
-            return $scope.selected.length === $scope.entities.length;
-        };
         $scope.microtime = function (get_as_float) {
             //  discuss at: http://phpjs.org/functions/microtime/
             // original by: Paulo Freitas
@@ -158,13 +116,6 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                     angular.forEach(response, function (value, key) {
                         $scope.items[key] = $sce.trustAsHtml(value);
                     });
-//                    alert(response);
-
-                    //  htmlResponse= angular.toJson(response, true);
-                    // console.log("res"+htmlResponse);
-                    // htmlResponse = $sce.trustAsHtml(response);
-                    //$scope.items= (response);
-                    //console.log(htmlResponse);
 
                 });
 
@@ -172,16 +123,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
 
         }
-        $scope.albums = [{name: 'a1', selected: true}, {name: 'a2'}, {name: 'a3'}];
 
-        $scope.push_item = function (key) {
-            $scope.albumNameArray = [];
-            angular.forEach($scope.albums, function (album) {
-                if (!!album.selected)
-                    $scope.albumNameArray.push(album.name);
-            });
-            console.log($scope.albumNameArray);
-        }
         $scope.load_color = function () {
             var myOptions = {
                 // you can declare a default color here,
@@ -210,15 +152,6 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             $('.color-field').wpColorPicker(myOptions);
 
         }
-
-        $scope.logEvent = function (message, event) {
-            console.log(message, '(triggered by the following', event.type, 'event)');
-            console.log(event);
-        };
-
-        $scope.dragoverCallback = function (event, index, external, type) {
-            $scope.logListEvent('dragged over', event, index, external, type);
-        };
 
         $scope.uploadImg = function ($event, $index) {
             var image_id;
