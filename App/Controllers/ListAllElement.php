@@ -143,6 +143,40 @@ class ListAllElement {
                 }
             }
         }
+
+        //get short codes from woocommerce plugin
+        if (is_plugin_active('woocommerce/woocommerce.php')) {
+            $wooCart = array(
+                'label' => __('WooCommerce Cart', 'qalep'),
+                'type' => 'shortcode',
+                'shortcode_base' => 'woocommerce_cart'
+            );
+            $wooCheckout = array(
+                'label' => __('WooCommerce Checkout', 'qalep'),
+                'type' => 'shortcode',
+                'shortcode_base' => 'woocommerce_checkout'
+            );
+            $wooOrderTracking = array(
+                'label' => __('WooCommerce Order Tracking', 'qalep'),
+                'type' => 'shortcode',
+                'shortcode_base' => 'woocommerce_order_tracking'
+            );
+            $wooMyAccount = array(
+                'label' => __('WooCommerce My Account', 'qalep'),
+                'type' => 'shortcode',
+                'shortcode_base' => 'woocommerce_my_account',
+                "properties" => array(
+                    __("order_count", 'qalep') => array(
+                        "input_type" => "number",
+                        "value" => 15
+                    )
+                )
+            );
+            echo "<script>window.qalep_elements.push(" . json_encode($wooCart) . ");</script>";
+            echo "<script>window.qalep_elements.push(" . json_encode($wooCheckout) . ");</script>";
+            echo "<script>window.qalep_elements.push(" . json_encode($wooOrderTracking) . ");</script>";
+            echo "<script>window.qalep_elements.push(" . json_encode($wooMyAccount) . ");</script>";
+        }
         // meta slider plugin shortcode
         if (is_plugin_active('ml-slider/ml-slider.php')) {
             $args = array(
@@ -162,9 +196,8 @@ class ListAllElement {
      *  Register element
      * @param object obj object of element to be registred
      */
-
     public function register_element($obj) {
-        
+
         $item_options = $obj->get_option();
         echo "<script>window.qalep_elements.push($item_options);</script>";
     }
@@ -173,7 +206,6 @@ class ListAllElement {
      * register all  template element 
      * @param object obj object of element to be registred
      */
-
     public function register_template($obj) {
 
         //get class name of this object

@@ -13,6 +13,10 @@ class Input {
         return "<input type='text'  ng-model='models.selected.properties[key].value' />";
     }
 
+    function number() {
+        return "<input type='number'  ng-model='models.selected.properties[key].value' />";
+    }
+
     public function radio($choises) {
         $result = '';
         foreach ($choises as $key => $choise) {

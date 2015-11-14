@@ -57,6 +57,10 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
 
         };
+        
+        $scope.getInclude = function(_item) {
+                return _item.type + '.html';
+        }
 
 
         $scope.microtime = function (get_as_float) {
@@ -120,14 +124,14 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 defaultColor: false,
                 // a callback to fire whenever the color changes to a valid color
                 change: function (event, ui) {
-                    var hexcolor = $( this ).wpColorPicker( 'color' );
-                   
+                    var hexcolor = $(this).wpColorPicker('color');
+
                     //alert(hexcolor);
-                    
-                    
-                 //  console.log($(".color-field").val());
+
+
+                    //  console.log($(".color-field").val());
                     $(".color-field").val(hexcolor).trigger('input');
-                    
+
                 },
                 // a callback to fire when the input is emptied or an invalid color
                 clear: function () {
@@ -186,6 +190,18 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             return false;
 
         }
+
+        $scope.$watch('models.selected', function (model) {
+            if (null !== model && model.hasOwnProperty('type') && model.type == 'shortcode' && model.hasOwnProperty('shortcode_base')) {
+                var sc_params = '';
+                angular.forEach(model.properties, function (v, k) {
+                    if (null !== v.value || '' !== v.value) {
+                        sc_params += ' ' + k + "='" + v.value + "'";
+                    }
+                });
+                model.value = '[' + model.shortcode_base + ' ' + sc_params + ']';
+            }
+        }, true);
 
         $scope.$watch('models.dropzones', function (model) {
             $scope.modelAsJson = angular.toJson(model.A, true);
