@@ -26,7 +26,6 @@ class ScriptLoader extends Controller {
         $this->scripts->addAdminScript(array('bootstrap-js', asset('bower_components.bootstrap-css.js', 'bootstrap.min.js')));
         $this->scripts->addAdminScript(array('angular-drag-and-drop-lists', asset('assets.js', 'angular-drag-and-drop-lists-min.js')));
         $this->scripts->addAdminScript(array('angular-drag', asset('assets.js', 'angular-drag.js')));
-        $this->scripts->addAdminScript(array('checklist-model', asset('assets.js', 'checklist-model.js')));
         $this->scripts->addAdminScript(array('qalep-jquery', asset('assets.js', 'qalep-jquery.js')));
         $this->scripts->addAdminScript(array('jquery-ui-dialog'));
 
