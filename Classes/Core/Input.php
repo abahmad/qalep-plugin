@@ -17,31 +17,27 @@ class Input {
         return "<input type='number'  ng-model='models.selected.properties[key].value' />";
     }
 
-    public function radio($choises) {
+    public function radio() {
         $result = '';
-        foreach ($choises as $key => $choise) {
-            $result.= '<input type="radio" value ="' . $choise . '"  ng-model="models.selected.properties[key].value"> <span>' . $key . ' </span>';
-        }
+        $result.= '<label ng-repeat="(itemName,val) in models.selected.properties[key].choices"><input type="radio" value ="{{val}}"  ng-model="models.selected.properties[key].value"> <span>{{itemName}}</span>'
+                . '</label>';
         return $result;
     }
 
-    public function checkbox($choises) {
-
-
+    public function checkbox($choices = '') {
         $result = '';
-        $result .= '<label ng-repeat="fruitName in models.selected.properties[key].choices">
-  <input
-    type="checkbox"
-    name="selectedFruits[]"
-    value="{{fruitName}}"
-    ng-checked="models.selected.properties[key].value.indexOf(fruitName) > -1"
-    ng-click="toggleSelection(fruitName)"
-  > {{fruitName}}
-</label>';
-        //foreach ($choises as $key => $val) {
-        //    $result.= '<input type="checkbox" ng-click="push_item('.$key.')"  value="'.$val.'" /><span>' . $key . ' </span>';
-//        $result.='<label ng-repeat="role in roles"><input type="checkbox"  ng-checked="user.roles.indexOf(fruitName) > -1"  checklist-model="user.roles" checklist-value="role" > {{role}}</label>';
-        //  }
+       // $result .= '<input type="checkbox"   ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)">hoda<input type="checkbox">hi';
+       // $result .= '<input type="checkbox"  ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)">assma';
+        if ($choices != '') {
+            foreach ($choices as $key => $val) {
+                $result .= '<input type="checkbox"  value="' . $val . '" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)">' . $key;
+            }
+        } else {
+            $result .= '<label ng-repeat="(itemName,val) in models.selected.properties[key].choices">
+        <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
+        </label>';
+        }
+
         return $result;
     }
 
@@ -58,11 +54,15 @@ class Input {
             </div>';
     }
 
-    function select($choises) {
-        $str = '<select><option>' . __('Select Choice', 'qalep') . '</option>';
-        foreach ($choises as $key => $val) {
-            $str.='<option value=' . $val . '>' . $key . '</option>';
-        }
+    function select() {
+        //
+        $str = '<select 
+                ng-init = "__model = models.selected.properties[key]; generate(__model.value)" ng-change="generate(__model.value)"
+               ng-model="__model.value"
+               ng-options="choice for choice in __model.choices" 
+               
+               >';
+        // $str.='<option ng-selected="__model.value" ng-repeat="(itemName,val) in __model.choices" value="{{val}}">{{itemName}}</option>';
         $str.='</select>';
         return $str;
     }

@@ -8,6 +8,10 @@
 namespace Qalep\App\Controllers;
 
 class ListInputs {
+    
+    public function __construct() {
+        
+    }
 
     /**
      * function called by ajax
@@ -33,7 +37,7 @@ class ListInputs {
                    // $content[$key] = ob_get_clean();
                 } elseif (method_exists('Qalep\Classes\Core\Input', $input_type)) {
                     $input = \DI()->get('Qalep\Classes\Core\Input');
-                    $content[$key] = $input->$input_type($choises);
+                    $content[$key] = $input->$input_type();
                 } else {
                     $content[$key] = "input undfiend";
                 }

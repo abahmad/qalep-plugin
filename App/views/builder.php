@@ -49,7 +49,7 @@
 
                     <tr ng-repeat="(key, val) in items">
                         <td>{{key|capitalize}}</td>
-                        <td> <span ng-bind-html="val" compilehtml></span></td>
+                        <td class="{{key}}"> <span ng-bind-html="val" compilehtml></span></td>
                     </tr>
                 </table>
             </div>
@@ -76,7 +76,7 @@
                 <h3 class="title-blocks"><?php echo __('Drag Element Here', 'qalep'); ?> 
                     <a href="javascript:void(0)" ng-click="models.clear()" class="clear-div"><?php echo _e('Clear Template', 'qalep'); ?> </a>
                 </h3>
-<!--                <pre>{{modelAsuser}}</pre>-->
+                <pre>{{modelAsuser}}</pre>
 <!--                <pre>
                     {{modelAsJson}}
                 </pre>-->

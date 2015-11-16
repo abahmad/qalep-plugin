@@ -16,9 +16,10 @@ use Qalep\Classes\Core\Element;
 
 class Post extends Element {
 
+    public $block_options=array();
     public function __construct() {
 
-        $block_options = array(
+        $this->block_options = array(
             'label' => __('post', 'qalep'),
             'type' => 'post',
             'properties' => array(
@@ -30,7 +31,7 @@ class Post extends Element {
                 ),
                 __("post_meta_fileds", 'qalep') => array(
                     'input_type' => 'checkbox',
-                    "choices" => $this->generate_meta_keys(),
+                    "choices" => '',
                     'value' => array(),
                 ),
                 __("taxnomy", 'qalep') => array(
@@ -52,7 +53,7 @@ class Post extends Element {
         );
 
         //create the block
-        parent::__construct($block_options);
+        parent::__construct($this->block_options);
     }
 
     /*
@@ -80,7 +81,9 @@ class Post extends Element {
 
     function generate_meta_keys() {
         global $wpdb;
-        $post_type = 'qalep';
+        $props = json_decode(file_get_contents("php://input"));
+        $post_type = $props->post_type;
+
         $query = "
         SELECT DISTINCT($wpdb->postmeta.meta_key) 
         FROM $wpdb->posts 
@@ -92,8 +95,21 @@ class Post extends Element {
         AND $wpdb->postmeta.meta_key NOT RegExp '(^[0-9]+$)'
     ";
         $meta_keys = $wpdb->get_col($wpdb->prepare($query, $post_type));
+        $response=array_flip($meta_keys);
+        $this->block_options['properties']['post_meta_fileds']['value']=$response;
+        //print_r($this->block_options);
+        $result = \DI()->get('Qalep\Classes\Core\Input')->checkbox($response);
+//        $result='';
+//        foreach ($response as $key=>$val){
+//            $result .='<input type="checkbox" value="'.$val.'">'.$key;
+//        }
+//        $result .= '<label ng-repeat="(itemName,val) in models.selected.properties[key].choices">
+//        <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
+//        </label>';
         // set_transient('foods_meta_keys', $meta_keys, 60*60*24) # 1 Day Expiration
-        return array_flip($meta_keys);
+       // print_r(array_flip($meta_keys));
+       echo $result;
+        die();
     }
 
     function get_all_taxonomies() {

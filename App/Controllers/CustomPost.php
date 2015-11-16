@@ -17,10 +17,11 @@ class CustomPost extends Controller {
 
         DI()->get('Qalep\App\Controllers\ScriptLoader')->load_styles();
 
-        //
+        $post = DI()->get('Qalep\elements\post\post');
         add_action('add_meta_boxes', array(&$this, '_add_qalep_metaboxes'));
         add_action('admin_menu', array(&$this, 'register_options_menu_page'));
         add_action('admin_enqueue_scripts', array(&$this, 'qalep_remove_auto_save'));
+        add_action('wp_ajax_generate_meta_keys', array($post, 'generate_meta_keys'));
     }
 
     // pass data to bulider view page 
@@ -90,7 +91,6 @@ class CustomPost extends Controller {
      * @param array post get the current post
      * @return  array actions should be desplied under every template
      */
-
     static function qalep_action_row($actions, $post) {
         if ($post->post_type == "qalep") {
             //remove what you don't need

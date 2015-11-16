@@ -28,6 +28,7 @@ class ScriptLoader extends Controller {
         $this->scripts->addAdminScript(array('angular-drag', asset('assets.js', 'angular-drag.js')));
         $this->scripts->addAdminScript(array('qalep-jquery', asset('assets.js', 'qalep-jquery.js')));
         $this->scripts->addAdminScript(array('jquery-ui-dialog'));
+        $this->scripts->addAdminScript(array('angular-mocks','http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-mocks.js'));
 
         // wp_enqueue_script('color-picker', plugins_url().'/qalep/inputs/color_picker/js/picker.js');
         wp_enqueue_style('wp-color-picker');

@@ -37,14 +37,16 @@ myApp.filter('capitalize', function () {
     }
 });
 
-myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', '$sce', function ($scope, $rootScope, $http, $sce) {
+myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', '$sce', '$compile', function ($scope, $rootScope, $http, $sce, $compile) {
 
         // selected fruits
         $scope.selection = [];
 
         // toggle selection for a given fruit by name
-        $scope.toggleSelection = function toggleSelection(fruitName) {
-            var idx = $scope.selection.indexOf(fruitName);
+        $scope.toggleSelection = function toggleSelection(itemName, key) {
+             alert(itemName);
+
+            var idx = $scope.selection.indexOf(itemName);
 
             // is currently selected
             if (idx > -1) {
@@ -53,8 +55,8 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
             // is newly selected
             else {
-                $scope.selection.push(fruitName);
-                $scope.models.selected.properties['post_meta_fileds'].value = $scope.selection;
+                $scope.selection.push(itemName);
+                $scope.models.selected.properties[key].value = $scope.selection;
             }
         };
 
@@ -118,10 +120,23 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                     });
 
                 });
-
             }
+        }
+        $scope.generate = function (item) {
+            $('.post_meta_fileds span').html('');
+            $http({
+                method: "POST",
+                url: ajaxurl + '?action=generate_meta_keys',
+                data: {
+                    post_type: item
+                },
+            }).success(function (response) {
+                
+                $('.post_meta_fileds span').html($compile(response)($scope));
+                //$compile($('.post_meta_fileds span').content())($scope);
 
 
+            });
         }
 
         $scope.load_color = function () {
