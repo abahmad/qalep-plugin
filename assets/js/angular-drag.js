@@ -132,7 +132,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 },
             }).success(function (response) {
                 
-                $('.post_meta_fileds span').html($compile(response)($scope));
+                $('.post_meta_fileds').html($compile(response)($scope));
                 //$compile($('.post_meta_fileds span').content())($scope);
 
 
