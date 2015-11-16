@@ -10,6 +10,9 @@
  */
 
 // Make sure we can't call this file directly
+
+update_post_meta(26, 'price', 25);
+
 if (!defined('WPINC')) {
     die;
 }
