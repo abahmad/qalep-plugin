@@ -5,7 +5,7 @@ jQuery(document).ready(function () {
     var dialog = $('#qalep-dialog-view');
     $("#qalep-preview").on('click', function (e) {
         //var items = [];
-        $josn_item=$('.qalep-elements').find("input[name='item']");
+        $josn_item = $('.qalep-elements').find("input[name='item']");
         e.preventDefault();
         dialog.dialog({
             width: 1000,
@@ -32,7 +32,7 @@ jQuery(document).ready(function () {
     qalep_form.find($("#poststuff #post-body.columns-2")).css('marginLeft', '0');
 
 
-   
+
     //in option page
     $(".add-shortcode").click(function () {
         row = $('#shortcodes').find('tr:first').clone();

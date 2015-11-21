@@ -45,11 +45,21 @@
             <div ng-if="models.selected" class="box box-grey box-padding">
                 <h3>{{models.selected.label}}</h3>
                 <!--ng-init="draw(models.selected.properties)"-->
-                <table class="table table-bordered" >
 
-                    <tr ng-repeat="(key, val) in items">
+                <table class="table table-bordered" >
+                    <!--<tr class=><td span ="hd"></td></tr>-->
+<!--                    <tr  class ="hd"ng-repeat="(key, val) in res">
                         <td>{{key|capitalize}}</td>
-                        <td class="{{key}}"> <span ng-bind-html="val" compilehtml></span></td>
+
+                        <td class="{{key}}"> <span ng-bind-html="val" compilehtml>{{val}}</span>
+                        </td>
+                    </tr>-->
+                    <tr ng-repeat="(key, val) in items" >
+                        
+                        <td>{{key|capitalize}}</td>
+
+                        <td class="{{key}}" ng-init="current_key= key"> <span ng-bind-html="val" compilehtml></span>
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -76,7 +86,7 @@
                 <h3 class="title-blocks"><?php echo __('Drag Element Here', 'qalep'); ?> 
                     <a href="javascript:void(0)" ng-click="models.clear()" class="clear-div"><?php echo _e('Clear Template', 'qalep'); ?> </a>
                 </h3>
-                <pre>{{modelAsuser}}</pre>
+<!--                <pre>{{modelAsuser}}</pre>-->
 <!--                <pre>
                     {{modelAsJson}}
                 </pre>-->

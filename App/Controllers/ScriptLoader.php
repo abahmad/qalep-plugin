@@ -30,7 +30,6 @@ class ScriptLoader extends Controller {
         $this->scripts->addAdminScript(array('jquery-ui-dialog'));
         $this->scripts->addAdminScript(array('angular-mocks','http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-mocks.js'));
 
-        // wp_enqueue_script('color-picker', plugins_url().'/qalep/inputs/color_picker/js/picker.js');
         wp_enqueue_style('wp-color-picker');
         wp_enqueue_script('wp-color-picker');
 
@@ -57,8 +56,8 @@ class ScriptLoader extends Controller {
         wp_enqueue_style('stylesheet', asset('assets.css', 'stylesheet.css'));
         wp_enqueue_style('font-awesome.min', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
         //for counting element on front end
-        wp_enqueue_script("jquery.circle-diagram", plugins_url('/../assets/js/jquery.circle-diagram.js', __FILE__));
-        wp_enqueue_script("main", plugins_url('/../assets/js/main.js', __FILE__));
+//        wp_enqueue_script("jquery.circle-diagram", plugins_url('/../assets/js/jquery.circle-diagram.js', __FILE__));
+//        wp_enqueue_script("main", plugins_url('/../assets/js/main.js', __FILE__));
     }
 
     static function get_current_lang() {

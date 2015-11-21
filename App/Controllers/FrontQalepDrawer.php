@@ -13,8 +13,6 @@ class FrontQalepDrawer {
 
     public function __construct($items) {
         echo get_header();
-        echo the_content();
-        echo get_the_content();
         if (!empty($items)) {
             foreach ($items as $item) {
                 $this->draw($item);

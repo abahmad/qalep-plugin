@@ -5,6 +5,7 @@ window.qalep_elements = [];
 window.elements_template = [];
 
 
+
 myApp.directive('compilehtml', ["$compile", "$parse", function ($compile, $parse) {
         return {
             restrict: 'A',
@@ -39,12 +40,18 @@ myApp.filter('capitalize', function () {
 
 myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', '$sce', '$compile', function ($scope, $rootScope, $http, $sce, $compile) {
 
+        $scope.items = {};
         // selected fruits
         $scope.selection = [];
 
-        // toggle selection for a given fruit by name
-        $scope.toggleSelection = function toggleSelection(itemName, key) {
-            alert(itemName);
+        $scope.current_key = "hoda";
+        // toggle selection for  given fruit by name
+        $scope.toggleSelection = function toggleSelection($event, key) {
+            alert(key);
+            console.log($scope.models.selected.properties);
+            var itemName = angular.element($event.currentTarget).val();
+            // alert(ele);
+            // console.log(ele);
 
             var idx = $scope.selection.indexOf(itemName);
 
@@ -104,7 +111,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             return JSON.parse(angular.toJson(_item));
         }
         $scope.draw = function (properties) {
-            $scope.items = {};
+
             if (properties) {
                 $http({
                     method: "POST",
@@ -123,6 +130,21 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             }
         }
         $scope.generate = function (item) {
+
+//            var html = '<div>{{model.name}}</div>'
+//
+           // var scope = $rootScope.$new();
+//
+//            scope.model = {name: 'MyCtrl1'};
+//            //alert(scope.model.name);
+//            var e3 = $compile(html)(scope);
+//            scope.$apply();
+//
+//            $('.post_meta_fileds span').append(e3[0]);
+
+
+            $scope.res = {};
+           // var scope = $rootScope;
             $('.post_meta_fileds span').html('');
             $http({
                 method: "POST",
@@ -132,8 +154,17 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 },
             }).success(function (response) {
 
-                $('.post_meta_fileds span').html(response);
-                $compile($('.post_meta_fileds span > *'))($scope);
+
+                // $scope.mykey = $sce.trustAsHtml(response);
+                // angular.forEach(response, function (value, key) {
+//                      var temp= $sce.trustAsHtml('<input type="checkbox" value="1" ng-click="toggleSelection(itemName,key)">');
+//                      $scope.items['tempArr']=temp;
+                //   });
+                //post_meta_fileds span span
+                $('.post_meta_fileds span ').html((response));
+                $compile($('.post_meta_fileds span >*'))($scope);
+//                $scope.$apply();
+
 
 
             });
@@ -216,10 +247,10 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
         }, true);
 
-        $scope.$watch('selection', function (user) {
-
-            $scope.modelAsuser = angular.toJson(user, true);
-
-        }, true);
+//        $scope.$watch('current_key', function (current_key) {
+//
+//            $scope.modelAsuser = current_key;
+//
+//        }, true);
 
     }]);

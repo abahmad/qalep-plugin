@@ -26,14 +26,16 @@ class Input {
 
     public function checkbox($choices = '') {
         $result = '';
-       // $result .= '<input type="checkbox"   ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)">hoda<input type="checkbox">hi';
-       // $result .= '<input type="checkbox"  ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)">assma';
+//        $result .= '{{models.selected.properties}}<label  ng-repeat="(itemName,val) in models.selected.properties[key].choices">
+//        <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
+//        </label>';
+        
         if ($choices != '') {
             foreach ($choices as $key => $val) {
-                $result .= '<input type="checkbox" value="' . $key . '" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection('.$key.',key)">' . $key;
+                $result .= '<label>{{current_key}}<input type="checkbox" value="' . $key . '" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection($event,current_key)">' . $key . '</label>';
             }
         } else {
-            $result .= '<label ng-repeat="(itemName,val) in models.selected.properties[key].choices">
+            $result .= '<label  ng-repeat="(itemName,val) in models.selected.properties[key].choices">
         <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
         </label>';
         }

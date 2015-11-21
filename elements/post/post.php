@@ -96,21 +96,31 @@ class Post extends Element {
     ";
         $meta_keys = $wpdb->get_col($wpdb->prepare($query, $post_type));
         $response=array_flip($meta_keys);
-        $this->block_options['properties']['post_meta_fileds']['value']=$response;
+//        $result='';
+//         foreach ($response as $key => $val) {
+//             $result .='<input type="checkbox" value="' . $key . '" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection($event,\'testClick\')">';
+//         }
+       // $this->block_options['properties']['post_meta_fileds']['value']=$response;
         //print_r($this->block_options);
-        $result = \DI()->get('Qalep\Classes\Core\Input')->checkbox($response);
+//        $result='{{models.selected.properties[key].choices}}<label  ng-repeat="(itemName,val) in models.selected.properties[key].choices">
+//        <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
+//        </label>';
+      $result = \DI()->get('Qalep\Classes\Core\Input')->checkbox($response);
 //        $result='';
 //        foreach ($response as $key=>$val){
 //            $result .='<input type="checkbox" value="'.$val.'">'.$key;
 //        }
-//        $result .= '<label ng-repeat="(itemName,val) in models.selected.properties[key].choices">
-//        <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
-//        </label>';
+//        $result=array();
+//        foreach ($response as $key=>$val){
+//            $result[$key] ="<input  type='checkbox' ng-click='toggleSelection(itemName,key)'  ng-checked='models.selected.properties[key].value' ng-model='models.selected.properties[key]' />";
+//        }
         // set_transient('foods_meta_keys', $meta_keys, 60*60*24) # 1 Day Expiration
        // print_r(array_flip($meta_keys));
-       echo $result;
-        die();
-    }
+      // echo json_encode($result);
+      echo $result;
+       die();
+       }
+      
 
     function get_all_taxonomies() {
         $taxonomy_objects = get_object_taxonomies('qalep');
