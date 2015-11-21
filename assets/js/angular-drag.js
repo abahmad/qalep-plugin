@@ -44,7 +44,8 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
         // toggle selection for a given fruit by name
         $scope.toggleSelection = function toggleSelection(itemName, key) {
-            alert(itemName);
+            console.log($(itemName.currentTarget).parent().parent().parent().attr('class'));
+            console.log(key);
 
             var idx = $scope.selection.indexOf(itemName);
 
@@ -131,7 +132,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                     post_type: item
                 },
             }).success(function (response) {
-                console.log(response);
+                //console.log(response);
 
                 $('.post_meta_fileds span').html(response);
 

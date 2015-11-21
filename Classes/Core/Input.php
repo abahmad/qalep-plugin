@@ -30,14 +30,14 @@ class Input {
        // $result .= '<input type="checkbox"  ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)">assma';
         if ($choices != '') {
             foreach ($choices as $key => $val) {
-                $result .= '<input type="checkbox"  value="' . $val . '" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)">' . $key;
+                $result .= '<label><input type="checkbox" value="' . $val . '"  ng-click="toggleSelection($event,key)">' . $key  . '</label>';
             }
         } else {
             $result .= '<label ng-repeat="(itemName,val) in models.selected.properties[key].choices">
         <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
         </label>';
         }
-
+        
         return $result;
     }
 
