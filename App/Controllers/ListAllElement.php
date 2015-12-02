@@ -75,6 +75,44 @@ class ListAllElement {
         return $elements_folder;
     }
 
+    public function register_shortcodes() {
+        $theme_sc = get_template_directory() . "/qalep/shortcodes";
+        $plugin_sc = QALEP_DIR_PATH . 'shortcodes';
+
+
+
+        if (file_exists($theme_sc)) {
+            $tsca = array_slice(scandir($theme_sc), 2);
+            $tsc = array_map(function($v) use ($theme_sc) {
+                return $theme_sc . '/' . $v;
+            }, $tsca);
+        }
+
+        if (file_exists($plugin_sc)) {
+            $psca = array_slice(scandir($plugin_sc), 2);
+
+            foreach ($psca as $k => $v) {
+                if (in_array($v, $tsca)) {
+                    unset($psca[$k]);
+                }
+            }
+
+            $psc = array_map(function($v) use ($plugin_sc) {
+                return $plugin_sc . '/' . $v;
+            }, $psca);
+        }
+
+        if (isset($tsc) && isset($psc)) {
+            $shortcodes = array_merge($psc, $tsc);
+        } else {
+            $shortcodes = $psc;
+        }
+        foreach ($shortcodes as $shortcode) {
+            $sc_file = include $shortcode;
+            DI()->get('Qalep\Classes\Core\Shortcode')->add($sc_file);
+        }
+    }
+
     /**
      * Retrieve elements name from a file.
      * Searches in elements folder for elements
@@ -132,6 +170,18 @@ class ListAllElement {
                 echo "<script>window.qalep_elements.push({label:'$item',type:'shortcode',value:'$item'});</script>";
             }
         }
+
+        //Looking UP Shortcodes
+        $this->register_shortcodes();
+        // Fetching custom shortcodes
+        $shortcodes = DI()->get('Qalep\Classes\Core\Shortcode')->get();
+
+        foreach ($shortcodes as $registered_shortcode_array) {
+            foreach ($registered_shortcode_array as $shortcode_name => $shortcode_params) {
+                echo "<script>window.qalep_elements.push(" . json_encode($shortcode_params) . ");</script>";
+            }
+        }
+
         //get short codes from namozaghk plugin
         if (is_plugin_active('mnbaa_namozagk/mnbaa_namozagk.php')) {
             if (class_exists('Form')) {
