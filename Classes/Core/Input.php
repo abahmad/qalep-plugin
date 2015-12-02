@@ -24,22 +24,20 @@ class Input {
         return $result;
     }
 
-    public function checkbox($choices = '') {
-        $result = '';
-//        $result .= '{{models.selected.properties}}<label  ng-repeat="(itemName,val) in models.selected.properties[key].choices">
-//        <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
-//        </label>';
+    public function checkbox() {
 
-        if ($choices != '') {
-            foreach ($choices as $key => $val) {
-                $result .= '<label><input type="checkbox" value="' . $val . '"  ng-click="toggleSelection($event,key)">' . $key . '</label>';
-            }
-        } else {
-            $result .= '<label  ng-repeat="(itemName,val) in models.selected.properties[key].choices">
+        $result .= '<label  ng-repeat="(itemName,val) in models.selected.properties[key].choices">
         <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
         </label>';
-        }
 
+
+        return $result;
+    }
+
+    function custom_checkboox() {
+        $result = '';
+        $result .= '<div  ng-repeat="(itemName,val) in models.selected.properties[key].choices" class="qalep-{{itemName}}" style="display:none;">
+       <label ng-repeat="(metaKey,metaVal) in models.selected.properties[key].choices[itemName]"> <input type="checkbox"  value="{{metaVal}}" ng-checked="models.selected.properties[key].value.indexOf(metaKey) > -1" ng-click="toggleSelection(metaKey,key)"> {{metaKey}}</label> </div>';
         return $result;
     }
 
@@ -59,7 +57,7 @@ class Input {
     function select() {
         //
         $str = '<select 
-                ng-init = "__model = models.selected.properties[key]; generate(__model.value)" ng-change="generate(__model.value)"
+                ng-init = "__model = models.selected.properties[key];" ng-change="showResult(__model.value)"
                ng-model="__model.value"
                ng-options="choice for choice in __model.choices" 
                

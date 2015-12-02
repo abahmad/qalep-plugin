@@ -41,8 +41,14 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             alert("kkk");
         
         }
+        //show sutibale result
+        $scope.showResult = function showResult(key) {
+             $('div[class^="qalep-"]').hide();
+            $('.qalep-'+key).css('display','block');
+            
+        }
         // toggle selection for  given fruit by name
-        $scope.toggleSelection = function toggleSelection($event, key) {
+        $scope.toggleSelection0 = function toggleSelection0($event, key) {
             var item=angular.element($event.currentTarget);
             if(item.checked){
                 alert("true");
@@ -65,6 +71,30 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 $scope.models.selected.properties[itemKey].value = $scope.selection;
             }
         };
+        $scope.toggleSelection = function toggleSelection(itemName, key) {
+//            var item=angular.element($event.currentTarget);
+//            if(item.checked){
+//                alert("true");
+//                
+//                
+//            }
+//            var itemKey=$($event.currentTarget).parent().parent().parent().attr('class');
+//           // alert(itemKey)
+//            //console.log($scope.models.selected.properties);
+//            var itemName = angular.element($event.currentTarget).val();
+            var idx = $scope.selection.indexOf(itemName);
+            // is currently selected
+            if (idx > -1) {
+                $scope.selection.splice(idx, 1);
+            }
+
+            // is newly selected
+            else {
+                $scope.selection.push(itemName);
+                $scope.models.selected.properties[key].value = $scope.selection;
+            }
+        };
+        
         $scope.models = {
             selected: null,
             templates: window.qalep_elements,
