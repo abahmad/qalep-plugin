@@ -1,11 +1,7 @@
 
 var myApp = angular.module('myApp', ['dndLists', 'ngSanitize']);
-
 window.qalep_elements = [];
 window.elements_template = [];
-
-
-
 myApp.directive('compilehtml', ["$compile", "$parse", function ($compile, $parse) {
         return {
             restrict: 'A',
@@ -21,7 +17,6 @@ myApp.directive('compilehtml', ["$compile", "$parse", function ($compile, $parse
             }
         }
     }]);
-
 //add template for each element 
 myApp.run(function ($templateCache) {
     elements = window.elements_template;
@@ -37,24 +32,28 @@ myApp.filter('capitalize', function () {
         });
     }
 });
-
 myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', '$sce', '$compile', function ($scope, $rootScope, $http, $sce, $compile) {
 
         $scope.items = {};
         // selected fruits
         $scope.selection = [];
-
-        $scope.current_key = "hoda";
+        $scope.toggleSelection = function SetValue() {
+            alert("kkk");
+        
+        }
         // toggle selection for  given fruit by name
         $scope.toggleSelection = function toggleSelection($event, key) {
-            alert(key);
-            console.log($scope.models.selected.properties);
+            var item=angular.element($event.currentTarget);
+            if(item.checked){
+                alert("true");
+                
+                
+            }
+            var itemKey=$($event.currentTarget).parent().parent().parent().attr('class');
+           // alert(itemKey)
+            //console.log($scope.models.selected.properties);
             var itemName = angular.element($event.currentTarget).val();
-            // alert(ele);
-            // console.log(ele);
-
             var idx = $scope.selection.indexOf(itemName);
-
             // is currently selected
             if (idx > -1) {
                 $scope.selection.splice(idx, 1);
@@ -63,10 +62,9 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             // is newly selected
             else {
                 $scope.selection.push(itemName);
-                $scope.models.selected.properties[key].value = $scope.selection;
+                $scope.models.selected.properties[itemKey].value = $scope.selection;
             }
         };
-
         $scope.models = {
             selected: null,
             templates: window.qalep_elements,
@@ -78,12 +76,10 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 window.qalep_items = []
                 this.dropzones.A = [];
                 $scope.items = {};
-
             }
 
 
         };
-
         $scope.getInclude = function (_item) {
             return _item.type + '.html';
         }
@@ -98,7 +94,6 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             var now = new Date()
                     .getTime() / 1000;
             var s = parseInt(now, 10);
-
             return (get_as_float) ? now : (Math.round((now - s) * 1000) / 1000) + ' ' + s;
         }
 
@@ -106,7 +101,6 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
         $scope.changeToRandId = function () {
             return $scope.microtime();
         };
-
         $scope.convertItemToObj = function (_item) {
             return JSON.parse(angular.toJson(_item));
         }
@@ -125,7 +119,6 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                     angular.forEach(response, function (value, key) {
                         $scope.items[key] = $sce.trustAsHtml(value);
                     });
-
                 });
             }
         }
@@ -133,7 +126,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
 //            var html = '<div>{{model.name}}</div>'
 //
-           // var scope = $rootScope.$new();
+            // var scope = $rootScope.$new();
 //
 //            scope.model = {name: 'MyCtrl1'};
 //            //alert(scope.model.name);
@@ -144,7 +137,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
 
 
             $scope.res = {};
-           // var scope = $rootScope;
+            // var scope = $rootScope;
             $('.post_meta_fileds span').html('');
             $http({
                 method: "POST",
@@ -153,6 +146,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                     post_type: item
                 },
             }).success(function (response) {
+
 
 
                 // $scope.mykey = $sce.trustAsHtml(response);
@@ -178,13 +172,11 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 // a callback to fire whenever the color changes to a valid color
                 change: function (event, ui) {
                     var hexcolor = $(this).wpColorPicker('color');
-
                     //alert(hexcolor);
 
 
                     //  console.log($(".color-field").val());
                     $(".color-field").val(hexcolor).trigger('input');
-
                 },
                 // a callback to fire when the input is emptied or an invalid color
                 clear: function () {
@@ -196,7 +188,6 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 palettes: true
             };
             $('.color-field').wpColorPicker(myOptions);
-
         }
 
         $scope.uploadImg = function ($event, $index) {
@@ -212,12 +203,8 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 tb_remove();
                 $("#image_ID").val(imgurl).trigger('input');
                 $scope.$apply();
-
-
             };
-
             return;
-
         }
 
         $scope.removeImg = function ($event) {
@@ -226,7 +213,6 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             this_btn.siblings('.custom_upload_image').val('');
             this_btn.siblings('.custom_preview_image').attr('src', '');
             return false;
-
         }
 
         $scope.$watch('models.selected', function (model) {
@@ -240,13 +226,9 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 model.value = '[' + model.shortcode_base + ' ' + sc_params + ']';
             }
         }, true);
-
         $scope.$watch('models.dropzones', function (model) {
             $scope.modelAsJson = angular.toJson(model.A, true);
-
-
         }, true);
-
 //        $scope.$watch('current_key', function (current_key) {
 //
 //            $scope.modelAsuser = current_key;

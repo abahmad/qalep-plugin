@@ -29,10 +29,10 @@ class Input {
 //        $result .= '{{models.selected.properties}}<label  ng-repeat="(itemName,val) in models.selected.properties[key].choices">
 //        <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
 //        </label>';
-        
+
         if ($choices != '') {
             foreach ($choices as $key => $val) {
-                $result .= '<label>{{current_key}}<input type="checkbox" value="' . $key . '" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection($event,current_key)">' . $key . '</label>';
+                $result .= '<label><input type="checkbox" value="' . $val . '"  ng-click="toggleSelection($event,key)">' . $key . '</label>';
             }
         } else {
             $result .= '<label  ng-repeat="(itemName,val) in models.selected.properties[key].choices">
