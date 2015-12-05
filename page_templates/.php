@@ -6,7 +6,7 @@
         * in Twenty Twelve consists of a page content area for adding text, images, video --
         *
         * @package WordPress
-        * @subpackage Twenty Thirteen
+        * @subpackage Twenty Fifteen
 
         */?>
         <?php ob_start();?><!-- <mnbaa_SEPERATOR> []</mnbaa_SEPERATOR>--><?php ob_clean();?><?php do_shortcode("[qalep template id=]"); ?>

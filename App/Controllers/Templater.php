@@ -56,7 +56,7 @@ class Templater extends Controller {
         add_filter('template_include', array($this, 'view_project_template'));
 
         //save post
-        add_action('save_post', array($this, 'save_template_data'));
+        add_action('save_post_qalep', array($this, 'save_template_data'));
 
         //clone the template
         add_action('admin_action_rd_duplicate_post', array($this, 'qalep_clone_template'));

@@ -92,8 +92,12 @@ class ListAllElement {
             $psca = array_slice(scandir($plugin_sc), 2);
 
             foreach ($psca as $k => $v) {
-                if (in_array($v, $tsca)) {
-                    unset($psca[$k]);
+
+                if (isset($tsca)) {
+
+                    if (in_array($v, $tsca)) {
+                        unset($psca[$k]);
+                    }
                 }
             }
 
@@ -109,7 +113,9 @@ class ListAllElement {
         }
         foreach ($shortcodes as $shortcode) {
             $sc_file = include $shortcode;
-            DI()->get('Qalep\Classes\Core\Shortcode')->add($sc_file);
+            if (!empty($sc_file) && is_array($sc_file)) {
+                DI()->get('Qalep\Classes\Core\Shortcode')->add($sc_file);
+            }
         }
     }
 
@@ -176,70 +182,72 @@ class ListAllElement {
         // Fetching custom shortcodes
         $shortcodes = DI()->get('Qalep\Classes\Core\Shortcode')->get();
 
-        foreach ($shortcodes as $registered_shortcode_array) {
-            foreach ($registered_shortcode_array as $shortcode_name => $shortcode_params) {
-                echo "<script>window.qalep_elements.push(" . json_encode($shortcode_params) . ");</script>";
-            }
-        }
-
-        //get short codes from namozaghk plugin
-        if (is_plugin_active('mnbaa_namozagk/mnbaa_namozagk.php')) {
-            if (class_exists('Form')) {
-                $form = \DI()->get('Form');
-                $forms = $form::find_all();
-                foreach ($forms as $form) {
-                    $val = "[Mnbaa Namozagk Form ID=$form->id]";
-                    echo "<script>window.qalep_elements.push({label:'$val',type:'shortcode',value:'$val'});</script>";
+        if (!empty($shortcodes) && is_array($shortcodes)) {
+            foreach ($shortcodes as $registered_shortcode_array) {
+                foreach ($registered_shortcode_array as $shortcode_name => $shortcode_params) {
+                    echo "<script>window.qalep_elements.push(" . json_encode($shortcode_params) . ");</script>";
                 }
             }
         }
 
-        //get short codes from woocommerce plugin
-        if (is_plugin_active('woocommerce/woocommerce.php')) {
-            $wooCart = array(
-                'label' => __('WooCommerce Cart', 'qalep'),
-                'type' => 'shortcode',
-                'shortcode_base' => 'woocommerce_cart'
-            );
-            $wooCheckout = array(
-                'label' => __('WooCommerce Checkout', 'qalep'),
-                'type' => 'shortcode',
-                'shortcode_base' => 'woocommerce_checkout'
-            );
-            $wooOrderTracking = array(
-                'label' => __('WooCommerce Order Tracking', 'qalep'),
-                'type' => 'shortcode',
-                'shortcode_base' => 'woocommerce_order_tracking'
-            );
-            $wooMyAccount = array(
-                'label' => __('WooCommerce My Account', 'qalep'),
-                'type' => 'shortcode',
-                'shortcode_base' => 'woocommerce_my_account',
-                "properties" => array(
-                    __("order_count", 'qalep') => array(
-                        "input_type" => "number",
-                        "value" => 15
-                    )
-                )
-            );
-            echo "<script>window.qalep_elements.push(" . json_encode($wooCart) . ");</script>";
-            echo "<script>window.qalep_elements.push(" . json_encode($wooCheckout) . ");</script>";
-            echo "<script>window.qalep_elements.push(" . json_encode($wooOrderTracking) . ");</script>";
-            echo "<script>window.qalep_elements.push(" . json_encode($wooMyAccount) . ");</script>";
-        }
-        // meta slider plugin shortcode
-        if (is_plugin_active('ml-slider/ml-slider.php')) {
-            $args = array(
-                'post_type' => 'ml-slider',
-                'post_status' => 'publish',
-                'order' => 'ASC',
-            );
-            $slider_shortcodes = get_posts($args);
-            foreach ($slider_shortcodes as $slider) {
-                $val = "[metaslider id=$slider->ID]";
-                echo "<script>window.qalep_elements.push({label:'$val',type:'shortcode',value:'$val'});</script>";
-            }
-        }
+        //get short codes from namozaghk plugin
+        /* if (is_plugin_active('mnbaa_namozagk/mnbaa_namozagk.php')) {
+          if (class_exists('Form')) {
+          $form = \DI()->get('Form');
+          $forms = $form::find_all();
+          foreach ($forms as $form) {
+          $val = "[Mnbaa Namozagk Form ID=$form->id]";
+          echo "<script>window.qalep_elements.push({label:'$val',type:'shortcode',value:'$val'});</script>";
+          }
+          }
+          }
+
+          //get short codes from woocommerce plugin
+          if (is_plugin_active('woocommerce/woocommerce.php')) {
+          $wooCart = array(
+          'label' => __('WooCommerce Cart', 'qalep'),
+          'type' => 'shortcode',
+          'shortcode_base' => 'woocommerce_cart'
+          );
+          $wooCheckout = array(
+          'label' => __('WooCommerce Checkout', 'qalep'),
+          'type' => 'shortcode',
+          'shortcode_base' => 'woocommerce_checkout'
+          );
+          $wooOrderTracking = array(
+          'label' => __('WooCommerce Order Tracking', 'qalep'),
+          'type' => 'shortcode',
+          'shortcode_base' => 'woocommerce_order_tracking'
+          );
+          $wooMyAccount = array(
+          'label' => __('WooCommerce My Account', 'qalep'),
+          'type' => 'shortcode',
+          'shortcode_base' => 'woocommerce_my_account',
+          "properties" => array(
+          __("order_count", 'qalep') => array(
+          "input_type" => "number",
+          "value" => 15
+          )
+          )
+          );
+          echo "<script>window.qalep_elements.push(" . json_encode($wooCart) . ");</script>";
+          echo "<script>window.qalep_elements.push(" . json_encode($wooCheckout) . ");</script>";
+          echo "<script>window.qalep_elements.push(" . json_encode($wooOrderTracking) . ");</script>";
+          echo "<script>window.qalep_elements.push(" . json_encode($wooMyAccount) . ");</script>";
+          }
+          // meta slider plugin shortcode
+          if (is_plugin_active('ml-slider/ml-slider.php')) {
+          $args = array(
+          'post_type' => 'ml-slider',
+          'post_status' => 'publish',
+          'order' => 'ASC',
+          );
+          $slider_shortcodes = get_posts($args);
+          foreach ($slider_shortcodes as $slider) {
+          $val = "[metaslider id=$slider->ID]";
+          echo "<script>window.qalep_elements.push({label:'$val',type:'shortcode',value:'$val'});</script>";
+          }
+          } */
     }
 
     /**

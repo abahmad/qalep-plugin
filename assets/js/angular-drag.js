@@ -254,6 +254,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                     }
                 });
                 model.value = '[' + model.shortcode_base + ' ' + sc_params + ']';
+                console.log(model.value);
             }
         }, true);
         $scope.$watch('models.dropzones', function (model) {
