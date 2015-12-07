@@ -55,10 +55,10 @@
                         </td>
                     </tr>-->
                     <tr ng-repeat="(key, val) in items" >
-                        
+
                         <td>{{key|capitalize}}</td>
 
-                        <td class="{{key}}" ng-init="current_key= key"> <span ng-bind-html="val" compilehtml></span>
+                        <td class="{{key}}" ng-init="current_key = key"> <span ng-bind-html="val" compilehtml></span>
                         </td>
                     </tr>
                 </table>
@@ -105,6 +105,69 @@
 
 
         </div>
+
+        <div class="set-template-for">
+            <div class="form-group">
+                <select name="assign-template-to" class="form-control">
+                    <label>Assign template to</label>
+                    <optgroup label="Default Templates">
+                        <option value="qalep-page">Page Template</option>
+                        <option value="qalep-front-page">Front Page Template</option>
+                        <option value="qalep-index">Blog Index Template</option>
+                        <option value="qalep-category">Blog Category Template</option>
+                        <option value="qalep-archive">Blog Archive Template</option>
+                        <option value="qalep-search">Blog Search page Template</option>
+                    </optgroup>
+                    <optgroup label="Post / Custom post types">
+                        <?php
+                        $types = get_post_types(array('public' => true));
+                        foreach ($types as $type) {
+                            if (!empty($type)) {
+                                ?>
+                                <option value="qalep-single-<?php echo $type; ?>"><?php echo ucfirst($type) ?> Single Template</option>
+                                <option value="qalep-archive-<?php echo $type; ?>"><?php echo ucfirst($type); ?> Archive Template</option>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </optgroup>
+
+                    <optgroup label="Taxonamies">
+                        <?php
+                        $taxonomies = get_taxonomies(array(
+                            'public' => true
+                        ));
+                        foreach ($taxonomies as $taxonomy) {
+                            // need the actual slug?  this will do it...
+                            if (!empty($taxonomy)) {
+                                // you'll probably want to do something else.
+                                ?>
+                                <option value="taxonamy-<?php echo $taxonomy; ?>"><?php echo ucfirst($taxonomy) ?> Template</option>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </optgroup>
+
+                    <optgroup label="Categories / Hierarchical Taxonamy Terms">
+                        <?php
+                        foreach ($taxonomies as $taxonomy) {
+                            if (!empty($taxonomy)) {
+                                echo '<optgroup label="&nbsp;&nbsp;&nbsp;' . ucfirst($taxonomy) . '">';
+                                $s1 = preg_replace('/<select(.+)>/i', '', wp_dropdown_categories('taxonomy=' . $taxonomy . '&hide_empty=0&hierarchical=1&value_field=slug&echo=0'));
+                                $s2 = preg_replace('/value="([^\"]+)"/i', 'value="qalep-taxonamy-'.$taxonomy.'-$1"', $s1);
+                                $s3 = str_replace('</select>', '', $s2);
+                                echo $s3;
+                                echo '</optgroup>';
+                            }
+                        }
+                        ?>
+                    </optgroup>
+
+                </select>
+            </div>
+        </div>
+
         <div class="qalep-btns">
             <?php
             submit_button($text = __('Save', 'qalep'), $type = 'primary', $name = 'publish', $wrap = true, $other_attributes = NULL);
