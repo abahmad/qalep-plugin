@@ -1,9 +1,9 @@
 <?php
-
 /*
  * deal with  qalep as shortcode 
  * @package Qalep\App\Controllers
  */
+
 namespace Qalep\App\Controllers;
 
 use Qalep\Classes\Core\Controller;
@@ -14,7 +14,6 @@ class ShortCode extends Controller {
         parent::__construct();
 //        add_action('media_buttons_context', array(&$this, 'add_shortcode_button'));
 //        add_action('admin_footer', array(&$this, 'add_inline_popup_content'));
-        
     }
 
     public function add_shortcode_button($context) {
@@ -60,6 +59,7 @@ class ShortCode extends Controller {
         </div>
         <?php
     }
+
 //
 //    //draw shortcode template
     static public function draw_qalep_template($atts) {
@@ -84,7 +84,7 @@ class ShortCode extends Controller {
             update_option('qalep_shortcode', $shortcode);
         }
         $shortcodes = $this->get_user_shortcode();
-        $this->view('qalep_options',array("shortcodes"=>$shortcodes));
+        $this->view('qalep_options', array("shortcodes" => $shortcodes));
         //ViewLoader::load_view();
     }
 

@@ -6,10 +6,10 @@ if (is_plugin_active('mnbaa_namozagk/mnbaa_namozagk.php')) {
         $forms = $form::find_all();
 
         if (count($forms > 0)) {
-            $id = array();
+            $ids = array();
 
             foreach ($forms as $form) {
-                $id[] = array(
+                $ids[] = array(
                     'value' => $form->id,
                     'label' => $form->id
                 );

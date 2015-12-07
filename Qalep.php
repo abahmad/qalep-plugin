@@ -111,6 +111,7 @@ class Qalep {
         //
         
         DI()->get("Qalep\App\Controllers\Templater");
+        DI()->get("Qalep\App\Controllers\CutsomTemplate");
         DI()->get("Qalep\App\Controllers\ShortCode");
         //
 

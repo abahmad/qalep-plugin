@@ -135,7 +135,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             return JSON.parse(angular.toJson(_item));
         }
         $scope.draw = function (properties) {
-
+        $scope.items={};
             if (properties) {
                 $http({
                     method: "POST",

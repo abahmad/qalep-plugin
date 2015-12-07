@@ -25,7 +25,8 @@ class Input {
     }
 
     public function checkbox() {
-
+        
+        $result='';
         $result .= '<label  ng-repeat="(itemName,val) in models.selected.properties[key].choices">
         <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
         </label>';
