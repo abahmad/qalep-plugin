@@ -110,6 +110,7 @@
             <div class="form-group">
                 <select name="assign-template-to" class="form-control">
                     <label>Assign template to</label>
+                    <option label="" value ="">None</option>
                     <optgroup label="Default Templates">
                         <option value="qalep-page">Page Template</option>
                         <option value="qalep-front-page">Front Page Template</option>
@@ -150,9 +151,11 @@
                     </optgroup>
 
                     <optgroup label="Categories / Hierarchical Taxonamy Terms">
+                        
                         <?php
                         foreach ($taxonomies as $taxonomy) {
                             if (!empty($taxonomy)) {
+                               
                                 echo '<optgroup label="&nbsp;&nbsp;&nbsp;' . ucfirst($taxonomy) . '">';
                                 $s1 = preg_replace('/<select(.+)>/i', '', wp_dropdown_categories('taxonomy=' . $taxonomy . '&hide_empty=0&hierarchical=1&value_field=slug&echo=0'));
                                 $s2 = preg_replace('/value="([^\"]+)"/i', 'value="qalep-taxonamy-'.$taxonomy.'-$1"', $s1);

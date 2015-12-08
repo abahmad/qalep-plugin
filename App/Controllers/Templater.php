@@ -1,8 +1,10 @@
 <?php
+
 /*
  * create template and assign  it to page templates of wordpress
  * @package Qalep\App\Controllers
  */
+
 namespace Qalep\App\Controllers;
 
 use Qalep\Classes\Core\Controller;
@@ -68,7 +70,7 @@ class Templater extends Controller {
     /**
      * Adds our template to the pages cache in order to trick WordPress
      * into thinking the template file exists where it doens't really exist.
-     *@param array atts
+     * @param array atts
      */
     public function _register_project_templates($atts) {
         $template_folder = plugin_dir_path(__DIR__) . '../page_templates';
@@ -143,13 +145,18 @@ class Templater extends Controller {
 
     public function qalep_template_file($args = array(), $post) {
 
+        $custom_template = $_POST['assign-template-to'];
         //Force Direct Filewrites For Upgrades
         add_filter('filesystem_method', create_function('$a', 'return "direct";'));
 
         //add post meta
         $meta_id = update_post_meta($post->ID, 'template_element', $args);
         $template_name = $post->post_title;
-        $just_filename = $post->post_name;
+        if ($custom_template !== '') {
+            $just_filename = $custom_template;
+        } else {
+            $just_filename = $post->post_name;
+        }
         $theme_name = wp_get_theme();
         $content = '<?php /*
         * Template Name: ' . $template_name . '
@@ -386,7 +393,7 @@ class Templater extends Controller {
 
     function qalep_get_value($props, $key_name) {
         $key = $props->$key_name;
-        $value=$key->value;
+        $value = $key->value;
         return $value;
     }
 

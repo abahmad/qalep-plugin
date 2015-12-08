@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-$size = $props->size;
+//$size = $props->size;
 $image = $props->image;
 $template = $props->template;
 $template_value = $template->value;

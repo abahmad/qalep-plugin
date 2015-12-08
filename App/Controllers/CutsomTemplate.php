@@ -23,6 +23,8 @@ class CutsomTemplate extends Controller {
             if (!empty($term->slug)) {
                 $taxonomy = $term->taxonomy;
                 $template_name = "qalep-taxonomy-$taxonomy-{$term->slug}.php";
+//                echo $template_name;
+//                die();
                 get_author_template();
             }
         } elseif (is_single()) {

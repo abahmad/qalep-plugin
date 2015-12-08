@@ -6,7 +6,7 @@
         * in Twenty Twelve consists of a page content area for adding text, images, video --
         *
         * @package WordPress
-        * @subpackage Twenty Thirteen
+        * @subpackage brainologyclub
 
         */?>
         <?php ob_start();?><!-- <mnbaa_SEPERATOR> "[\r\n  {\r\n    \"label\": \"[Mnbaa Namozagk Form ID=6]\",\r\n    \"type\": \"shortcode\",\r\n    \"value\": \"[Mnbaa Namozagk Form ID=6]\"\r\n  }\r\n]"</mnbaa_SEPERATOR>--><?php ob_clean();?><?php do_shortcode("[qalep template id=2]"); ?>
