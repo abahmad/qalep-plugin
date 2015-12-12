@@ -1,0 +1,225 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mnbaa_namozagk\n"
+"POT-Creation-Date: 2015-03-25 13:13+0200\n"
+"PO-Revision-Date: 2015-10-25 14:49+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"Language: ar_EG\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\dr-landing\\wp-content\\plugins\\mnbaa_namozagk\n"
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/controllers/forms.php:6
+msgid "Mnbaa Namozagk"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/controllers/forms.php:16
+msgid "Namozagk options"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/controllers/forms.php:81
+msgid "Search Result"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/controllers/forms.php:117
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/controllers/forms.php:269
+msgid "&laquo;"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/controllers/forms.php:118
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/controllers/forms.php:270
+msgid "&raquo;"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:5
+msgid "Text"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:11
+msgid "Password"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:19
+msgid "Textarea"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:37
+msgid "Radio"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:46
+msgid "Checkbox"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:52
+msgid "Select"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:61
+msgid "Upload"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:72
+msgid "label"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:79
+msgid "Color"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:85
+msgid "Email"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:92
+msgid "URL"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:106
+msgid "Range"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:113
+msgid "Number"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:122
+msgid "Time"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/helpers/elements.php:129
+msgid "capatch"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:5
+msgid "Add New"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:10
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:22
+msgid "Form Name"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:11
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:23
+msgid "Short Code"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:12
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:24
+msgid "Date"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:13
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:25
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:51
+msgid "Edit"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:14
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:26
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:52
+msgid "View Details"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:15
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:27
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:55
+msgid "Delete"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/all_forms.php:66
+msgid "No posts yet"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/elements_by_form.php:3
+msgid "search"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:9
+msgid "You Should enter form name"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:20
+msgid "Form name"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:34
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:55
+msgid "Form Direction"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:38
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:42
+msgid "lrt"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:40
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:44
+msgid "rtl"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:76
+msgid "Drag Fields Here"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:103
+msgid "edit"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:119
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:163
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/pagintion_options.php:14
+msgid "Save"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:128
+msgid "Elements"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:131
+msgid "Field Setting"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:134
+msgid "After Submit"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:161
+msgid "You should choose an element to edit."
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:170
+msgid "Send notification email"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/new_form.php:189
+msgid "Redirect to"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/pagintion_options.php:1
+msgid "Number of records per page "
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/pagintion_options.php:5
+msgid "Record no for forms"
+msgstr ""
+
+#: C:\wamp\www\dr-landing\wp-content\plugins\mnbaa_namozagk/views/pagintion_options.php:9
+msgid "Record no for form data"
+msgstr ""
+
+msgid "Mnbaa Namozagk options"
+msgstr "خيارات نموذجك"
+
+msgid "Mnbaa Namozagk hoda options"
+msgstr "خيارات"
+
+msgid "View"
+msgstr "عرض"

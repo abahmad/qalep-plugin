@@ -1,0 +1,437 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: qalep\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-28 12:49+0200\n"
+"PO-Revision-Date: 2015-10-28 12:49+0200\n"
+"Last-Translator: hoda <hoda.hussin@gmail.com>\n"
+"Language-Team: \n"
+"Language: ar_EG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100 >= 3 "
+"&& n%100<=10 ? 3 : n%100 >= 11 && n%100<=99 ? 4 : 5;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Loco-Target-Locale: ar_EG\n"
+"X-Poedit-SearchPath-0: /home/hoda//webserver/www/wordpress/wp-content/"
+"plugins/qalep\n"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:45
+msgid "Qalep"
+msgstr "قالب"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:46
+msgid "qalep"
+msgstr "قالب"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:47
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:49
+msgid "Add New Template"
+msgstr "قالب"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:48
+msgid "Edit Template"
+msgstr "تعديل القالب"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:50
+msgid "View Template"
+msgstr "عرض القالب"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:51
+msgid "Search Template"
+msgstr "بحث فى القالب"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:52
+msgid "No Templates found"
+msgstr "لا يوجد قوالب"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:53
+msgid "No Templates found in trash"
+msgstr "لا يوجد قوالب فى سله المهملات"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:68
+msgid "Qalep options"
+msgstr "اعدادت قالب"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:74
+msgid "Bulid Your template"
+msgstr "ابنى قالبك"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/CustomPost.php:94
+msgid "Duplicate"
+msgstr "كرر القالب"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/ShortCode.php:52
+msgid "Insert Template"
+msgstr "ادراج قالب"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/Controllers/ShortCode.php:53
+msgid "Cancel"
+msgstr "الغاء"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/views/builder.php:32
+msgid "Selected"
+msgstr "المختار"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/views/builder.php:63
+msgid "Avaliable Elemnets"
+msgstr "العناصر المتاحه"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/views/builder.php:78
+msgid "Drag Element Here"
+msgstr "اسحب العناصر هنا"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/views/builder.php:79
+msgid "Clear Template"
+msgstr "مسح "
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/views/builder.php:103
+msgid "Save"
+msgstr "حفظ"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/views/builder.php:105
+msgid "Preview"
+msgstr "عرض"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/views/qalep_options.php:4
+msgid "add more one"
+msgstr "اضف  جديد"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/views/qalep_options.php:11
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/views/qalep_options.php:21
+msgid "Shortcode"
+msgstr "اختصار"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/App/views/qalep_options.php:28
+msgid "submit"
+msgstr "احفظ"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/Classes/Core/Element.php:74
+msgid " is not exist"
+msgstr "لا يوجد"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/Classes/Core/Input.php:38
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/image/image.php:50
+msgid "Choose Image"
+msgstr "اختر الصورة"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/Classes/Core/Input.php:40
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/image/image.php:51
+msgid "Remove Image"
+msgstr "حذف الصورة"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/alert/alert.php:19
+msgid "alert"
+msgstr "تنبيه"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/alert/alert.php:22
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/content_box/content_box.php:26
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/paragraph/paragraph.php:23
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/people/people.php:31
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/testimonial/testimonial.php:22
+msgid "text"
+msgstr "المحتوى"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/alert/alert.php:26
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/people/people.php:35
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/testimonial/testimonial.php:26
+msgid "image"
+msgstr "صورة"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/alert/alert.php:30
+msgid "background"
+msgstr "لون الخلفيه"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/alert/alert.php:32
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:28
+msgid "gray"
+msgstr "رمادى"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/alert/alert.php:32
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:28
+msgid "orange"
+msgstr "برتقالى"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/alert/alert.php:32
+msgid "light-gray"
+msgstr "رمادى خفيف"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:17
+msgid "button"
+msgstr "زر"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:21
+msgid "border"
+msgstr "الحدود"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:23
+msgid "flat"
+msgstr "مستقيم"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:23
+msgid "round"
+msgstr "مدور"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:26
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/people/people.php:27
+msgid "color"
+msgstr "اللون"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:28
+msgid "white"
+msgstr "ابيض"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:31
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/counting/counting.php:21
+msgid "size"
+msgstr "الحجم"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:33
+msgid "small"
+msgstr "صغير"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:33
+msgid "medium"
+msgstr "وسط"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/button/button.php:33
+msgid "larag"
+msgstr "كيسر"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/clear/clear.php:17
+msgid "clear"
+msgstr "فراغ"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/column/column.php:19
+msgid "Column"
+msgstr "عمود"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/column/column.php:23
+msgid "width"
+msgstr "العرض"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/column/column.php:24
+msgid "offset"
+msgstr "المكان"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/container/container.php:19
+msgid "Conatiner"
+msgstr "محتوى"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/container/container.php:23
+msgid "fixed"
+msgstr "ثابت"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/content_box/content_box.php:17
+msgid "content box"
+msgstr "صندوق "
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/content_box/content_box.php:20
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/people/people.php:22
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/testimonial/testimonial.php:30
+msgid "template"
+msgstr "النموذج"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/content_box/content_box.php:22
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/people/people.php:24
+msgid "template1"
+msgstr "نموذج1"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/content_box/content_box.php:22
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/people/people.php:24
+msgid "template2"
+msgstr "نموذج2"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/content_box/content_box.php:22
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/people/people.php:24
+msgid "template3"
+msgstr "نموذج3"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/content_box/content_box.php:25
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/paragraph/paragraph.php:22
+msgid "title"
+msgstr "العنوان"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/counting/counting.php:17
+msgid "Counting"
+msgstr "عداد"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/counting/counting.php:20
+msgid "percent"
+msgstr "النسبه المؤيه"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/counting/counting.php:22
+msgid "borderWidth"
+msgstr "عرض الحد"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/counting/counting.php:23
+msgid "bgFill"
+msgstr "لون الخلفيه"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/counting/counting.php:24
+msgid "frFill"
+msgstr "لون المقدمة"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/counting/counting.php:25
+msgid "textSize"
+msgstr "لون الخط"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/counting/counting.php:26
+msgid "textColor"
+msgstr "لون الخط"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/divider/divider.php:17
+msgid "divider"
+msgstr "سطر"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/divider/divider.php:20
+msgid "shape"
+msgstr "الشكل"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/divider/divider.php:22
+msgid "thin"
+msgstr "رفيع"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/divider/divider.php:22
+msgid "dashed"
+msgstr "مخطط"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/divider/divider.php:22
+msgid "slash"
+msgstr "مقطع"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/image/image.php:19
+msgid "Image"
+msgstr "صورة"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/paragraph/paragraph.php:19
+msgid "Pargraph"
+msgstr "نص"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/paragraph/paragraph.php:26
+msgid "textalign"
+msgstr "محاذاة الخط"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/paragraph/paragraph.php:28
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/title/title.php:31
+msgid "center"
+msgstr "وسط"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/paragraph/paragraph.php:28
+msgid "justify"
+msgstr "محاذاة"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/paragraph/paragraph.php:31
+msgid "quotes"
+msgstr "اقتباس"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/people/people.php:17
+msgid "people"
+msgstr "شخص"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/people/people.php:20
+msgid "name"
+msgstr "الاسم"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/people/people.php:21
+msgid "position"
+msgstr "المكانة"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/people/people.php:24
+msgid "template4"
+msgstr "نموذج4"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/post/post.php:17
+msgid "post"
+msgstr "تعليق"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/post/post.php:20
+msgid "numberposts"
+msgstr "عدد البوستات"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/post/post.php:21
+msgid "post_type"
+msgstr "نوع البوست"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/post/post.php:22
+msgid "pagination"
+msgstr "ترقيم الصفحات"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/post/post_frontend.php:39
+msgid "<<"
+msgstr ",,"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/post/post_frontend.php:40
+msgid ">>"
+msgstr ""
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/post/post_frontend.php:103
+msgid "POSTED BY:"
+msgstr "بواسطه"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/testimonial/testimonial.php:17
+msgid "Testimonial"
+msgstr "توصيه"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/testimonial/testimonial.php:20
+msgid "personName"
+msgstr "اسم الشخص"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/testimonial/testimonial.php:21
+msgid "personPosition"
+msgstr "مكانه الشخص"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/title/title.php:17
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/url/url.php:17
+msgid "Title"
+msgstr "عنوان"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/title/title.php:21
+msgid "Border"
+msgstr "الحد"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/title/title.php:29
+msgid "Alignment"
+msgstr "المحذاة"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/title/title.php:31
+msgid "left"
+msgstr "شمال"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/title/title.php:31
+msgid "right"
+msgstr "يمين"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/url/url.php:20
+msgid "slug"
+msgstr " الاسم المستعار"
+
+#: /home/hoda//webserver/www/wordpress/wp-content/plugins/qalep/elements/url/url.php:21
+msgid "link"
+msgstr "الرابط"
+
+#~ msgid "social"
+#~ msgstr "الشبكات الاجتماعيه"
+
+#~ msgid "pargraph"
+#~ msgstr "نص"
+
+#~ msgid "qalep options"
+#~ msgstr "اعدادات قالب"
+
+#~ msgid "http://www.mnbaa.com"
+#~ msgstr "http://www.mnbaa.com"
+
+#~ msgid "Qalep Template & Page Builder"
+#~ msgstr "لبناء محتوى القوالب لتطبيقها على الصفحات"
+
+#~ msgid "mnbaa"
+#~ msgstr "منبع"

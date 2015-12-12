@@ -5,7 +5,6 @@ namespace Qalep\Classes\Core;
 class Controller {
 
     protected $config;
-    //protected $media = array();
     protected $scripts;
     private $views_dir_path;
 
@@ -16,10 +15,8 @@ class Controller {
 
     protected function loader() {
 
-        global $ioc;
-
-        $config = $ioc->get('Qalep\\Classes\\Core\\Config');
-        $scripts = $ioc->get('Qalep\\Classes\\Core\\Scripts');
+        $config = DI()->get('Qalep\\Classes\\Core\\Config');
+        $scripts = DI()->get('Qalep\\Classes\\Core\\Scripts');
 
         $this->config = $config;
         $this->views_dir_path = $this->config->get('app', 'config')['views_dir_path'];
@@ -27,7 +24,6 @@ class Controller {
     }
 
     protected function view($file_name, $data = array(), $print = true) {
-        
         $file_path = '';
         $content = '';
         if (strpos($file_name, '.')) {
@@ -41,7 +37,7 @@ class Controller {
         if (file_exists($this->views_dir_path . $file_path . $file_name . '.php')) {
             !empty($data) ? extract($data) : true;
             ob_start();
-            include $this->views_dir_path . $file_path . $file_name . '.php';
+            require  $this->views_dir_path . $file_path . $file_name . '.php';
             $content .= ob_get_clean();
         }
 

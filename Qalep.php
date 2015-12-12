@@ -1,18 +1,18 @@
 <?php
 
 /*
- * Plugin Name: Qalep (Beta)
+ * Plugin Name: Qalep
  * Plugin URI: http://www.mnbaa.com/
  * Version: V 1.1
- * Author: Mohammed Anwar
+ * Author: mnbaa
  * Text Domain: qalep
  * Description: Qalep Template & Page Builder
  */
 
-use Aura\Di\Container;
-use Aura\Di\Factory;
-
 // Make sure we can't call this file directly
+
+update_post_meta(26, 'price', 25);
+
 if (!defined('WPINC')) {
     die;
 }
@@ -25,7 +25,7 @@ if (!defined('QALEP_URL_PATH'))
 if (!defined('QALEP_PLUGIN_NAME'))
     define('QALEP_PLUGIN_NAME', basename(dirname(__FILE__)));
 if (!defined('QALEP_TEXT_DOMAIN'))
-    define('QALEP_TEXT_DOMAIN', 'qlp');
+    define('QALEP_TEXT_DOMAIN', 'qalep');
 
 // Including our autoloader
 //require_once 'Qalep_Autoloader.php';
@@ -37,10 +37,15 @@ require 'vendor/autoload.php';
 load_plugin_textdomain(QALEP_TEXT_DOMAIN, false, dirname(plugin_basename(__FILE__)) . '/languages/');
 
 // including our ioc container
-$ioc = DI\ContainerBuilder::buildDevContainer();
+
+$ioc = \DI\ContainerBuilder::buildDevContainer();
+
+function DI() {
+    global $ioc;
+    return $ioc;
+}
 
 // Bind Dependancies to the container
-//$ioc->addRule('Qalep\\Classes\\Core\\Config', array('shared' => true));
 
 /**
  * @package Qalep
@@ -54,7 +59,6 @@ class Qalep {
      */
     private $config;
     private $router;
-    public $ioc;
 
     /**
      * Initializing our plugin
@@ -63,7 +67,6 @@ class Qalep {
 
         $this->config = $config;
         $this->router = $router;
-        $this->ioc = DI\ContainerBuilder::buildDevContainer();
 
         $this->init();
     }
@@ -87,8 +90,9 @@ class Qalep {
      */
     public function init() {
         // Loading Helpers
-
+        
         $helpers = $this->config->get('app', 'helpers');
+        
 
         if (is_array($helpers) && !empty($helpers)) {
             foreach ($helpers as $helper) {
@@ -98,9 +102,26 @@ class Qalep {
                 }
             }
         }
+        
+        DI()->get('Qalep\App\Controllers\ScriptLoader');
 
-        // Assign our menu routes
-        $this->router->mass($this->config->get('routes.menu_routes', 'admin_menu'));
+        // add qalep custom post
+        $this->router->add('custom_post', 'init', 'Qalep\App\Controllers\CustomPost', '_create_post_type_template');
+
+        //
+        
+        DI()->get("Qalep\App\Controllers\Templater");
+        DI()->get("Qalep\App\Controllers\CutsomTemplate");
+        DI()->get("Qalep\App\Controllers\ShortCode");
+        //
+
+        add_filter('post_row_actions', array('Qalep\App\Controllers\CustomPost', 'qalep_action_row'), 10, 2);
+        add_shortcode('qalep template', array("Qalep\App\Controllers\ShortCode", 'draw_qalep_template'));
+        
+        //
+        add_action('wp_ajax_get_input', array('Qalep\App\Controllers\ListInputs', 'get_input'));
+        add_action('wp_enqueue_scripts',array('Qalep\App\Controllers\ScriptLoader','load_forntend_styles'));
+
         $this->router->run();
     }
 
@@ -112,5 +133,8 @@ if (class_exists('Qalep')) {
     register_deactivation_hook(__FILE__, array('Qalep', 'deactivate'));
 
     // Creating our main Qalep class container instance
-    $ioc->get('Qalep');
+    add_action('init', function() {
+       \DI()->get('Qalep');
+        //DI()->set($name, $value);
+    });
 }
