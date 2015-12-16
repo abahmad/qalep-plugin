@@ -139,10 +139,37 @@ class Templater extends Controller {
         }
     }
 
-    /*
-     * create page template file 
+    /**
+     * 
+     * @param type $post_id
+     * @return type
      */
+    public function save_template_data($post_id) {
+        // If it is our form has not been submitted, so we dont want to do anything
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+            return;
+        // echo "yes";
+        if ($_POST) {
 
+            $args = array();
+            if (isset($_POST['item'])) {
+                $args = $_POST['item'];
+                $args = str_replace('\\', '', $args);
+            }
+            $img_id = 0;
+            if (isset($_POST['image'])) {
+                $img_id = $_POST['image'];
+            }
+
+            $post = get_post($post_id);
+            $this->qalep_template_file($args, $post, $img_id);
+        }
+    }
+
+    /**
+     * create page template file 
+     * @param array args elements to draw in page template file
+     */
     public function qalep_template_file($args = array(), $post) {
 
         $custom_template = $_POST['assign-template-to'];
@@ -151,11 +178,15 @@ class Templater extends Controller {
 
         //add post meta
         $meta_id = update_post_meta($post->ID, 'template_element', $args);
+        if (isset($custom_template)) {
+            update_post_meta($post->ID, 'template_custom', $custom_template);
+        }
         $template_name = $post->post_title;
         if ($custom_template !== '') {
             $just_filename = $custom_template;
         } else {
             $just_filename = $post->post_name;
+            delete_post_meta($post->ID, 'template_custom');
         }
         $theme_name = wp_get_theme();
         $content = '<?php /*
@@ -202,52 +233,6 @@ class Templater extends Controller {
         } else {
             echo "failed";
             die();
-        }
-    }
-
-    public function save_template_data() {
-        // If it is our form has not been submitted, so we dont want to do anything
-        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
-            return;
-        // echo "yes";
-        if ($_POST) {
-
-            $args = array();
-            if (isset($_POST['item'])) {
-                $args = $_POST['item'];
-                $args = str_replace('\\', '', $args);
-            }
-            $img_id = 0;
-            if (isset($_POST['image'])) {
-                $img_id = $_POST['image'];
-            }
-
-            $post = get_post(get_the_ID());
-            $this->qalep_template_file($args, $post, $img_id);
-        }
-    }
-
-    //
-    public function search_in_template() {
-        global $post;
-        $filename = $post->post_name;
-        $plugin_path = plugin_dir_path(__DIR__) . '../page_templates';
-
-        $filename = $filename . '.php';
-        $full_path = $plugin_path . "/" . $filename;
-        //
-        if (file_exists($full_path)) {
-            $contents = file_get_contents($full_path);
-            $start_findme = '<mnbaa_SEPERATOR>';
-            $start = strpos($contents, $start_findme) + strlen($start_findme);
-            // echo $start;
-            $end_findme = '</mnbaa_SEPERATOR>';
-            $end = strpos($contents, '</mnbaa_SEPERATOR>');
-            //$end=
-            $template_content = substr($contents, $start, ($end - $start));
-            return $template_content;
-        } else {
-            echo "page template file desn't exist";
         }
     }
 
@@ -360,28 +345,66 @@ class Templater extends Controller {
         die();
     }
 
+    /**
+     * search for file is exist in page_templates folder  in qalep pulgin
+     * @param string filename filename to search for
+     * @return string the content of the file if exist or flase if deson't exist
+     */
+    public function search_in_template($filename) {
+
+        $plugin_path = plugin_dir_path(__DIR__) . '../page_templates';
+
+        $filename = $filename . '.php';
+        $full_path = $plugin_path . "/" . $filename;
+        //
+        if (file_exists($full_path)) {
+            $contents = file_get_contents($full_path);
+            $start_findme = '<mnbaa_SEPERATOR>';
+            $start = strpos($contents, $start_findme) + strlen($start_findme);
+            // echo $start;
+            $end_findme = '</mnbaa_SEPERATOR>';
+            $end = strpos($contents, '</mnbaa_SEPERATOR>');
+            //$end=
+            $template_content = substr($contents, $start, ($end - $start));
+        } else {
+            $template_content = FALSE;
+        }
+        return $template_content;
+    }
+
+    /**
+     * get template name
+     */
     /* c
      * heck syncroniaztion between data on page templates
      * and data stored on post qalep meta
      */
+    function get_template_custom_page() {
+        global $post;
+        if (isset($post)) {
+            $template_name = (get_post_meta($post->ID, 'template_custom', true));
+            return $template_name;
+        }
+    }
 
     function check_sync() {
-
         global $post;
-        $template_content = $this->search_in_template();
 
         if (isset($post)) {
             $template_items = (get_post_meta($post->ID, 'template_element', true));
+            $template_name = get_post_meta($post->ID, 'template_custom', true);
+            (isset($template_name) && $template_name != '') ? $filename = $template_name : $filename = $post->post_name;
         }
-//          var_dump(json_decode($template_content));
-//         echo "----------------";
-//        var_dump($template_items);
-        if (isset($template_items) && !empty($template_items)) {
+//        echo $filename;
+        //(isset($_POST['assign-template-to'])) ? $filename = $_POST['assign-template-to'] : $filename = $post->post_name;
+        $template_content = $this->search_in_template($filename);
 
-            if (json_decode($template_content) == $template_items) {
-                
-            } else {
-                echo "not synco";
+
+        if (isset($template_items) && !empty($template_items)) {
+            if ($template_content == FALSE) {
+                echo "Page Template File Desn't exist";
+            } elseif (json_decode($template_content) != $template_items) {
+                echo "Data in template file not synchronized with the template content";
             }
             return $template_items;
         }

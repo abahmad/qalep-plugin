@@ -29,6 +29,8 @@ class CustomPost extends Controller {
 
         $template_items = DI()->get('Qalep\App\Controllers\Templater')->check_sync();
 
+        $template_name = DI()->get('Qalep\App\Controllers\Templater')->get_template_custom_page();
+
         $elements = DI()->get('Qalep\App\Controllers\ListAllElement');
 
         //$elements->register_bultin_element();
@@ -36,7 +38,7 @@ class CustomPost extends Controller {
         $user_shortcode = $elements->get_registed_shortcodes();
 
         $this->view('builder', array('user_shortcode' => $user_shortcode,
-            'template_content' => $template_content, 'template_items' => $template_items));
+            'template_content' => $template_content, 'template_items' => $template_items,'template_name'=>$template_name));
     }
 
     //register qalep custom post in init action

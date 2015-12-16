@@ -26,14 +26,14 @@ class Post extends Element {
             'properties' => array(
                 __("numberposts", 'qalep') => '1',
                 __("post_type", 'qalep') => array(
-                    'input_type' => 'select',
+                    'input_type' => 'selectcustom',
                     "choices" => $this->get_custom_posts(),
                     'value' => 'post'
                 ),
                 __("post_meta_fileds", 'qalep') => array(
                     'input_type' => 'custom_checkboox',
                     "choices" => $this->get_custom_meta(),
-                    'value' =>'',
+                    'value' => '',
                 ),
                 __("taxnomy", 'qalep') => array(
                     'input_type' => 'checkbox',
@@ -77,6 +77,12 @@ class Post extends Element {
             'public' => true,
         );
         $post_types = get_post_types($args);
+        $posts=array();
+        foreach ($post_types as $key =>$val){
+           $posts['label']=$key;
+           $posts['value']=$val;
+            
+        }
         return $post_types;
     }
 
@@ -89,14 +95,14 @@ class Post extends Element {
             $result[$value] = $res;
         }
         //var_dump($result);
-       return $result;
+        return $result;
     }
 
     function generate_meta_keys($post_type) {
         global $wpdb;
 //        $props = json_decode(file_get_contents("php://input"));
 //        $post_type = $props->post_type;
-       //$post_type = 'qalep';
+        //$post_type = 'qalep';
         $query = "
         SELECT DISTINCT($wpdb->postmeta.meta_key) 
         FROM $wpdb->posts 
@@ -105,34 +111,11 @@ class Post extends Element {
         WHERE $wpdb->posts.post_type = '%s' 
         AND $wpdb->postmeta.meta_key != '' 
         AND $wpdb->postmeta.meta_key NOT RegExp '(^[_0-9].+$)' 
-        AND $wpdb->postmeta.meta_key NOT RegExp '(^[0-9]+$)'
-    ";
+        AND $wpdb->postmeta.meta_key NOT RegExp '(^[0-9]+$)'";
         $meta_keys = $wpdb->get_col($wpdb->prepare($query, $post_type));
         $response = array_flip($meta_keys);
         return $response;
-//        $result='';
-//         foreach ($response as $key => $val) {
-//             $result .='<input type="checkbox" value="' . $key . '" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection($event,\'testClick\')">';
-//         }
-        // $this->block_options['properties']['post_meta_fileds']['value']=$response;
-        //print_r($this->block_options);
-//        $result='{{models.selected.properties[key].choices}}<label  ng-repeat="(itemName,val) in models.selected.properties[key].choices">
-//        <input type="checkbox"  value="{{itemName}}" ng-checked="models.selected.properties[key].value.indexOf(itemName) > -1" ng-click="toggleSelection(itemName,key)"> {{itemName}}
-//        </label>';
-//      $result = \DI()->get('Qalep\Classes\Core\Input')->checkbox($response);
-////        $result='';
-////        foreach ($response as $key=>$val){
-////            $result .='<input type="checkbox" value="'.$val.'">'.$key;
-////        }
-////        $result=array();
-////        foreach ($response as $key=>$val){
-////            $result[$key] ="<input  type='checkbox' ng-click='toggleSelection(itemName,key)'  ng-checked='models.selected.properties[key].value' ng-model='models.selected.properties[key]' />";
-////        }
-//        // set_transient('foods_meta_keys', $meta_keys, 60*60*24) # 1 Day Expiration
-//       // print_r(array_flip($meta_keys));
-//      // echo json_encode($result);
-//      echo $result;
-//       die();
+//    
     }
 
     function get_all_taxonomies() {

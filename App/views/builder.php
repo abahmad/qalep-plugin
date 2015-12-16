@@ -110,9 +110,8 @@
             <div class="form-group">
                 <select name="assign-template-to" class="form-control">
                     <label>Assign template to</label>
-                    <option label="" value ="">None</option>
                     <optgroup label="Default Templates">
-                        <option value="qalep-page">Page Template</option>
+                        <option value="" selected="selected" >Page Template</option>
                         <option value="qalep-front-page">Front Page Template</option>
                         <option value="qalep-index">Blog Index Template</option>
                         <option value="qalep-category">Blog Category Template</option>
@@ -122,6 +121,7 @@
                     <optgroup label="Post / Custom post types">
                         <?php
                         $types = get_post_types(array('public' => true));
+
                         foreach ($types as $type) {
                             if (!empty($type)) {
                                 ?>
@@ -142,6 +142,7 @@
                             // need the actual slug?  this will do it...
                             if (!empty($taxonomy)) {
                                 // you'll probably want to do something else.
+                                $value = "taxonamy-" . $taxonomy;
                                 ?>
                                 <option value="taxonamy-<?php echo $taxonomy; ?>"><?php echo ucfirst($taxonomy) ?> Template</option>
                                 <?php
@@ -151,14 +152,14 @@
                     </optgroup>
 
                     <optgroup label="Categories / Hierarchical Taxonamy Terms">
-                        
+
                         <?php
                         foreach ($taxonomies as $taxonomy) {
                             if (!empty($taxonomy)) {
-                               
+
                                 echo '<optgroup label="&nbsp;&nbsp;&nbsp;' . ucfirst($taxonomy) . '">';
-                                $s1 = preg_replace('/<select(.+)>/i', '', wp_dropdown_categories('taxonomy=' . $taxonomy . '&hide_empty=0&hierarchical=1&value_field=slug&echo=0'));
-                                $s2 = preg_replace('/value="([^\"]+)"/i', 'value="qalep-taxonamy-'.$taxonomy.'-$1"', $s1);
+                                $s1 = preg_replace('/<select(.+)>/i', '', wp_dropdown_categories('taxonomy=' . $taxonomy . '&hide_empty=0&hierarchical=1&value_field=slug&selected=0&echo=0'));
+                                $s2 = preg_replace('/value="([^\"]+)"/i', 'value="qalep-taxonamy-' . $taxonomy . '-$1"', $s1);
                                 $s3 = str_replace('</select>', '', $s2);
                                 echo $s3;
                                 echo '</optgroup>';
@@ -170,7 +171,16 @@
                 </select>
             </div>
         </div>
-
+        <script>
+                    $(".form-control option").each(function ()
+                    {
+                        var option = ($(this).val())
+                        var template = "<?php echo $template_name; ?>";
+                        if (option == template) {
+                            $(this).attr('selected', 'selected');
+                        }
+                    });
+        </script>
         <div class="qalep-btns">
             <?php
             submit_button($text = __('Save', 'qalep'), $type = 'primary', $name = 'publish', $wrap = true, $other_attributes = NULL);

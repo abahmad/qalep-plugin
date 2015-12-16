@@ -55,17 +55,27 @@ class Input {
             </div>';
     }
 
+
+    function selectcustom() {
+        //
+        $str = '<select 
+                ng-init = "__model = models.selected.properties[key];" ng-change="showResult(__model.value)"
+               ng-model="__model.value"
+               ng-options="item as item for item  in __model.choices" 
+ >';
+        // $str.='<option ng-selected="__model.value" ng-repeat="(itemName,val) in __model.choices" value="{{val}}">{{itemName}}</option>';
+        $str.='</select>';
+        return $str;
+    }
     function select() {
         //
         $str = '<select 
                 ng-init = "__model = models.selected.properties[key];" ng-change="showResult(__model.value)"
                ng-model="__model.value"
                ng-options="choice.value as choice.label for choice in __model.choices" 
-               
-               >';
+ >';
         // $str.='<option ng-selected="__model.value" ng-repeat="(itemName,val) in __model.choices" value="{{val}}">{{itemName}}</option>';
         $str.='</select>';
         return $str;
     }
-
 }
