@@ -2,6 +2,9 @@ var $ = jQuery;
 
 //popup window to preview template as it is in front end
 jQuery(document).ready(function () {
+    //hide result of dropdownlist of post item on init
+    
+   $(".qalep_tr_post_meta_fileds").css('display','none');
     var dialog = $('#qalep-dialog-view');
     $("#qalep-preview").on('click', function (e) {
         //var items = [];

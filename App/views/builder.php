@@ -54,11 +54,11 @@
                         <td class="{{key}}"> <span ng-bind-html="val" compilehtml>{{val}}</span>
                         </td>
                     </tr>-->
-                    <tr ng-repeat="(key, val) in items" >
+                    <tr ng-repeat="(key, val) in items" class="qalep_tr_{{key}}"  >
 
                         <td>{{key|capitalize}}</td>
 
-                        <td class="{{key}}" ng-init="current_key = key"> <span ng-bind-html="val" compilehtml></span>
+                        <td  class="{{key}}" ng-init="current_key = key"> <span ng-bind-html="val" compilehtml></span>
                         </td>
                     </tr>
                 </table>

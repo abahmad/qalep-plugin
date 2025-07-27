@@ -58,7 +58,7 @@ elseif ($template_value == '3') {?>
 <?php 
 }
 elseif ($template_value=="2") {?>
-    <div class="col-md-2">
+    <div >
             <div class="people-reqver">
             <div class="people-reqhead">
                <img src="<?php echo $image_src; ?>" />

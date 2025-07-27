@@ -37,7 +37,7 @@ class Input {
 
     function custom_checkboox() {
         $result = '';
-        $result .= '<div  ng-repeat="(itemName,val) in models.selected.properties[key].choices" class="qalep-{{itemName}}" style="display:none;">
+        $result .= '<div  ng-repeat="(itemName,val) in models.selected.properties[key].choices" class="qalep-item{{itemName}}" style="display:none;">
        <label ng-repeat="(metaKey,metaVal) in models.selected.properties[key].choices[itemName]"> <input type="checkbox"  value="{{metaVal}}" ng-checked="models.selected.properties[key].value.indexOf(metaKey) > -1" ng-click="toggleSelection(metaKey,key)"> {{metaKey}}</label> </div>';
         return $result;
     }
@@ -66,6 +66,8 @@ class Input {
         // $str.='<option ng-selected="__model.value" ng-repeat="(itemName,val) in __model.choices" value="{{val}}">{{itemName}}</option>';
         $str.='</select>';
         return $str;
+        die();
+        
     }
     function select() {
         //

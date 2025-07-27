@@ -35,28 +35,25 @@ myApp.filter('capitalize', function () {
 myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', '$sce', '$compile', function ($scope, $rootScope, $http, $sce, $compile) {
 
         $scope.items = {};
-        // selected fruits
         $scope.selection = [];
-        $scope.toggleSelection = function SetValue() {
-            alert("kkk");
-        
-        }
         //show sutibale result
         $scope.showResult = function showResult(key) {
-             $('div[class^="qalep-"]').hide();
-            $('.qalep-'+key).css('display','block');
-            
+            $('div[class^="qalep-item"]').hide();
+           
+            $('.qalep-item' + key).css('display', 'block');
+             //$(".qalep_tr_post_meta_fileds").css('display', 'block');
+
         }
         // toggle selection for  given fruit by name
         $scope.toggleSelection0 = function toggleSelection0($event, key) {
-            var item=angular.element($event.currentTarget);
-            if(item.checked){
+            var item = angular.element($event.currentTarget);
+            if (item.checked) {
                 alert("true");
-                
-                
+
+
             }
-            var itemKey=$($event.currentTarget).parent().parent().parent().attr('class');
-           // alert(itemKey)
+            var itemKey = $($event.currentTarget).parent().parent().parent().attr('class');
+            // alert(itemKey)
             //console.log($scope.models.selected.properties);
             var itemName = angular.element($event.currentTarget).val();
             var idx = $scope.selection.indexOf(itemName);
@@ -94,7 +91,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
                 $scope.models.selected.properties[key].value = $scope.selection;
             }
         };
-        
+
         $scope.models = {
             selected: null,
             templates: window.qalep_elements,
@@ -135,7 +132,7 @@ myApp.controller("NestedListsDemoController", ['$scope', '$rootScope', '$http', 
             return JSON.parse(angular.toJson(_item));
         }
         $scope.draw = function (properties) {
-        $scope.items={};
+            $scope.items = {};
             if (properties) {
                 $http({
                     method: "POST",
