@@ -1,0 +1,16 @@
+{
+    "name": "Qalep",
+    "description": "Qalep Wordpress Template Creation Software",
+    "authors": [
+        {
+            "name": "M.Anwar",
+            "email": "m.anwar@pure-sol.com"
+        }
+    ],
+    "require": {
+        "php-di/php-di": "^5.1"
+    },
+    "autoload": {
+         "psr-4": {"Qalep\\": ""}
+    }
+}
